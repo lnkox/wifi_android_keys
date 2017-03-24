@@ -1,0 +1,395 @@
+﻿Version=5.5
+NumberOfModules=8
+Module1=Starter
+Module2=StateManager
+Module3=sel_dev
+Module4=AP_SET
+Module5=STA_SET
+Module6=KEY_SET
+Module7=CM
+Module8=INET_SET
+Build1=Default,lnk.wifi_keys
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="14"/>~\n~<uses-permission android:name="android.permission.INTERNET"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~SetApplicationAttribute(android:theme, "@android:style/Theme.Holo")~\n~~\n~'End of default text.~\n~
+IconFile=
+NumberOfFiles=6
+File1=ap_set.bal
+File2=INET_SET.bal
+File3=key_set_lay.bal
+File4=sel_dev_lay.bal
+File5=set_lay.bal
+File6=sta_set.bal
+NumberOfLibraries=6
+Library1=core
+Library2=randomaccessfile
+Library3=json
+Library4=reflection
+Library5=network
+Library6=byteconverter
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: WIFIKEYS
+	#VersionCode: 1
+	#VersionName: 
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: unspecified
+	#CanInstallToExternalStorage: False
+#End Region
+
+
+
+Sub Process_Globals
+	Dim keys_is_load As Boolean
+	Dim conect_tmout As Int
+	Public  mgetbut_tmr As Timer
+	Public  send_state_timer As Timer
+End Sub
+Sub Globals
+
+	Dim butt(33) As Button
+	Dim status_lab As Label
+	Dim butlock(33) As Boolean
+	Dim butstate(33) As Boolean
+	Dim sld_norm,sld_on,sld_down As StateListDrawable
+	Dim prs, ups,grn As ColorDrawable
+	Dim key_n As Int =0 
+	Dim cur_but_state As Int
+	Dim prs_but As Int
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+Try	
+	Activity.Title ="Wi-Fi keys - " & StateManager.GetSetting2("cur_dev_name","none")
+	Activity.AddMenuItem("Keys set","keys_set")
+    Activity.AddMenuItem("Wi-Fi AP set","wf_ap_set")
+    Activity.AddMenuItem("Wi-Fi client set","wf_STA_set")
+	Activity.AddMenuItem("Select device","sel_dev")
+	Activity.AddMenuItem("Inet set","inet_setm")	
+	Activity.AddMenuItem("Reset device","reset_dev")	
+	Activity.AddMenuItem("EXIT","exit_prg")	
+    prs.Initialize(Colors.Gray,0dip)
+	ups.Initialize(Colors.DarkGray, 0dip)
+	grn.Initialize(Colors.RGB(0,150,0), 0dip)
+  	sld_norm.Initialize
+  	sld_norm.AddState(sld_norm.State_Pressed, ups)
+	sld_norm.AddState(sld_norm.State_Enabled, ups)
+	sld_on.Initialize
+  	sld_on.AddState(sld_on.State_Pressed, grn)
+	sld_on.AddState(sld_on.State_Enabled, grn)
+	sld_down.Initialize
+  	sld_down.AddState(sld_on.State_Pressed, prs)
+	sld_down.AddState(sld_on.State_Enabled, prs)
+	status_lab.Initialize("status_lab")
+	status_lab.TextColor=Colors.Red
+	status_lab.Text = "No connected"	
+   	Activity.AddView(status_lab, 0dip, Activity.Height-20dip, Activity.Width,20dip) 
+	For i = 1 To 32
+        Dim tbuts As Button
+		tbuts.Initialize("tbuts")
+        Activity.AddView(tbuts, -2000dip, 0, 20dip,20dip) 
+		tbuts.Background=sld_norm
+		butt(i)=tbuts
+	Next
+
+	If keys_is_load=False Then 
+		load_keys
+	Else
+		StateManager.RestoreState (Activity, "Main", 60) 
+		add_key_to_panel
+	End If
+	send_state_timer.Initialize("send_state_timer", 1000)
+	send_state_timer.Enabled =True
+Catch
+  proces_error(LastException.Message)
+End Try
+End Sub
+
+Sub Activity_Resume
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+Try
+	If UserClosed Then
+		StateManager.ResetState("Main")
+	Else
+		StateManager.SaveState(Activity, "Main")
+	End If
+	StateManager.SaveSettings
+Catch
+  proces_error(LastException.Message)
+End Try
+End Sub
+
+Sub load_keys()
+Try
+	clear_keys
+	get_key_info
+	key_n=0
+	mgetbut_tmr.Initialize("mgetbut_tmr", 210)
+	mgetbut_tmr.Enabled =True
+Catch
+  proces_error(LastException.Message)
+End Try
+End Sub
+Sub clear_keys
+Try
+	For i = 1 To 32
+		butt(i).Left =-2000
+		butt(i).Tag =""
+		
+	Next
+Catch
+  proces_error(LastException.Message)
+End Try
+End Sub
+Sub mgetbut_tmr_Tick()
+Try
+	key_n=key_n+1
+	If key_n=31 Then 
+		mgetbut_tmr.Enabled =False
+		Return
+	End If
+	get_key(key_n)
+Catch
+  proces_error(LastException.Message)
+End Try	
+End Sub
+
+Sub get_key(ind As Int)
+Try	
+	Dim Data As Map
+	Data.Initialize
+	Data.Put ("getkey",ind)
+	CallSubDelayed2(Starter,"send_to_dev",Data)
+Catch
+  proces_error(LastException.Message)
+End Try
+End Sub
+
+Sub get_key_info()
+Try
+	Dim Data As Map
+	Data.Initialize
+	Data.Put ("dev_name",StateManager.GetSetting2("cur_dev_name","none"))
+	Data.Put ("getkey_info",1)
+	CallSubDelayed2(Starter,"send_to_dev",Data)
+Catch
+  proces_error(LastException.Message)
+End Try
+End Sub
+
+Sub set_key_set (mapar As Map)
+Try
+If CM.toint(mapar.Get ("key_id"))<1 Or CM.toint(mapar.Get ("key_id"))>30 Then Return 
+		If CM.toint(mapar.Get ("key_id"))=30 Then
+			 keys_is_load=True	
+			 add_key_to_panel
+			 mgetbut_tmr.Enabled =False
+			StateManager.SaveState(Activity, "Main")
+			StateManager.SaveSettings
+			 ToastMessageShow("Load keys complete",True)
+		End If
+		butt(mapar.Get ("key_id")).Text = mapar.Get ("name")
+		If butt(mapar.Get ("key_id")).Text ="@" Then 
+			butt(mapar.Get ("key_id")).tag=""
+		Else
+			butt(mapar.Get ("key_id")).tag = mapar.Get ("key_id")	
+		End If
+		butlock(mapar.Get ("key_id"))  = CM.obj2Bool( mapar.Get ("lock"))
+		butstate(mapar.Get ("key_id"))  = CM.obj2Bool( mapar.Get ("state"))
+Catch
+  proces_error(LastException.Message)
+End Try		
+End Sub
+
+Sub set_keyinfo_set (mapar As Map)
+Try
+	ToastMessageShow("Loading keys....",True)
+	If mapar.ContainsKey("font_size")=True Then  CM.font_size=CM.toint(mapar.Get ("font_size") )
+	If mapar.ContainsKey("h_size")=True Then   CM.horiz_size=CM.toint(mapar.Get ("h_size")) 
+	If mapar.ContainsKey("v_size")=True Then   CM.vert_size=CM.toint(mapar.Get ("v_size")) 
+Catch
+  proces_error(LastException.Message)
+End Try
+End Sub
+
+Sub send_comm(ind As Int,com As Boolean,lock As Boolean) 'відправка на пристрій команди(ind - номер кнопки, com -команда, lock - фіксація)
+Try
+	Dim Data As Map
+	Data.Initialize
+	Data.Put ("ncom",ind)
+	Data.Put ("com",com)
+	Data.Put ("lock",lock)
+	CallSubDelayed2(Starter,"send_to_dev",Data)
+Catch
+  proces_error(LastException.Message)
+End Try
+End Sub
+
+Sub reload_key_state(mapar As Map)
+Try
+	Dim tmpid As Int
+	tmpid=CM.toint(mapar.Get ("rind"))
+	If tmpid>0 Then
+		If CM.toint(mapar.Get ("rcom"))=1 Then
+			butt(tmpid).Background =sld_on	
+		Else
+			butt(tmpid).Background =sld_norm
+		End If
+	End If	
+Catch
+  proces_error(LastException.Message)
+End Try
+End Sub
+
+Sub send_state_timer_Tick() ' таймер перевірки звязку з пристроєм та відправки запитів на отримання рівня сигналу WI-FI
+Try
+	If prs_but>0 Then send_comm(prs_but,True,False)
+	get_rssi
+	If conect_tmout>0 Then
+		conect_tmout=conect_tmout-1
+		If conect_tmout=0 Then 
+			status_lab.TextColor=Colors.Red
+			status_lab.Text = "No connected"	
+		End If
+	End If
+	
+Catch
+  proces_error(LastException.Message)
+End Try
+End Sub
+
+ Sub get_rssi() 'Відправка запиту на отримання рівня сигналу WI-FI
+ Try
+	Dim Data As Map
+	Data.Initialize
+	Data.Put ("rssi",1)
+	CallSubDelayed2(Starter,"send_to_dev",Data)
+Catch
+  proces_error(LastException.Message)
+End Try
+End Sub
+
+Sub set_ris(rsi As Int)
+Try
+	status_lab.TextColor=Colors.Green
+	status_lab.Text = " RSSI: " & rsi & "dbm   Connected"	
+	conect_tmout=3
+Catch
+  proces_error(LastException.Message)
+End Try
+End Sub
+
+
+
+
+
+
+
+
+
+
+Sub add_key_to_panel() 'розміщення кнопок керування на екрані 
+Try
+	Dim b_width,b_height,posx,posy,max_but As Int
+	b_width=Activity.Width/CM.horiz_size
+	b_height=(Activity.height-20dip)/CM.vert_size
+	max_but =CM.horiz_size*CM.vert_size
+	cur_but_state=0
+	For a=1 To 32
+		If butstate(a)=True Then butt(a).Background=sld_on
+		If CM.toint(butt(a).tag)>0 Then 
+			If cur_but_state>=max_but Then Return
+			posy=cur_but_state/CM.horiz_size
+			posx=cur_but_state mod CM.horiz_size
+			butt(a).Left =posx*(b_width+1dip)
+			butt(a).top =posy*(b_height+1dip)
+			butt(a).width =b_width-2dip
+			butt(a).height =b_height-2dip
+			butt(a).TextSize =CM.font_size
+			cur_but_state=cur_but_state+1			
+		End If	
+	Next
+Catch
+  proces_error(LastException.Message)
+End Try
+End Sub
+'/////////////////////////////////////////////////////////////////////////////////////////////////////
+'Інтерфейс
+'/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Sub tbuts_down()
+Try	
+    Dim p As Button
+	Dim tmind As Int
+    p = Sender
+	p.Background =sld_down
+	tmind=CM.toint(p.Tag)
+	If butlock(tmind) =True Then
+		If butstate(tmind)=True Then
+			send_comm(tmind,False,False)
+			butstate(tmind)=False
+		Else	
+			send_comm(tmind,True,True)
+			butstate(tmind)=True
+		End If
+	Else
+		butstate(tmind)=True
+		send_comm(tmind,True,False)	
+		prs_but=tmind	
+	End If
+Catch
+  proces_error(LastException.Message)
+End Try
+End Sub
+
+Sub tbuts_click()
+Try
+    Dim p As Button
+	Dim tmind As Int
+    p = Sender
+	tmind=CM.toint(p.Tag)
+	If butlock(tmind) =False Then
+		prs_but=0
+		send_comm(tmind,False,False)
+		butstate(tmind)=False
+	End If
+Catch
+  proces_error(LastException.Message)
+End Try
+End Sub
+
+Sub sel_dev_Click()
+    StartActivity(sel_dev)
+End Sub
+Sub wf_ap_set_Click()
+    StartActivity(AP_SET)
+End Sub
+Sub wf_sta_set_Click()
+    StartActivity(STA_SET)
+End Sub
+Sub keys_set_Click()
+    StartActivity(KEY_SET)
+End Sub
+Sub inet_setm_Click()
+    StartActivity(INET_SET)
+End Sub
+Sub reset_dev_Click()
+Try
+    Dim Data As Map
+	Data.Initialize
+	Data.Put ("rst",1)
+	CallSubDelayed2(Starter,"send_to_dev",Data)
+Catch
+  proces_error(LastException.Message)
+End Try
+
+	
+End Sub
+Sub status_lab_LongClick
+	load_keys
+End Sub
+
+Sub proces_error(msg As String)
+	Msgbox(msg,"error")
+End Sub

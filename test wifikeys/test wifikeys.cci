@@ -1,0 +1,10 @@
+VERSION:3 SOURCE_TIMESTAMP:4A6972CD
+NODE:M LEVEL:0 LINE:23 "data"
+NODE:M LEVEL:0 LINE:24 "sb"
+NODE:I LEVEL:0 LINE:27 "C:\cvavr\inc\mega16.h"
+NODE:V LEVEL:0 LINE:28 "nb -> R5"
+NODE:V LEVEL:0 LINE:28 "ind -> R4"
+NODE:V LEVEL:0 LINE:28 "tmp -> R7"
+NODE:F LEVEL:0 LINE:31 "ext_int0_isr(void)"
+NODE:F LEVEL:0 LINE:41 "proces_out(int i,unsigned char d)"
+NODE:F LEVEL:0 LINE:53 "main(void)"
