@@ -57,35 +57,58 @@ Try
 	If Mapar.ContainsKey("namedev")=True Then CallSubDelayed3(sel_dev,"add_dev_tolist",Mapar.Get ("namedev"),Packet.HostAddress)
 	If Mapar.ContainsKey("ssid_ap")=True Then CallSubDelayed2(AP_SET,"set_ap_set",Mapar)
 	If Mapar.ContainsKey("ssid_sta")=True Then CallSubDelayed2(STA_SET,"set_sta_set",Mapar)
-	If Mapar.ContainsKey("key_id")=True Then 
-	 	If KEY_SET.key_set_load Then CallSubDelayed2(KEY_SET,"set_key_set",Mapar) Else CallSubDelayed2(Main,"set_key_set",Mapar)
-	End If
-	If Mapar.ContainsKey("font_size")=True Then
-		 If KEY_SET.key_set_load Then CallSubDelayed2(KEY_SET,"set_keyinfo_set",Mapar) Else CallSubDelayed2(Main,"set_keyinfo_set",Mapar)
-	End If
+	If Mapar.ContainsKey("key_id")=True Then set_key_set(Mapar) 
+	If Mapar.ContainsKey("font_size")=True Then set_keyinfo_set (Mapar)
+	
 	If Mapar.ContainsKey("save_ok")=True Then
 		 ToastMessageShow ("Saved",False)
 		 If (CM.toint (Mapar.Get ("save_ok"))=1) Then
 		 	 CallSubDelayed(AP_SET,"finish_him") 
-			 CallSubDelayed(Main,"add_key_to_panel")
 		 End If
 		 If (CM.toint (Mapar.Get ("save_ok"))=2) Then
-		 	CallSubDelayed(STA_SET,"finish_him") 
-		  	CallSubDelayed(Main,"add_key_to_panel")
+		 	CallSubDelayed(STA_SET,"finish_him") 	
 		 End If
 		 If (CM.toint (Mapar.Get ("save_ok"))=3) Then
 		 	 CallSubDelayed(KEY_SET,"finish_him") 
-			 CallSubDelayed(Main,"add_key_to_panel")
+			 CallSubDelayed(sel_dev,"load_keys") 
 		 End If
 		 If (CM.toint (Mapar.Get ("save_ok"))=4) Then
 		  CallSubDelayed(INET_SET,"finish_him") 
-		  CallSubDelayed(Main,"add_key_to_panel")
 		 End If
 	End If
 Catch
 	proces_error(LastException.Message)
 
 End Try	
+End Sub
+Sub set_key_set (mapar As Map)
+Try
+	If CM.toint(mapar.Get ("key_id"))<1 Or CM.toint(mapar.Get ("key_id"))>30 Then Return 
+	If CM.toint(mapar.Get ("key_id"))=30 Then
+		 ToastMessageShow("Load data complete",False)
+		 CallSubDelayed(sel_dev,"finish_him") 
+	End If
+		StateManager.SetSetting("keytext" & mapar.Get ("key_id"),mapar.Get ("name") )
+		If mapar.Get ("name") ="@" Then 
+			StateManager.SetSetting("keytag" & mapar.Get ("key_id"),"" )
+		Else
+			StateManager.SetSetting("keytag" & mapar.Get ("key_id"),mapar.Get ("key_id"))
+		End If
+		StateManager.SetSetting("keylock" & mapar.Get ("key_id"), CM.obj2Bool(mapar.Get ("lock")))
+		StateManager.SaveSettings
+Catch
+  proces_error(LastException.Message)
+End Try		
+End Sub
+Sub set_keyinfo_set (mapar As Map)
+Try
+		StateManager.SetSetting("font_size", CM.toint(mapar.Get ("font_size")))
+		StateManager.SetSetting("h_size", CM.toint(mapar.Get ("h_size")))
+		StateManager.SetSetting("v_size", CM.toint(mapar.Get ("v_size")) )
+		StateManager.SaveSettings
+Catch
+  proces_error(LastException.Message)
+End Try
 End Sub
 Sub send_to_dev(data As Map) As Boolean ' Відправка асоційованого масиву (data) в пристрій у вигляді JSON
 Try

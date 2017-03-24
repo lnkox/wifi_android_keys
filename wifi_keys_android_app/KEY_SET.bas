@@ -14,7 +14,6 @@ Sub Process_Globals
 End Sub
 
 Sub Globals
-	Public  getbut_tmr As Timer
 	Public  setbut_tmr As Timer
 	Private scview As ScrollView
 	Dim chk(33) As CheckBox
@@ -57,7 +56,7 @@ Try
 	scview.Panel.AddView(v_size, 240dip ,0dip, 40dip, 40dip)
 	v_size.SingleLine=True
 
-	For i = 1 To 31
+	For i = 1 To 30
         Dim tchk As CheckBox
 		Dim tlab As Label
 		Dim ttxt As EditText
@@ -76,14 +75,10 @@ Try
     Next
 	save_ks_but.Initialize("save_ks_but")
 	save_ks_but.Text ="Save"
-	scview.Panel.AddView(save_ks_but, 10dip ,1290dip, Activity.Width-20dip, 40dip)
+	scview.Panel.AddView(save_ks_but, 10dip ,1260dip, Activity.Width-20dip, 40dip)
 	scview.Panel.Height =1340dip
 	Activity.Title ="Keys setup - " & StateManager.GetSetting2("cur_dev_name","none")
-	clear_field
-	key_n=0
-	getbut_tmr.Initialize("getbut_tmr", 210)
-	getbut_tmr.Enabled =True
-	key_set_load=True
+	get_key_data
 Catch
   proces_error(LastException.Message)
 End Try
@@ -95,9 +90,23 @@ End Sub
 
 
 Sub Activity_Pause (UserClosed As Boolean)
-	key_set_load=False
+
 End Sub
 
+Sub get_key_data() 'заповнення полів налаштування кнопок
+Try
+
+	v_size.Text=StateManager.GetSetting2("v_size","")
+	h_size.Text=StateManager.GetSetting2("h_size","")
+	font_size.Text=StateManager.GetSetting2("font_size","")
+	For a=1 To 30
+		chk(a).Checked=CM.obj2Bool(StateManager.GetSetting2("keylock" & a,0))
+		txt(a).Text =StateManager.GetSetting2("keytext" & a,"")
+	Next
+Catch
+  proces_error(LastException.Message)
+End Try
+End Sub
 
 Sub save_ks_but_Click
 Try
@@ -150,55 +159,8 @@ Catch
 End Try
 End Sub
 
-Sub clear_field()
-Try
-	For i = 1 To 31
-       	chk(i).Checked=False
-		txt(i).Text="no connect"
-    Next
- h_size.Text="0"
- v_size.Text="0"
- font_size.Text="0"
-Catch
-  proces_error(LastException.Message)
-End Try
-End Sub
 
-Sub getbut_tmr_Tick()
-Try
-	key_n=key_n+1
-	If key_n>=32 Then 
-		get_key_info
-		getbut_tmr.Enabled =False
-		Return
-	End If
-	get_key(key_n)
-Catch
-  proces_error(LastException.Message)
-End Try	
-End Sub
 
-Sub get_key(ind As Int)
-Try
-	Dim Data As Map
-	Data.Initialize
-	Data.Put ("getkey",ind)
-	CallSubDelayed2(Starter,"send_to_dev",Data)
-Catch
-  proces_error(LastException.Message)
-End Try
-End Sub
-
-Sub get_key_info()
-Try
-	Dim Data As Map
-	Data.Initialize
-	Data.Put ("getkey_info",1)
-	CallSubDelayed2(Starter,"send_to_dev",Data)
-Catch
-  proces_error(LastException.Message)
-End Try
-End Sub
 
 Sub set_key_set (mapar As Map)
 Try

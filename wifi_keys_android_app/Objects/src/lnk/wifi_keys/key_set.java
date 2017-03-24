@@ -32,7 +32,7 @@ public class key_set extends Activity implements B4AActivity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		if (isFirst) {
-			processBA = new BA(this.getApplicationContext(), null, null, "lnk.wifi_keys", "lnk.wifi_keys.key_set");
+			processBA = new anywheresoftware.b4a.ShellBA(this.getApplicationContext(), null, null, "lnk.wifi_keys", "lnk.wifi_keys.key_set");
 			processBA.loadHtSubs(this.getClass());
 	        float deviceScale = getApplicationContext().getResources().getDisplayMetrics().density;
 	        BALayout.setDeviceScale(deviceScale);
@@ -308,9 +308,17 @@ public class key_set extends Activity implements B4AActivity{
 		processBA.raiseEvent2(null, true, "globals", false, (Object[])null);
 	}
 
+
+
+public static void initializeProcessGlobals() {
+             try {
+                Class.forName(BA.applicationContext.getPackageName() + ".main").getMethod("initializeProcessGlobals").invoke(null, null);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+}
 public anywheresoftware.b4a.keywords.Common __c = null;
 public static boolean _key_set_load = false;
-public anywheresoftware.b4a.objects.Timer _getbut_tmr = null;
 public anywheresoftware.b4a.objects.Timer _setbut_tmr = null;
 public anywheresoftware.b4a.objects.ScrollViewWrapper _scview = null;
 public anywheresoftware.b4a.objects.CompoundButtonWrapper.CheckBoxWrapper[] _chk = null;
@@ -332,452 +340,472 @@ public lnk.wifi_keys.ap_set _ap_set = null;
 public lnk.wifi_keys.sta_set _sta_set = null;
 public lnk.wifi_keys.cm _cm = null;
 public lnk.wifi_keys.inet_set _inet_set = null;
-
-public static void initializeProcessGlobals() {
-             try {
-                Class.forName(BA.applicationContext.getPackageName() + ".main").getMethod("initializeProcessGlobals").invoke(null, null);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-}
 public static String  _activity_create(boolean _firsttime) throws Exception{
+RDebugUtils.currentModule="key_set";
+if (Debug.shouldDelegate("activity_create"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime});
 int _i = 0;
 anywheresoftware.b4a.objects.CompoundButtonWrapper.CheckBoxWrapper _tchk = null;
 anywheresoftware.b4a.objects.LabelWrapper _tlab = null;
 anywheresoftware.b4a.objects.EditTextWrapper _ttxt = null;
- //BA.debugLineNum = 28;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 29;BA.debugLine="Try";
-try { //BA.debugLineNum = 30;BA.debugLine="Activity.LoadLayout(\"key_set_lay\")";
+RDebugUtils.currentLine=5439488;
+ //BA.debugLineNum = 5439488;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+RDebugUtils.currentLine=5439489;
+ //BA.debugLineNum = 5439489;BA.debugLine="Try";
+try {RDebugUtils.currentLine=5439490;
+ //BA.debugLineNum = 5439490;BA.debugLine="Activity.LoadLayout(\"key_set_lay\")";
 mostCurrent._activity.LoadLayout("key_set_lay",mostCurrent.activityBA);
- //BA.debugLineNum = 31;BA.debugLine="lfont_size.Initialize(\"lfont_size\")";
+RDebugUtils.currentLine=5439491;
+ //BA.debugLineNum = 5439491;BA.debugLine="lfont_size.Initialize(\"lfont_size\")";
 mostCurrent._lfont_size.Initialize(mostCurrent.activityBA,"lfont_size");
- //BA.debugLineNum = 32;BA.debugLine="scview.Panel.AddView(lfont_size, 5dip, 10dip, 60d";
+RDebugUtils.currentLine=5439492;
+ //BA.debugLineNum = 5439492;BA.debugLine="scview.Panel.AddView(lfont_size, 5dip, 10dip, 60d";
 mostCurrent._scview.getPanel().AddView((android.view.View)(mostCurrent._lfont_size.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (5)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (60)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40)));
- //BA.debugLineNum = 33;BA.debugLine="lfont_size.Text =\"Font:\"";
+RDebugUtils.currentLine=5439493;
+ //BA.debugLineNum = 5439493;BA.debugLine="lfont_size.Text =\"Font:\"";
 mostCurrent._lfont_size.setText((Object)("Font:"));
- //BA.debugLineNum = 34;BA.debugLine="lfont_size.TextSize =\"14\"";
+RDebugUtils.currentLine=5439494;
+ //BA.debugLineNum = 5439494;BA.debugLine="lfont_size.TextSize =\"14\"";
 mostCurrent._lfont_size.setTextSize((float)(Double.parseDouble("14")));
- //BA.debugLineNum = 35;BA.debugLine="font_size.Initialize(\"font_size\")";
+RDebugUtils.currentLine=5439495;
+ //BA.debugLineNum = 5439495;BA.debugLine="font_size.Initialize(\"font_size\")";
 mostCurrent._font_size.Initialize(mostCurrent.activityBA,"font_size");
- //BA.debugLineNum = 36;BA.debugLine="font_size.InputType = font_size.INPUT_TYPE_NUMBER";
+RDebugUtils.currentLine=5439496;
+ //BA.debugLineNum = 5439496;BA.debugLine="font_size.InputType = font_size.INPUT_TYPE_NUMBER";
 mostCurrent._font_size.setInputType(mostCurrent._font_size.INPUT_TYPE_NUMBERS);
- //BA.debugLineNum = 37;BA.debugLine="scview.Panel.AddView(font_size, 40dip ,0dip, 50di";
+RDebugUtils.currentLine=5439497;
+ //BA.debugLineNum = 5439497;BA.debugLine="scview.Panel.AddView(font_size, 40dip ,0dip, 50di";
 mostCurrent._scview.getPanel().AddView((android.view.View)(mostCurrent._font_size.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (0)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (50)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40)));
- //BA.debugLineNum = 38;BA.debugLine="font_size.SingleLine=True";
+RDebugUtils.currentLine=5439498;
+ //BA.debugLineNum = 5439498;BA.debugLine="font_size.SingleLine=True";
 mostCurrent._font_size.setSingleLine(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 39;BA.debugLine="font_size.Text =\"14\"";
+RDebugUtils.currentLine=5439499;
+ //BA.debugLineNum = 5439499;BA.debugLine="font_size.Text =\"14\"";
 mostCurrent._font_size.setText((Object)("14"));
- //BA.debugLineNum = 40;BA.debugLine="lh_size.Initialize(\"lh_size\")";
+RDebugUtils.currentLine=5439500;
+ //BA.debugLineNum = 5439500;BA.debugLine="lh_size.Initialize(\"lh_size\")";
 mostCurrent._lh_size.Initialize(mostCurrent.activityBA,"lh_size");
- //BA.debugLineNum = 41;BA.debugLine="scview.Panel.AddView(lh_size, 120dip, 10dip, 40di";
+RDebugUtils.currentLine=5439501;
+ //BA.debugLineNum = 5439501;BA.debugLine="scview.Panel.AddView(lh_size, 120dip, 10dip, 40di";
 mostCurrent._scview.getPanel().AddView((android.view.View)(mostCurrent._lh_size.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (120)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40)));
- //BA.debugLineNum = 42;BA.debugLine="lh_size.Text =\"Horiz:\"";
+RDebugUtils.currentLine=5439502;
+ //BA.debugLineNum = 5439502;BA.debugLine="lh_size.Text =\"Horiz:\"";
 mostCurrent._lh_size.setText((Object)("Horiz:"));
- //BA.debugLineNum = 43;BA.debugLine="h_size.Initialize(\"h_size\")";
+RDebugUtils.currentLine=5439503;
+ //BA.debugLineNum = 5439503;BA.debugLine="h_size.Initialize(\"h_size\")";
 mostCurrent._h_size.Initialize(mostCurrent.activityBA,"h_size");
- //BA.debugLineNum = 44;BA.debugLine="h_size.InputType = h_size.INPUT_TYPE_NUMBERS";
+RDebugUtils.currentLine=5439504;
+ //BA.debugLineNum = 5439504;BA.debugLine="h_size.InputType = h_size.INPUT_TYPE_NUMBERS";
 mostCurrent._h_size.setInputType(mostCurrent._h_size.INPUT_TYPE_NUMBERS);
- //BA.debugLineNum = 45;BA.debugLine="scview.Panel.AddView(h_size, 160dip ,0dip, 40dip,";
+RDebugUtils.currentLine=5439505;
+ //BA.debugLineNum = 5439505;BA.debugLine="scview.Panel.AddView(h_size, 160dip ,0dip, 40dip,";
 mostCurrent._scview.getPanel().AddView((android.view.View)(mostCurrent._h_size.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (160)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (0)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40)));
- //BA.debugLineNum = 46;BA.debugLine="h_size.SingleLine=True";
+RDebugUtils.currentLine=5439506;
+ //BA.debugLineNum = 5439506;BA.debugLine="h_size.SingleLine=True";
 mostCurrent._h_size.setSingleLine(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 47;BA.debugLine="lv_size.Initialize(\"lv_size\")";
+RDebugUtils.currentLine=5439507;
+ //BA.debugLineNum = 5439507;BA.debugLine="lv_size.Initialize(\"lv_size\")";
 mostCurrent._lv_size.Initialize(mostCurrent.activityBA,"lv_size");
- //BA.debugLineNum = 48;BA.debugLine="scview.Panel.AddView(lv_size, 210dip, 10dip, 40di";
+RDebugUtils.currentLine=5439508;
+ //BA.debugLineNum = 5439508;BA.debugLine="scview.Panel.AddView(lv_size, 210dip, 10dip, 40di";
 mostCurrent._scview.getPanel().AddView((android.view.View)(mostCurrent._lv_size.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (210)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40)));
- //BA.debugLineNum = 49;BA.debugLine="lv_size.Text =\"Vert:\"";
+RDebugUtils.currentLine=5439509;
+ //BA.debugLineNum = 5439509;BA.debugLine="lv_size.Text =\"Vert:\"";
 mostCurrent._lv_size.setText((Object)("Vert:"));
- //BA.debugLineNum = 50;BA.debugLine="v_size.Initialize(\"h_size\")";
+RDebugUtils.currentLine=5439510;
+ //BA.debugLineNum = 5439510;BA.debugLine="v_size.Initialize(\"h_size\")";
 mostCurrent._v_size.Initialize(mostCurrent.activityBA,"h_size");
- //BA.debugLineNum = 51;BA.debugLine="v_size.InputType = v_size.INPUT_TYPE_NUMBERS";
+RDebugUtils.currentLine=5439511;
+ //BA.debugLineNum = 5439511;BA.debugLine="v_size.InputType = v_size.INPUT_TYPE_NUMBERS";
 mostCurrent._v_size.setInputType(mostCurrent._v_size.INPUT_TYPE_NUMBERS);
- //BA.debugLineNum = 52;BA.debugLine="scview.Panel.AddView(v_size, 240dip ,0dip, 40dip,";
+RDebugUtils.currentLine=5439512;
+ //BA.debugLineNum = 5439512;BA.debugLine="scview.Panel.AddView(v_size, 240dip ,0dip, 40dip,";
 mostCurrent._scview.getPanel().AddView((android.view.View)(mostCurrent._v_size.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (240)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (0)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40)));
- //BA.debugLineNum = 53;BA.debugLine="v_size.SingleLine=True";
+RDebugUtils.currentLine=5439513;
+ //BA.debugLineNum = 5439513;BA.debugLine="v_size.SingleLine=True";
 mostCurrent._v_size.setSingleLine(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 55;BA.debugLine="For i = 1 To 31";
+RDebugUtils.currentLine=5439515;
+ //BA.debugLineNum = 5439515;BA.debugLine="For i = 1 To 30";
 {
 final int step26 = 1;
-final int limit26 = (int) (31);
+final int limit26 = (int) (30);
 for (_i = (int) (1) ; (step26 > 0 && _i <= limit26) || (step26 < 0 && _i >= limit26); _i = ((int)(0 + _i + step26)) ) {
- //BA.debugLineNum = 56;BA.debugLine="Dim tchk As CheckBox";
+RDebugUtils.currentLine=5439516;
+ //BA.debugLineNum = 5439516;BA.debugLine="Dim tchk As CheckBox";
 _tchk = new anywheresoftware.b4a.objects.CompoundButtonWrapper.CheckBoxWrapper();
- //BA.debugLineNum = 57;BA.debugLine="Dim tlab As Label";
+RDebugUtils.currentLine=5439517;
+ //BA.debugLineNum = 5439517;BA.debugLine="Dim tlab As Label";
 _tlab = new anywheresoftware.b4a.objects.LabelWrapper();
- //BA.debugLineNum = 58;BA.debugLine="Dim ttxt As EditText";
+RDebugUtils.currentLine=5439518;
+ //BA.debugLineNum = 5439518;BA.debugLine="Dim ttxt As EditText";
 _ttxt = new anywheresoftware.b4a.objects.EditTextWrapper();
- //BA.debugLineNum = 59;BA.debugLine="tchk.Initialize(\"CheckBox\")";
+RDebugUtils.currentLine=5439519;
+ //BA.debugLineNum = 5439519;BA.debugLine="tchk.Initialize(\"CheckBox\")";
 _tchk.Initialize(mostCurrent.activityBA,"CheckBox");
- //BA.debugLineNum = 60;BA.debugLine="tlab.Initialize(\"label\")";
+RDebugUtils.currentLine=5439520;
+ //BA.debugLineNum = 5439520;BA.debugLine="tlab.Initialize(\"label\")";
 _tlab.Initialize(mostCurrent.activityBA,"label");
- //BA.debugLineNum = 61;BA.debugLine="ttxt.Initialize(\"edittext\")";
+RDebugUtils.currentLine=5439521;
+ //BA.debugLineNum = 5439521;BA.debugLine="ttxt.Initialize(\"edittext\")";
 _ttxt.Initialize(mostCurrent.activityBA,"edittext");
- //BA.debugLineNum = 62;BA.debugLine="scview.Panel.AddView(tlab, 0, i*40dip+10di";
+RDebugUtils.currentLine=5439522;
+ //BA.debugLineNum = 5439522;BA.debugLine="scview.Panel.AddView(tlab, 0, i*40dip+10di";
 mostCurrent._scview.getPanel().AddView((android.view.View)(_tlab.getObject()),(int) (0),(int) (_i*anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40))+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10))),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40)));
- //BA.debugLineNum = 63;BA.debugLine="scview.Panel.AddView(tchk, 15dip, i*40dip, 30d";
+RDebugUtils.currentLine=5439523;
+ //BA.debugLineNum = 5439523;BA.debugLine="scview.Panel.AddView(tchk, 15dip, i*40dip, 30d";
 mostCurrent._scview.getPanel().AddView((android.view.View)(_tchk.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (15)),(int) (_i*anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40))),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (30)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40)));
- //BA.debugLineNum = 64;BA.debugLine="scview.Panel.AddView(ttxt, 45dip, i*40dip, Activ";
+RDebugUtils.currentLine=5439524;
+ //BA.debugLineNum = 5439524;BA.debugLine="scview.Panel.AddView(ttxt, 45dip, i*40dip, Activ";
 mostCurrent._scview.getPanel().AddView((android.view.View)(_ttxt.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (45)),(int) (_i*anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40))),(int) (mostCurrent._activity.getWidth()-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (50))),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40)));
- //BA.debugLineNum = 65;BA.debugLine="tlab.Tag=i:tchk.Tag=i:ttxt.Tag=i:";
+RDebugUtils.currentLine=5439525;
+ //BA.debugLineNum = 5439525;BA.debugLine="tlab.Tag=i:tchk.Tag=i:ttxt.Tag=i:";
 _tlab.setTag((Object)(_i));
- //BA.debugLineNum = 65;BA.debugLine="tlab.Tag=i:tchk.Tag=i:ttxt.Tag=i:";
+RDebugUtils.currentLine=5439525;
+ //BA.debugLineNum = 5439525;BA.debugLine="tlab.Tag=i:tchk.Tag=i:ttxt.Tag=i:";
 _tchk.setTag((Object)(_i));
- //BA.debugLineNum = 65;BA.debugLine="tlab.Tag=i:tchk.Tag=i:ttxt.Tag=i:";
+RDebugUtils.currentLine=5439525;
+ //BA.debugLineNum = 5439525;BA.debugLine="tlab.Tag=i:tchk.Tag=i:ttxt.Tag=i:";
 _ttxt.setTag((Object)(_i));
- //BA.debugLineNum = 66;BA.debugLine="tlab.Text=i";
+RDebugUtils.currentLine=5439526;
+ //BA.debugLineNum = 5439526;BA.debugLine="tlab.Text=i";
 _tlab.setText((Object)(_i));
- //BA.debugLineNum = 67;BA.debugLine="ttxt.SingleLine=True";
+RDebugUtils.currentLine=5439527;
+ //BA.debugLineNum = 5439527;BA.debugLine="ttxt.SingleLine=True";
 _ttxt.setSingleLine(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 68;BA.debugLine="lab(i)=tlab";
+RDebugUtils.currentLine=5439528;
+ //BA.debugLineNum = 5439528;BA.debugLine="lab(i)=tlab";
 mostCurrent._lab[_i] = _tlab;
- //BA.debugLineNum = 69;BA.debugLine="chk(i)=tchk";
+RDebugUtils.currentLine=5439529;
+ //BA.debugLineNum = 5439529;BA.debugLine="chk(i)=tchk";
 mostCurrent._chk[_i] = _tchk;
- //BA.debugLineNum = 70;BA.debugLine="txt(i)=ttxt";
+RDebugUtils.currentLine=5439530;
+ //BA.debugLineNum = 5439530;BA.debugLine="txt(i)=ttxt";
 mostCurrent._txt[_i] = _ttxt;
  }
 };
- //BA.debugLineNum = 72;BA.debugLine="save_ks_but.Initialize(\"save_ks_but\")";
+RDebugUtils.currentLine=5439532;
+ //BA.debugLineNum = 5439532;BA.debugLine="save_ks_but.Initialize(\"save_ks_but\")";
 mostCurrent._save_ks_but.Initialize(mostCurrent.activityBA,"save_ks_but");
- //BA.debugLineNum = 73;BA.debugLine="save_ks_but.Text =\"Save\"";
+RDebugUtils.currentLine=5439533;
+ //BA.debugLineNum = 5439533;BA.debugLine="save_ks_but.Text =\"Save\"";
 mostCurrent._save_ks_but.setText((Object)("Save"));
- //BA.debugLineNum = 74;BA.debugLine="scview.Panel.AddView(save_ks_but, 10dip ,1290dip,";
-mostCurrent._scview.getPanel().AddView((android.view.View)(mostCurrent._save_ks_but.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (1290)),(int) (mostCurrent._activity.getWidth()-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20))),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40)));
- //BA.debugLineNum = 75;BA.debugLine="scview.Panel.Height =1340dip";
+RDebugUtils.currentLine=5439534;
+ //BA.debugLineNum = 5439534;BA.debugLine="scview.Panel.AddView(save_ks_but, 10dip ,1260dip,";
+mostCurrent._scview.getPanel().AddView((android.view.View)(mostCurrent._save_ks_but.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (1260)),(int) (mostCurrent._activity.getWidth()-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20))),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (40)));
+RDebugUtils.currentLine=5439535;
+ //BA.debugLineNum = 5439535;BA.debugLine="scview.Panel.Height =1340dip";
 mostCurrent._scview.getPanel().setHeight(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (1340)));
- //BA.debugLineNum = 76;BA.debugLine="Activity.Title =\"Keys setup - \" & StateManager.Ge";
+RDebugUtils.currentLine=5439536;
+ //BA.debugLineNum = 5439536;BA.debugLine="Activity.Title =\"Keys setup - \" & StateManager.Ge";
 mostCurrent._activity.setTitle((Object)("Keys setup - "+mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"cur_dev_name","none")));
- //BA.debugLineNum = 77;BA.debugLine="clear_field";
-_clear_field();
- //BA.debugLineNum = 78;BA.debugLine="key_n=0";
-_key_n = (int) (0);
- //BA.debugLineNum = 79;BA.debugLine="getbut_tmr.Initialize(\"getbut_tmr\", 210)";
-mostCurrent._getbut_tmr.Initialize(processBA,"getbut_tmr",(long) (210));
- //BA.debugLineNum = 80;BA.debugLine="getbut_tmr.Enabled =True";
-mostCurrent._getbut_tmr.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 81;BA.debugLine="key_set_load=True";
-_key_set_load = anywheresoftware.b4a.keywords.Common.True;
+RDebugUtils.currentLine=5439537;
+ //BA.debugLineNum = 5439537;BA.debugLine="get_key_data";
+_get_key_data();
  } 
-       catch (Exception e75) {
-			processBA.setLastException(e75); //BA.debugLineNum = 83;BA.debugLine="proces_error(LastException.Message)";
+       catch (Exception e70) {
+			processBA.setLastException(e70);RDebugUtils.currentLine=5439539;
+ //BA.debugLineNum = 5439539;BA.debugLine="proces_error(LastException.Message)";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
  };
- //BA.debugLineNum = 85;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5439541;
+ //BA.debugLineNum = 5439541;BA.debugLine="End Sub";
 return "";
 }
-public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 92;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 93;BA.debugLine="key_set_load=False";
-_key_set_load = anywheresoftware.b4a.keywords.Common.False;
- //BA.debugLineNum = 94;BA.debugLine="End Sub";
-return "";
-}
-public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 87;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 89;BA.debugLine="End Sub";
-return "";
-}
-public static String  _clear_field() throws Exception{
-int _i = 0;
- //BA.debugLineNum = 148;BA.debugLine="Sub clear_field()";
- //BA.debugLineNum = 149;BA.debugLine="Try";
-try { //BA.debugLineNum = 150;BA.debugLine="For i = 1 To 31";
+public static String  _get_key_data() throws Exception{
+RDebugUtils.currentModule="key_set";
+if (Debug.shouldDelegate("get_key_data"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "get_key_data", null);
+int _a = 0;
+RDebugUtils.currentLine=8716288;
+ //BA.debugLineNum = 8716288;BA.debugLine="Sub get_key_data() 'заповнення полів налаштування";
+RDebugUtils.currentLine=8716289;
+ //BA.debugLineNum = 8716289;BA.debugLine="Try";
+try {RDebugUtils.currentLine=8716291;
+ //BA.debugLineNum = 8716291;BA.debugLine="v_size.Text=StateManager.GetSetting2(\"v_size\",\"\")";
+mostCurrent._v_size.setText((Object)(mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"v_size","")));
+RDebugUtils.currentLine=8716292;
+ //BA.debugLineNum = 8716292;BA.debugLine="h_size.Text=StateManager.GetSetting2(\"h_size\",\"\")";
+mostCurrent._h_size.setText((Object)(mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"h_size","")));
+RDebugUtils.currentLine=8716293;
+ //BA.debugLineNum = 8716293;BA.debugLine="font_size.Text=StateManager.GetSetting2(\"font_siz";
+mostCurrent._font_size.setText((Object)(mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"font_size","")));
+RDebugUtils.currentLine=8716294;
+ //BA.debugLineNum = 8716294;BA.debugLine="For a=1 To 30";
 {
-final int step2 = 1;
-final int limit2 = (int) (31);
-for (_i = (int) (1) ; (step2 > 0 && _i <= limit2) || (step2 < 0 && _i >= limit2); _i = ((int)(0 + _i + step2)) ) {
- //BA.debugLineNum = 151;BA.debugLine="chk(i).Checked=False";
-mostCurrent._chk[_i].setChecked(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 152;BA.debugLine="txt(i).Text=\"no connect\"";
-mostCurrent._txt[_i].setText((Object)("no connect"));
+final int step5 = 1;
+final int limit5 = (int) (30);
+for (_a = (int) (1) ; (step5 > 0 && _a <= limit5) || (step5 < 0 && _a >= limit5); _a = ((int)(0 + _a + step5)) ) {
+RDebugUtils.currentLine=8716295;
+ //BA.debugLineNum = 8716295;BA.debugLine="chk(a).Checked=CM.obj2Bool(StateManager.GetSetti";
+mostCurrent._chk[_a].setChecked(mostCurrent._cm._obj2bool(mostCurrent.activityBA,(Object)(mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"keylock"+BA.NumberToString(_a),BA.NumberToString(0)))));
+RDebugUtils.currentLine=8716296;
+ //BA.debugLineNum = 8716296;BA.debugLine="txt(a).Text =StateManager.GetSetting2(\"keytext\"";
+mostCurrent._txt[_a].setText((Object)(mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"keytext"+BA.NumberToString(_a),"")));
  }
 };
- //BA.debugLineNum = 154;BA.debugLine="h_size.Text=\"0\"";
-mostCurrent._h_size.setText((Object)("0"));
- //BA.debugLineNum = 155;BA.debugLine="v_size.Text=\"0\"";
-mostCurrent._v_size.setText((Object)("0"));
- //BA.debugLineNum = 156;BA.debugLine="font_size.Text=\"0\"";
-mostCurrent._font_size.setText((Object)("0"));
  } 
-       catch (Exception e141) {
-			processBA.setLastException(e141); //BA.debugLineNum = 158;BA.debugLine="proces_error(LastException.Message)";
+       catch (Exception e87) {
+			processBA.setLastException(e87);RDebugUtils.currentLine=8716299;
+ //BA.debugLineNum = 8716299;BA.debugLine="proces_error(LastException.Message)";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
  };
- //BA.debugLineNum = 160;BA.debugLine="End Sub";
-return "";
-}
-public static String  _finish_him() throws Exception{
- //BA.debugLineNum = 218;BA.debugLine="Sub finish_him()";
- //BA.debugLineNum = 219;BA.debugLine="Try";
-try { //BA.debugLineNum = 220;BA.debugLine="CallSubDelayed(Main,\"load_keys\")";
-anywheresoftware.b4a.keywords.Common.CallSubDelayed(mostCurrent.activityBA,(Object)(mostCurrent._main.getObject()),"load_keys");
- //BA.debugLineNum = 221;BA.debugLine="Activity.Finish";
-mostCurrent._activity.Finish();
- } 
-       catch (Exception e199) {
-			processBA.setLastException(e199); //BA.debugLineNum = 223;BA.debugLine="proces_error(LastException.Message)";
-_proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
- };
- //BA.debugLineNum = 225;BA.debugLine="End Sub";
-return "";
-}
-public static String  _get_key(int _ind) throws Exception{
-anywheresoftware.b4a.objects.collections.Map _data = null;
- //BA.debugLineNum = 176;BA.debugLine="Sub get_key(ind As Int)";
- //BA.debugLineNum = 177;BA.debugLine="Try";
-try { //BA.debugLineNum = 178;BA.debugLine="Dim Data As Map";
-_data = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 179;BA.debugLine="Data.Initialize";
-_data.Initialize();
- //BA.debugLineNum = 180;BA.debugLine="Data.Put (\"getkey\",ind)";
-_data.Put((Object)("getkey"),(Object)(_ind));
- //BA.debugLineNum = 181;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
-anywheresoftware.b4a.keywords.Common.CallSubDelayed2(mostCurrent.activityBA,(Object)(mostCurrent._starter.getObject()),"send_to_dev",(Object)(_data));
- } 
-       catch (Exception e164) {
-			processBA.setLastException(e164); //BA.debugLineNum = 183;BA.debugLine="proces_error(LastException.Message)";
-_proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
- };
- //BA.debugLineNum = 185;BA.debugLine="End Sub";
-return "";
-}
-public static String  _get_key_info() throws Exception{
-anywheresoftware.b4a.objects.collections.Map _data = null;
- //BA.debugLineNum = 187;BA.debugLine="Sub get_key_info()";
- //BA.debugLineNum = 188;BA.debugLine="Try";
-try { //BA.debugLineNum = 189;BA.debugLine="Dim Data As Map";
-_data = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 190;BA.debugLine="Data.Initialize";
-_data.Initialize();
- //BA.debugLineNum = 191;BA.debugLine="Data.Put (\"getkey_info\",1)";
-_data.Put((Object)("getkey_info"),(Object)(1));
- //BA.debugLineNum = 192;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
-anywheresoftware.b4a.keywords.Common.CallSubDelayed2(mostCurrent.activityBA,(Object)(mostCurrent._starter.getObject()),"send_to_dev",(Object)(_data));
- } 
-       catch (Exception e174) {
-			processBA.setLastException(e174); //BA.debugLineNum = 194;BA.debugLine="proces_error(LastException.Message)";
-_proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
- };
- //BA.debugLineNum = 196;BA.debugLine="End Sub";
-return "";
-}
-public static String  _getbut_tmr_tick() throws Exception{
- //BA.debugLineNum = 162;BA.debugLine="Sub getbut_tmr_Tick()";
- //BA.debugLineNum = 163;BA.debugLine="Try";
-try { //BA.debugLineNum = 164;BA.debugLine="key_n=key_n+1";
-_key_n = (int) (_key_n+1);
- //BA.debugLineNum = 165;BA.debugLine="If key_n>=32 Then";
-if (_key_n>=32) { 
- //BA.debugLineNum = 166;BA.debugLine="get_key_info";
-_get_key_info();
- //BA.debugLineNum = 167;BA.debugLine="getbut_tmr.Enabled =False";
-mostCurrent._getbut_tmr.setEnabled(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 168;BA.debugLine="Return";
-if (true) return "";
- };
- //BA.debugLineNum = 170;BA.debugLine="get_key(key_n)";
-_get_key(_key_n);
- } 
-       catch (Exception e154) {
-			processBA.setLastException(e154); //BA.debugLineNum = 172;BA.debugLine="proces_error(LastException.Message)";
-_proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
- };
- //BA.debugLineNum = 174;BA.debugLine="End Sub";
-return "";
-}
-public static String  _globals() throws Exception{
- //BA.debugLineNum = 11;BA.debugLine="Sub Globals";
- //BA.debugLineNum = 12;BA.debugLine="Public  getbut_tmr As Timer";
-mostCurrent._getbut_tmr = new anywheresoftware.b4a.objects.Timer();
- //BA.debugLineNum = 13;BA.debugLine="Public  setbut_tmr As Timer";
-mostCurrent._setbut_tmr = new anywheresoftware.b4a.objects.Timer();
- //BA.debugLineNum = 14;BA.debugLine="Private scview As ScrollView";
-mostCurrent._scview = new anywheresoftware.b4a.objects.ScrollViewWrapper();
- //BA.debugLineNum = 15;BA.debugLine="Dim chk(33) As CheckBox";
-mostCurrent._chk = new anywheresoftware.b4a.objects.CompoundButtonWrapper.CheckBoxWrapper[(int) (33)];
-{
-int d0 = mostCurrent._chk.length;
-for (int i0 = 0;i0 < d0;i0++) {
-mostCurrent._chk[i0] = new anywheresoftware.b4a.objects.CompoundButtonWrapper.CheckBoxWrapper();
-}
-}
-;
- //BA.debugLineNum = 16;BA.debugLine="Dim lab(33) As Label";
-mostCurrent._lab = new anywheresoftware.b4a.objects.LabelWrapper[(int) (33)];
-{
-int d0 = mostCurrent._lab.length;
-for (int i0 = 0;i0 < d0;i0++) {
-mostCurrent._lab[i0] = new anywheresoftware.b4a.objects.LabelWrapper();
-}
-}
-;
- //BA.debugLineNum = 17;BA.debugLine="Dim txt(33) As EditText";
-mostCurrent._txt = new anywheresoftware.b4a.objects.EditTextWrapper[(int) (33)];
-{
-int d0 = mostCurrent._txt.length;
-for (int i0 = 0;i0 < d0;i0++) {
-mostCurrent._txt[i0] = new anywheresoftware.b4a.objects.EditTextWrapper();
-}
-}
-;
- //BA.debugLineNum = 18;BA.debugLine="Dim font_size As EditText";
-mostCurrent._font_size = new anywheresoftware.b4a.objects.EditTextWrapper();
- //BA.debugLineNum = 19;BA.debugLine="Dim lfont_size As Label";
-mostCurrent._lfont_size = new anywheresoftware.b4a.objects.LabelWrapper();
- //BA.debugLineNum = 20;BA.debugLine="Dim v_size As EditText";
-mostCurrent._v_size = new anywheresoftware.b4a.objects.EditTextWrapper();
- //BA.debugLineNum = 21;BA.debugLine="Dim lv_size As Label";
-mostCurrent._lv_size = new anywheresoftware.b4a.objects.LabelWrapper();
- //BA.debugLineNum = 22;BA.debugLine="Dim h_size As EditText";
-mostCurrent._h_size = new anywheresoftware.b4a.objects.EditTextWrapper();
- //BA.debugLineNum = 23;BA.debugLine="Dim lh_size As Label";
-mostCurrent._lh_size = new anywheresoftware.b4a.objects.LabelWrapper();
- //BA.debugLineNum = 24;BA.debugLine="Dim save_ks_but As Button";
-mostCurrent._save_ks_but = new anywheresoftware.b4a.objects.ButtonWrapper();
- //BA.debugLineNum = 25;BA.debugLine="Dim key_n As Int =0";
-_key_n = (int) (0);
- //BA.debugLineNum = 26;BA.debugLine="End Sub";
+RDebugUtils.currentLine=8716301;
+ //BA.debugLineNum = 8716301;BA.debugLine="End Sub";
 return "";
 }
 public static String  _proces_error(String _msg) throws Exception{
- //BA.debugLineNum = 227;BA.debugLine="Sub proces_error(msg As String)";
- //BA.debugLineNum = 228;BA.debugLine="Msgbox(msg,\"error\")";
+RDebugUtils.currentModule="key_set";
+if (Debug.shouldDelegate("proces_error"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "proces_error", new Object[] {_msg});
+RDebugUtils.currentLine=6094848;
+ //BA.debugLineNum = 6094848;BA.debugLine="Sub proces_error(msg As String)";
+RDebugUtils.currentLine=6094849;
+ //BA.debugLineNum = 6094849;BA.debugLine="Msgbox(msg,\"error\")";
 anywheresoftware.b4a.keywords.Common.Msgbox(_msg,"error",mostCurrent.activityBA);
- //BA.debugLineNum = 229;BA.debugLine="End Sub";
+RDebugUtils.currentLine=6094850;
+ //BA.debugLineNum = 6094850;BA.debugLine="End Sub";
 return "";
 }
-public static String  _process_globals() throws Exception{
- //BA.debugLineNum = 6;BA.debugLine="Sub Process_Globals";
- //BA.debugLineNum = 8;BA.debugLine="Public key_set_load As Boolean";
-_key_set_load = false;
- //BA.debugLineNum = 9;BA.debugLine="End Sub";
+public static String  _activity_pause(boolean _userclosed) throws Exception{
+RDebugUtils.currentModule="key_set";
+if (Debug.shouldDelegate("activity_pause"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "activity_pause", new Object[] {_userclosed});
+RDebugUtils.currentLine=5570560;
+ //BA.debugLineNum = 5570560;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+RDebugUtils.currentLine=5570562;
+ //BA.debugLineNum = 5570562;BA.debugLine="End Sub";
+return "";
+}
+public static String  _activity_resume() throws Exception{
+RDebugUtils.currentModule="key_set";
+if (Debug.shouldDelegate("activity_resume"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null);
+RDebugUtils.currentLine=5505024;
+ //BA.debugLineNum = 5505024;BA.debugLine="Sub Activity_Resume";
+RDebugUtils.currentLine=5505026;
+ //BA.debugLineNum = 5505026;BA.debugLine="End Sub";
+return "";
+}
+public static String  _finish_him() throws Exception{
+RDebugUtils.currentModule="key_set";
+if (Debug.shouldDelegate("finish_him"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "finish_him", null);
+RDebugUtils.currentLine=6029312;
+ //BA.debugLineNum = 6029312;BA.debugLine="Sub finish_him()";
+RDebugUtils.currentLine=6029313;
+ //BA.debugLineNum = 6029313;BA.debugLine="Try";
+try {RDebugUtils.currentLine=6029314;
+ //BA.debugLineNum = 6029314;BA.debugLine="CallSubDelayed(Main,\"load_keys\")";
+anywheresoftware.b4a.keywords.Common.CallSubDelayed(mostCurrent.activityBA,(Object)(mostCurrent._main.getObject()),"load_keys");
+RDebugUtils.currentLine=6029315;
+ //BA.debugLineNum = 6029315;BA.debugLine="Activity.Finish";
+mostCurrent._activity.Finish();
+ } 
+       catch (Exception e160) {
+			processBA.setLastException(e160);RDebugUtils.currentLine=6029317;
+ //BA.debugLineNum = 6029317;BA.debugLine="proces_error(LastException.Message)";
+_proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
+ };
+RDebugUtils.currentLine=6029319;
+ //BA.debugLineNum = 6029319;BA.debugLine="End Sub";
 return "";
 }
 public static String  _save_ks_but_click() throws Exception{
- //BA.debugLineNum = 97;BA.debugLine="Sub save_ks_but_Click";
- //BA.debugLineNum = 98;BA.debugLine="Try";
-try { //BA.debugLineNum = 99;BA.debugLine="ToastMessageShow(\"Saving....\",True)";
+RDebugUtils.currentModule="key_set";
+if (Debug.shouldDelegate("save_ks_but_click"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "save_ks_but_click", null);
+RDebugUtils.currentLine=5636096;
+ //BA.debugLineNum = 5636096;BA.debugLine="Sub save_ks_but_Click";
+RDebugUtils.currentLine=5636097;
+ //BA.debugLineNum = 5636097;BA.debugLine="Try";
+try {RDebugUtils.currentLine=5636098;
+ //BA.debugLineNum = 5636098;BA.debugLine="ToastMessageShow(\"Saving....\",True)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow("Saving....",anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 100;BA.debugLine="key_n=0";
+RDebugUtils.currentLine=5636099;
+ //BA.debugLineNum = 5636099;BA.debugLine="key_n=0";
 _key_n = (int) (0);
- //BA.debugLineNum = 101;BA.debugLine="setbut_tmr.Initialize(\"setbut_tmr\", 100)";
+RDebugUtils.currentLine=5636100;
+ //BA.debugLineNum = 5636100;BA.debugLine="setbut_tmr.Initialize(\"setbut_tmr\", 100)";
 mostCurrent._setbut_tmr.Initialize(processBA,"setbut_tmr",(long) (100));
- //BA.debugLineNum = 102;BA.debugLine="setbut_tmr.Enabled =True";
+RDebugUtils.currentLine=5636101;
+ //BA.debugLineNum = 5636101;BA.debugLine="setbut_tmr.Enabled =True";
 mostCurrent._setbut_tmr.setEnabled(anywheresoftware.b4a.keywords.Common.True);
  } 
-       catch (Exception e90) {
-			processBA.setLastException(e90); //BA.debugLineNum = 104;BA.debugLine="proces_error(LastException.Message)";
+       catch (Exception e97) {
+			processBA.setLastException(e97);RDebugUtils.currentLine=5636103;
+ //BA.debugLineNum = 5636103;BA.debugLine="proces_error(LastException.Message)";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
  };
- //BA.debugLineNum = 106;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5636105;
+ //BA.debugLineNum = 5636105;BA.debugLine="End Sub";
 return "";
 }
 public static String  _set_key(int _ind) throws Exception{
+RDebugUtils.currentModule="key_set";
+if (Debug.shouldDelegate("set_key"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "set_key", new Object[] {_ind});
 anywheresoftware.b4a.objects.collections.Map _data = null;
- //BA.debugLineNum = 122;BA.debugLine="Sub set_key(ind As Int)";
- //BA.debugLineNum = 123;BA.debugLine="Try";
-try { //BA.debugLineNum = 124;BA.debugLine="Dim Data As Map";
+RDebugUtils.currentLine=5767168;
+ //BA.debugLineNum = 5767168;BA.debugLine="Sub set_key(ind As Int)";
+RDebugUtils.currentLine=5767169;
+ //BA.debugLineNum = 5767169;BA.debugLine="Try";
+try {RDebugUtils.currentLine=5767170;
+ //BA.debugLineNum = 5767170;BA.debugLine="Dim Data As Map";
 _data = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 125;BA.debugLine="Data.Initialize";
+RDebugUtils.currentLine=5767171;
+ //BA.debugLineNum = 5767171;BA.debugLine="Data.Initialize";
 _data.Initialize();
- //BA.debugLineNum = 126;BA.debugLine="Data.Put (\"setkey\",ind)";
+RDebugUtils.currentLine=5767172;
+ //BA.debugLineNum = 5767172;BA.debugLine="Data.Put (\"setkey\",ind)";
 _data.Put((Object)("setkey"),(Object)(_ind));
- //BA.debugLineNum = 127;BA.debugLine="Data.Put (\"name\",txt(ind).Text)";
+RDebugUtils.currentLine=5767173;
+ //BA.debugLineNum = 5767173;BA.debugLine="Data.Put (\"name\",txt(ind).Text)";
 _data.Put((Object)("name"),(Object)(mostCurrent._txt[_ind].getText()));
- //BA.debugLineNum = 128;BA.debugLine="Data.Put (\"lock\",chk(ind).Checked)";
+RDebugUtils.currentLine=5767174;
+ //BA.debugLineNum = 5767174;BA.debugLine="Data.Put (\"lock\",chk(ind).Checked)";
 _data.Put((Object)("lock"),(Object)(mostCurrent._chk[_ind].getChecked()));
- //BA.debugLineNum = 129;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
+RDebugUtils.currentLine=5767175;
+ //BA.debugLineNum = 5767175;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
 anywheresoftware.b4a.keywords.Common.CallSubDelayed2(mostCurrent.activityBA,(Object)(mostCurrent._starter.getObject()),"send_to_dev",(Object)(_data));
  } 
-       catch (Exception e115) {
-			processBA.setLastException(e115); //BA.debugLineNum = 131;BA.debugLine="proces_error(LastException.Message)";
+       catch (Exception e122) {
+			processBA.setLastException(e122);RDebugUtils.currentLine=5767177;
+ //BA.debugLineNum = 5767177;BA.debugLine="proces_error(LastException.Message)";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
  };
- //BA.debugLineNum = 133;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5767179;
+ //BA.debugLineNum = 5767179;BA.debugLine="End Sub";
 return "";
 }
 public static String  _set_key_info() throws Exception{
+RDebugUtils.currentModule="key_set";
+if (Debug.shouldDelegate("set_key_info"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "set_key_info", null);
 anywheresoftware.b4a.objects.collections.Map _data = null;
- //BA.debugLineNum = 134;BA.debugLine="Sub set_key_info()";
- //BA.debugLineNum = 135;BA.debugLine="Try";
-try { //BA.debugLineNum = 136;BA.debugLine="Dim Data As Map";
+RDebugUtils.currentLine=5832704;
+ //BA.debugLineNum = 5832704;BA.debugLine="Sub set_key_info()";
+RDebugUtils.currentLine=5832705;
+ //BA.debugLineNum = 5832705;BA.debugLine="Try";
+try {RDebugUtils.currentLine=5832706;
+ //BA.debugLineNum = 5832706;BA.debugLine="Dim Data As Map";
 _data = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 137;BA.debugLine="Data.Initialize";
+RDebugUtils.currentLine=5832707;
+ //BA.debugLineNum = 5832707;BA.debugLine="Data.Initialize";
 _data.Initialize();
- //BA.debugLineNum = 138;BA.debugLine="Data.Put (\"font_size\",font_size.Text)";
+RDebugUtils.currentLine=5832708;
+ //BA.debugLineNum = 5832708;BA.debugLine="Data.Put (\"font_size\",font_size.Text)";
 _data.Put((Object)("font_size"),(Object)(mostCurrent._font_size.getText()));
- //BA.debugLineNum = 139;BA.debugLine="Data.Put (\"h_size\",h_size.Text)";
+RDebugUtils.currentLine=5832709;
+ //BA.debugLineNum = 5832709;BA.debugLine="Data.Put (\"h_size\",h_size.Text)";
 _data.Put((Object)("h_size"),(Object)(mostCurrent._h_size.getText()));
- //BA.debugLineNum = 140;BA.debugLine="Data.Put (\"v_size\",v_size.Text)";
+RDebugUtils.currentLine=5832710;
+ //BA.debugLineNum = 5832710;BA.debugLine="Data.Put (\"v_size\",v_size.Text)";
 _data.Put((Object)("v_size"),(Object)(mostCurrent._v_size.getText()));
- //BA.debugLineNum = 141;BA.debugLine="Data.Put (\"save_info\",3)";
+RDebugUtils.currentLine=5832711;
+ //BA.debugLineNum = 5832711;BA.debugLine="Data.Put (\"save_info\",3)";
 _data.Put((Object)("save_info"),(Object)(3));
- //BA.debugLineNum = 142;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
+RDebugUtils.currentLine=5832712;
+ //BA.debugLineNum = 5832712;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
 anywheresoftware.b4a.keywords.Common.CallSubDelayed2(mostCurrent.activityBA,(Object)(mostCurrent._starter.getObject()),"send_to_dev",(Object)(_data));
  } 
-       catch (Exception e128) {
-			processBA.setLastException(e128); //BA.debugLineNum = 144;BA.debugLine="proces_error(LastException.Message)";
+       catch (Exception e135) {
+			processBA.setLastException(e135);RDebugUtils.currentLine=5832714;
+ //BA.debugLineNum = 5832714;BA.debugLine="proces_error(LastException.Message)";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
  };
- //BA.debugLineNum = 146;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5832716;
+ //BA.debugLineNum = 5832716;BA.debugLine="End Sub";
 return "";
 }
 public static String  _set_key_set(anywheresoftware.b4a.objects.collections.Map _mapar) throws Exception{
- //BA.debugLineNum = 198;BA.debugLine="Sub set_key_set (mapar As Map)";
- //BA.debugLineNum = 199;BA.debugLine="Try";
-try { //BA.debugLineNum = 200;BA.debugLine="txt(mapar.Get (\"key_id\")).Text = mapar.Get (\"nam";
+RDebugUtils.currentModule="key_set";
+if (Debug.shouldDelegate("set_key_set"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "set_key_set", new Object[] {_mapar});
+RDebugUtils.currentLine=5898240;
+ //BA.debugLineNum = 5898240;BA.debugLine="Sub set_key_set (mapar As Map)";
+RDebugUtils.currentLine=5898241;
+ //BA.debugLineNum = 5898241;BA.debugLine="Try";
+try {RDebugUtils.currentLine=5898242;
+ //BA.debugLineNum = 5898242;BA.debugLine="txt(mapar.Get (\"key_id\")).Text = mapar.Get (\"nam";
 mostCurrent._txt[(int)(BA.ObjectToNumber(_mapar.Get((Object)("key_id"))))].setText(_mapar.Get((Object)("name")));
- //BA.debugLineNum = 201;BA.debugLine="chk(mapar.Get (\"key_id\")).Checked = CM.obj2Bool(";
+RDebugUtils.currentLine=5898243;
+ //BA.debugLineNum = 5898243;BA.debugLine="chk(mapar.Get (\"key_id\")).Checked = CM.obj2Bool(";
 mostCurrent._chk[(int)(BA.ObjectToNumber(_mapar.Get((Object)("key_id"))))].setChecked(mostCurrent._cm._obj2bool(mostCurrent.activityBA,_mapar.Get((Object)("lock"))));
  } 
-       catch (Exception e182) {
-			processBA.setLastException(e182); //BA.debugLineNum = 203;BA.debugLine="proces_error(LastException.Message)";
+       catch (Exception e143) {
+			processBA.setLastException(e143);RDebugUtils.currentLine=5898245;
+ //BA.debugLineNum = 5898245;BA.debugLine="proces_error(LastException.Message)";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
  };
- //BA.debugLineNum = 205;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5898247;
+ //BA.debugLineNum = 5898247;BA.debugLine="End Sub";
 return "";
 }
 public static String  _set_keyinfo_set(anywheresoftware.b4a.objects.collections.Map _mapar) throws Exception{
- //BA.debugLineNum = 207;BA.debugLine="Sub set_keyinfo_set (mapar As Map)";
- //BA.debugLineNum = 208;BA.debugLine="Try";
-try { //BA.debugLineNum = 209;BA.debugLine="If mapar.ContainsKey(\"font_size\")=True Then  font";
+RDebugUtils.currentModule="key_set";
+if (Debug.shouldDelegate("set_keyinfo_set"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "set_keyinfo_set", new Object[] {_mapar});
+RDebugUtils.currentLine=5963776;
+ //BA.debugLineNum = 5963776;BA.debugLine="Sub set_keyinfo_set (mapar As Map)";
+RDebugUtils.currentLine=5963777;
+ //BA.debugLineNum = 5963777;BA.debugLine="Try";
+try {RDebugUtils.currentLine=5963778;
+ //BA.debugLineNum = 5963778;BA.debugLine="If mapar.ContainsKey(\"font_size\")=True Then  font";
 if (_mapar.ContainsKey((Object)("font_size"))==anywheresoftware.b4a.keywords.Common.True) { 
 mostCurrent._font_size.setText(_mapar.Get((Object)("font_size")));};
- //BA.debugLineNum = 210;BA.debugLine="If mapar.ContainsKey(\"h_size\")=True Then  h_size.";
+RDebugUtils.currentLine=5963779;
+ //BA.debugLineNum = 5963779;BA.debugLine="If mapar.ContainsKey(\"h_size\")=True Then  h_size.";
 if (_mapar.ContainsKey((Object)("h_size"))==anywheresoftware.b4a.keywords.Common.True) { 
 mostCurrent._h_size.setText(_mapar.Get((Object)("h_size")));};
- //BA.debugLineNum = 211;BA.debugLine="If mapar.ContainsKey(\"v_size\")=True Then  v_size.";
+RDebugUtils.currentLine=5963780;
+ //BA.debugLineNum = 5963780;BA.debugLine="If mapar.ContainsKey(\"v_size\")=True Then  v_size.";
 if (_mapar.ContainsKey((Object)("v_size"))==anywheresoftware.b4a.keywords.Common.True) { 
 mostCurrent._v_size.setText(_mapar.Get((Object)("v_size")));};
  } 
-       catch (Exception e191) {
-			processBA.setLastException(e191); //BA.debugLineNum = 213;BA.debugLine="proces_error(LastException.Message)";
+       catch (Exception e152) {
+			processBA.setLastException(e152);RDebugUtils.currentLine=5963782;
+ //BA.debugLineNum = 5963782;BA.debugLine="proces_error(LastException.Message)";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
  };
- //BA.debugLineNum = 215;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5963784;
+ //BA.debugLineNum = 5963784;BA.debugLine="End Sub";
 return "";
 }
 public static String  _setbut_tmr_tick() throws Exception{
- //BA.debugLineNum = 108;BA.debugLine="Sub setbut_tmr_Tick()";
- //BA.debugLineNum = 109;BA.debugLine="Try";
-try { //BA.debugLineNum = 110;BA.debugLine="key_n=key_n+1";
+RDebugUtils.currentModule="key_set";
+if (Debug.shouldDelegate("setbut_tmr_tick"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "setbut_tmr_tick", null);
+RDebugUtils.currentLine=5701632;
+ //BA.debugLineNum = 5701632;BA.debugLine="Sub setbut_tmr_Tick()";
+RDebugUtils.currentLine=5701633;
+ //BA.debugLineNum = 5701633;BA.debugLine="Try";
+try {RDebugUtils.currentLine=5701634;
+ //BA.debugLineNum = 5701634;BA.debugLine="key_n=key_n+1";
 _key_n = (int) (_key_n+1);
- //BA.debugLineNum = 111;BA.debugLine="If key_n>=32 Then";
+RDebugUtils.currentLine=5701635;
+ //BA.debugLineNum = 5701635;BA.debugLine="If key_n>=32 Then";
 if (_key_n>=32) { 
- //BA.debugLineNum = 112;BA.debugLine="set_key_info";
+RDebugUtils.currentLine=5701636;
+ //BA.debugLineNum = 5701636;BA.debugLine="set_key_info";
 _set_key_info();
- //BA.debugLineNum = 113;BA.debugLine="setbut_tmr.Enabled =False";
+RDebugUtils.currentLine=5701637;
+ //BA.debugLineNum = 5701637;BA.debugLine="setbut_tmr.Enabled =False";
 mostCurrent._setbut_tmr.setEnabled(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 114;BA.debugLine="Return";
+RDebugUtils.currentLine=5701638;
+ //BA.debugLineNum = 5701638;BA.debugLine="Return";
 if (true) return "";
  };
- //BA.debugLineNum = 116;BA.debugLine="set_key(key_n)";
+RDebugUtils.currentLine=5701640;
+ //BA.debugLineNum = 5701640;BA.debugLine="set_key(key_n)";
 _set_key(_key_n);
  } 
-       catch (Exception e103) {
-			processBA.setLastException(e103); //BA.debugLineNum = 118;BA.debugLine="proces_error(LastException.Message)";
+       catch (Exception e110) {
+			processBA.setLastException(e110);RDebugUtils.currentLine=5701642;
+ //BA.debugLineNum = 5701642;BA.debugLine="proces_error(LastException.Message)";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
  };
- //BA.debugLineNum = 120;BA.debugLine="End Sub";
+RDebugUtils.currentLine=5701644;
+ //BA.debugLineNum = 5701644;BA.debugLine="End Sub";
 return "";
 }
 }

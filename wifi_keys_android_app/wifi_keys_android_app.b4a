@@ -11,13 +11,14 @@ Module8=INET_SET
 Build1=Default,lnk.wifi_keys
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="14"/>~\n~<uses-permission android:name="android.permission.INTERNET"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~SetApplicationAttribute(android:theme, "@android:style/Theme.Holo")~\n~~\n~'End of default text.~\n~
 IconFile=
-NumberOfFiles=6
+NumberOfFiles=7
 File1=ap_set.bal
 File2=INET_SET.bal
 File3=key_set_lay.bal
 File4=sel_dev_lay.bal
 File5=set_lay.bal
 File6=sta_set.bal
+File7=STA_SET.bas
 NumberOfLibraries=6
 Library1=core
 Library2=randomaccessfile
@@ -40,7 +41,7 @@ Library6=byteconverter
 Sub Process_Globals
 	Dim keys_is_load As Boolean
 	Dim conect_tmout As Int
-	Public  mgetbut_tmr As Timer
+
 	Public  send_state_timer As Timer
 End Sub
 Sub Globals
@@ -51,7 +52,7 @@ Sub Globals
 	Dim butstate(33) As Boolean
 	Dim sld_norm,sld_on,sld_down As StateListDrawable
 	Dim prs, ups,grn As ColorDrawable
-	Dim key_n As Int =0 
+
 	Dim cur_but_state As Int
 	Dim prs_but As Int
 End Sub
@@ -89,13 +90,7 @@ Try
 		tbuts.Background=sld_norm
 		butt(i)=tbuts
 	Next
-
-	If keys_is_load=False Then 
-		load_keys
-	Else
-		StateManager.RestoreState (Activity, "Main", 60) 
 		add_key_to_panel
-	End If
 	send_state_timer.Initialize("send_state_timer", 1000)
 	send_state_timer.Enabled =True
 Catch
@@ -104,33 +99,18 @@ End Try
 End Sub
 
 Sub Activity_Resume
-
+	add_key_to_panel
 End Sub
 
 Sub Activity_Pause (UserClosed As Boolean)
 Try
-	If UserClosed Then
-		StateManager.ResetState("Main")
-	Else
-		StateManager.SaveState(Activity, "Main")
-	End If
 	StateManager.SaveSettings
 Catch
   proces_error(LastException.Message)
 End Try
 End Sub
 
-Sub load_keys()
-Try
-	clear_keys
-	get_key_info
-	key_n=0
-	mgetbut_tmr.Initialize("mgetbut_tmr", 210)
-	mgetbut_tmr.Enabled =True
-Catch
-  proces_error(LastException.Message)
-End Try
-End Sub
+
 Sub clear_keys
 Try
 	For i = 1 To 32
@@ -142,76 +122,11 @@ Catch
   proces_error(LastException.Message)
 End Try
 End Sub
-Sub mgetbut_tmr_Tick()
-Try
-	key_n=key_n+1
-	If key_n=31 Then 
-		mgetbut_tmr.Enabled =False
-		Return
-	End If
-	get_key(key_n)
-Catch
-  proces_error(LastException.Message)
-End Try	
-End Sub
 
-Sub get_key(ind As Int)
-Try	
-	Dim Data As Map
-	Data.Initialize
-	Data.Put ("getkey",ind)
-	CallSubDelayed2(Starter,"send_to_dev",Data)
-Catch
-  proces_error(LastException.Message)
-End Try
-End Sub
 
-Sub get_key_info()
-Try
-	Dim Data As Map
-	Data.Initialize
-	Data.Put ("dev_name",StateManager.GetSetting2("cur_dev_name","none"))
-	Data.Put ("getkey_info",1)
-	CallSubDelayed2(Starter,"send_to_dev",Data)
-Catch
-  proces_error(LastException.Message)
-End Try
-End Sub
 
-Sub set_key_set (mapar As Map)
-Try
-If CM.toint(mapar.Get ("key_id"))<1 Or CM.toint(mapar.Get ("key_id"))>30 Then Return 
-		If CM.toint(mapar.Get ("key_id"))=30 Then
-			 keys_is_load=True	
-			 add_key_to_panel
-			 mgetbut_tmr.Enabled =False
-			StateManager.SaveState(Activity, "Main")
-			StateManager.SaveSettings
-			 ToastMessageShow("Load keys complete",True)
-		End If
-		butt(mapar.Get ("key_id")).Text = mapar.Get ("name")
-		If butt(mapar.Get ("key_id")).Text ="@" Then 
-			butt(mapar.Get ("key_id")).tag=""
-		Else
-			butt(mapar.Get ("key_id")).tag = mapar.Get ("key_id")	
-		End If
-		butlock(mapar.Get ("key_id"))  = CM.obj2Bool( mapar.Get ("lock"))
-		butstate(mapar.Get ("key_id"))  = CM.obj2Bool( mapar.Get ("state"))
-Catch
-  proces_error(LastException.Message)
-End Try		
-End Sub
 
-Sub set_keyinfo_set (mapar As Map)
-Try
-	ToastMessageShow("Loading keys....",True)
-	If mapar.ContainsKey("font_size")=True Then  CM.font_size=CM.toint(mapar.Get ("font_size") )
-	If mapar.ContainsKey("h_size")=True Then   CM.horiz_size=CM.toint(mapar.Get ("h_size")) 
-	If mapar.ContainsKey("v_size")=True Then   CM.vert_size=CM.toint(mapar.Get ("v_size")) 
-Catch
-  proces_error(LastException.Message)
-End Try
-End Sub
+
 
 Sub send_comm(ind As Int,com As Boolean,lock As Boolean) 'відправка на пристрій команди(ind - номер кнопки, com -команда, lock - фіксація)
 Try
@@ -281,32 +196,31 @@ End Try
 End Sub
 
 
-
-
-
-
-
-
-
-
 Sub add_key_to_panel() 'розміщення кнопок керування на екрані 
 Try
+	clear_keys
+	Dim vert_size As Int=StateManager.GetSetting2("v_size","")
+	Dim horiz_size As Int=StateManager.GetSetting2("h_size","")
+	Dim font_size As Int=StateManager.GetSetting2("font_size","")
 	Dim b_width,b_height,posx,posy,max_but As Int
-	b_width=Activity.Width/CM.horiz_size
-	b_height=(Activity.height-20dip)/CM.vert_size
-	max_but =CM.horiz_size*CM.vert_size
+	b_width=Activity.Width/horiz_size
+	b_height=(Activity.height-20dip)/vert_size
+	max_but =horiz_size*vert_size
 	cur_but_state=0
 	For a=1 To 32
 		If butstate(a)=True Then butt(a).Background=sld_on
-		If CM.toint(butt(a).tag)>0 Then 
+		If CM.toint(StateManager.GetSetting2("keytag" & a,""))>0 Then 
 			If cur_but_state>=max_but Then Return
-			posy=cur_but_state/CM.horiz_size
-			posx=cur_but_state mod CM.horiz_size
+			posy=cur_but_state/horiz_size
+			posx=cur_but_state mod horiz_size
+			butlock(a)=CM.obj2Bool(StateManager.GetSetting2("keylock" & a,0))
+			butt(a).Text =StateManager.GetSetting2("keytext" & a,"")
+			butt(a).tag =StateManager.GetSetting2("keytag" & a,"")
 			butt(a).Left =posx*(b_width+1dip)
 			butt(a).top =posy*(b_height+1dip)
 			butt(a).width =b_width-2dip
 			butt(a).height =b_height-2dip
-			butt(a).TextSize =CM.font_size
+			butt(a).TextSize =font_size
 			cur_but_state=cur_but_state+1			
 		End If	
 	Next
@@ -387,7 +301,7 @@ End Try
 	
 End Sub
 Sub status_lab_LongClick
-	load_keys
+
 End Sub
 
 Sub proces_error(msg As String)
