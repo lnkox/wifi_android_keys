@@ -45,15 +45,16 @@ public boolean isSingleton() {
         throw new RuntimeException("CREATE is not supported.");
 	}
 public static RemoteObject __c = RemoteObject.declareNull("anywheresoftware.b4a.keywords.Common");
+public static RemoteObject _bc = RemoteObject.declareNull("anywheresoftware.b4a.agraham.byteconverter.ByteConverter");
 public static lnk.wifi_keys.main _main = null;
 public static lnk.wifi_keys.starter _starter = null;
 public static lnk.wifi_keys.statemanager _statemanager = null;
 public static lnk.wifi_keys.sel_dev _sel_dev = null;
 public static lnk.wifi_keys.ap_set _ap_set = null;
-public static lnk.wifi_keys.sta_set _sta_set = null;
 public static lnk.wifi_keys.key_set _key_set = null;
 public static lnk.wifi_keys.inet_set _inet_set = null;
+public static lnk.wifi_keys.sta_set _sta_set = null;
   public Object[] GetGlobals() {
-		return new Object[] {"AP_SET",Debug.moduleToString(lnk.wifi_keys.ap_set.class),"INET_SET",Debug.moduleToString(lnk.wifi_keys.inet_set.class),"KEY_SET",Debug.moduleToString(lnk.wifi_keys.key_set.class),"Main",Debug.moduleToString(lnk.wifi_keys.main.class),"sel_dev",Debug.moduleToString(lnk.wifi_keys.sel_dev.class),"STA_SET",Debug.moduleToString(lnk.wifi_keys.sta_set.class),"Starter",Debug.moduleToString(lnk.wifi_keys.starter.class),"StateManager",Debug.moduleToString(lnk.wifi_keys.statemanager.class)};
+		return new Object[] {"AP_SET",Debug.moduleToString(lnk.wifi_keys.ap_set.class),"bc",cm._bc,"INET_SET",Debug.moduleToString(lnk.wifi_keys.inet_set.class),"KEY_SET",Debug.moduleToString(lnk.wifi_keys.key_set.class),"Main",Debug.moduleToString(lnk.wifi_keys.main.class),"sel_dev",Debug.moduleToString(lnk.wifi_keys.sel_dev.class),"STA_SET",Debug.moduleToString(lnk.wifi_keys.sta_set.class),"Starter",Debug.moduleToString(lnk.wifi_keys.starter.class),"StateManager",Debug.moduleToString(lnk.wifi_keys.statemanager.class)};
 }
 }

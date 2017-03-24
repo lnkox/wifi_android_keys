@@ -52,8 +52,7 @@ Try
 	Dim Mapar As Map
 	JSON.Initialize(result) 
 	Mapar = JSON.NextObject
-	If Mapar.ContainsKey("rssi")=True Then   CallSubDelayed2(Main,"set_ris",CM.toint (Mapar.Get ("rssi")))
-	If Mapar.ContainsKey("rcom")=True Then   CallSubDelayed2(Main,"reload_key_state",Mapar)
+	If Mapar.ContainsKey("rssi")=True Then   CallSubDelayed2(Main,"set_ris",Mapar)
 	If Mapar.ContainsKey("namedev")=True Then CallSubDelayed3(sel_dev,"add_dev_tolist",Mapar.Get ("namedev"),Packet.HostAddress)
 	If Mapar.ContainsKey("ssid_ap")=True Then CallSubDelayed2(AP_SET,"set_ap_set",Mapar)
 	If Mapar.ContainsKey("ssid_sta")=True Then CallSubDelayed2(STA_SET,"set_sta_set",Mapar)

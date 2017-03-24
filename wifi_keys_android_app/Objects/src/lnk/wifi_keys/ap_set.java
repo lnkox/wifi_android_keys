@@ -329,10 +329,10 @@ public lnk.wifi_keys.main _main = null;
 public lnk.wifi_keys.starter _starter = null;
 public lnk.wifi_keys.statemanager _statemanager = null;
 public lnk.wifi_keys.sel_dev _sel_dev = null;
-public lnk.wifi_keys.sta_set _sta_set = null;
 public lnk.wifi_keys.key_set _key_set = null;
 public lnk.wifi_keys.cm _cm = null;
 public lnk.wifi_keys.inet_set _inet_set = null;
+public lnk.wifi_keys.sta_set _sta_set = null;
 public static String  _activity_create(boolean _firsttime) throws Exception{
 RDebugUtils.currentModule="ap_set";
 if (Debug.shouldDelegate("activity_create"))

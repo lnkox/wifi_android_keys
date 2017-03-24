@@ -1,35 +1,35 @@
 lnk.wifi_keys
 0
 0
-main,activity_create,1,0,31,70
-,prs,,ups,,grn,,sld_norm,,sld_on,,sld_down,,status_lab,,butt,,send_state_timer,statemanager,settings,statemanager,settingsfilename,,cur_but_state,,butstate,,butlock
+main,activity_create,1,0,30,69
+,prs,,ups,,grn,,sld_norm,,sld_on,,sld_down,,status_lab,,butt,,send_state_timer,statemanager,settings,statemanager,settingsfilename,,cur_but_state,,butlock
 statemanager,settings,,cur_but_state
 statemanager,getsetting2,,add_key_to_panel,,proces_error,,clear_keys,cm,toint,cm,obj2bool
-main,add_key_to_panel,1,1,170,201
-,cur_but_state,,butstate,,butt,,sld_on,,butlock,statemanager,settings,statemanager,settingsfilename
+main,add_key_to_panel,1,1,169,200
+,cur_but_state,,butt,,sld_norm,,butlock,statemanager,settings,statemanager,settingsfilename
 ,cur_but_state,statemanager,settings
 ,clear_keys,statemanager,getsetting2,cm,toint,cm,obj2bool,,proces_error
 main,proces_error,1,0,278,280
 
 
 
-main,activity_pause,1,1,76,82
+main,activity_pause,1,0,75,81
 statemanager,settings,statemanager,settingsfilename
 
 statemanager,savesettings,,proces_error
-main,activity_resume,1,1,72,74
-,cur_but_state,,butstate,,butt,,sld_on,,butlock,statemanager,settings,statemanager,settingsfilename
+main,activity_resume,1,0,71,73
+,cur_but_state,,butt,,sld_norm,,butlock,statemanager,settings,statemanager,settingsfilename
 ,cur_but_state,statemanager,settings
 ,add_key_to_panel,,clear_keys,statemanager,getsetting2,cm,toint,cm,obj2bool,,proces_error
-main,clear_keys,1,1,85,95
+main,clear_keys,1,0,84,94
 ,butt
 
 ,proces_error
-main,get_rssi,1,1,148,157
+main,get_rssi,1,0,133,142
 
 
 ,proces_error
-main,globals,0,1,18,29
+main,globals,0,1,17,28
 
 
 
@@ -41,14 +41,10 @@ main,keys_set_click,0,0,256,258
 
 
 
-main,process_globals,0,1,12,17
+main,process_globals,0,1,12,16
 
 
 
-main,reload_key_state,1,1,115,129
-,butt,,sld_on,,sld_norm
-
-cm,toint,,proces_error
 main,reset_dev_click,1,1,262,273
 
 
@@ -57,18 +53,18 @@ main,sel_dev_click,0,0,247,249
 
 
 
-main,send_comm,1,1,102,113
+main,send_comm,1,0,101,112
 
 
 ,proces_error
-main,send_state_timer_tick,1,1,131,146
+main,send_state_timer_tick,1,0,116,131
 ,prs_but,,conect_tmout,,status_lab
 ,conect_tmout
 ,send_comm,,get_rssi,,proces_error
-main,set_ris,1,1,159,167
-,status_lab,,conect_tmout
+main,set_ris,1,1,144,166
+,butstate,,butt,,sld_on,,sld_norm,,status_lab,,conect_tmout
 ,conect_tmout
-,proces_error
+cm,tolong,cm,obj2bool,,proces_error
 main,status_lab_longclick,0,0,274,276
 
 
@@ -141,15 +137,19 @@ cm,toint,0,0,15,23
 
 
 
-cm,obj2bool,0,1,6,13
+cm,obj2bool,0,0,6,13
 
 
 
-cm,byte_to_object,0,0,29,32
+cm,tolong,0,0,24,32
 
 
 
-cm,object_to_byte,0,0,24,27
+cm,byte_to_object,0,0,38,41
+
+
+
+cm,object_to_byte,0,0,33,36
 
 
 
@@ -161,7 +161,7 @@ starter,application_error,0,0,23,25
 
 
 
-starter,proces_error,1,0,127,129
+starter,proces_error,1,0,126,128
 
 
 
@@ -169,7 +169,7 @@ starter,process_globals,0,1,6,10
 
 
 
-starter,send_to_dev,1,1,108,126
+starter,send_to_dev,1,0,107,125
 ,udpsocket,statemanager,settings,statemanager,settingsfilename
 statemanager,settings
 statemanager,getsetting2,,proces_error
@@ -189,18 +189,18 @@ starter,udp_init,1,0,33,39
 ,udpsocket
 
 ,proces_error
-starter,set_key_set,1,1,79,97
+starter,set_key_set,1,0,78,96
 statemanager,settings,statemanager,settingsfilename
 statemanager,settings
 cm,toint,statemanager,setsetting,cm,obj2bool,statemanager,savesettings,,proces_error
-starter,set_keyinfo_set,1,1,98,107
+starter,set_keyinfo_set,1,0,97,106
 statemanager,settings,statemanager,settingsfilename
 statemanager,settings
 statemanager,setsetting,cm,toint,statemanager,savesettings,,proces_error
-starter,udp_packetarrived,1,1,41,78
+starter,udp_packetarrived,1,0,41,77
 statemanager,settings,statemanager,settingsfilename
 statemanager,settings
-cm,toint,,set_key_set,,set_keyinfo_set,,proces_error,statemanager,setsetting,cm,obj2bool,statemanager,savesettings
+,set_key_set,,set_keyinfo_set,cm,toint,,proces_error,statemanager,setsetting,cm,obj2bool,statemanager,savesettings
 sel_dev,activity_create,1,0,15,18
 ,dev_list
 ,dev_list
@@ -237,7 +237,7 @@ sel_dev,load_keys,1,0,53,64
 ,key_n,,mgetbut_tmr,statemanager,settings,statemanager,settingsfilename
 ,key_n,statemanager,settings
 ,clear_field,,get_key_info,,proces_error,statemanager,setsetting,statemanager,savesettings,statemanager,getsetting2
-sel_dev,finish_him,0,1,114,118
+sel_dev,finish_him,0,0,114,118
 
 
 
@@ -305,6 +305,98 @@ ap_set,set_ap_set,1,0,80,89
 ,ap_ssid_txt,,ap_pass_txt,,hide_ssid_chk,,ap_mode_chk
 
 cm,obj2bool,,proces_error
+key_set,activity_create,1,0,27,80
+,scview,,lfont_size,,font_size,,lh_size,,h_size,,lv_size,,v_size,,lab,,chk,,txt,,save_ks_but,statemanager,settings,statemanager,settingsfilename
+,scview,statemanager,settings
+statemanager,getsetting2,,get_key_data,,proces_error,cm,obj2bool
+key_set,get_key_data,1,0,91,104
+,v_size,,h_size,,font_size,,chk,,txt,statemanager,settings,statemanager,settingsfilename
+statemanager,settings
+statemanager,getsetting2,cm,obj2bool,,proces_error
+key_set,proces_error,1,0,189,191
+
+
+
+key_set,activity_pause,0,0,87,89
+
+
+
+key_set,activity_resume,0,0,82,84
+
+
+
+key_set,finish_him,1,0,180,187
+
+
+,proces_error
+key_set,globals,0,1,11,25
+,key_n
+,key_n
+
+key_set,process_globals,0,1,6,9
+
+
+
+key_set,save_ks_but_click,1,0,106,115
+,key_n,,setbut_tmr
+,key_n
+,proces_error
+key_set,set_key,1,0,131,142
+,txt,,chk
+
+,proces_error
+key_set,set_key_info,1,0,143,155
+,font_size,,h_size,,v_size
+
+,proces_error
+key_set,set_key_set,1,0,160,167
+,txt,,chk
+
+cm,obj2bool,,proces_error
+key_set,set_keyinfo_set,1,0,169,177
+,font_size,,h_size,,v_size
+
+,proces_error
+key_set,setbut_tmr_tick,1,0,117,129
+,key_n,,setbut_tmr,,font_size,,h_size,,v_size,,txt,,chk
+,key_n
+,set_key_info,,set_key,,proces_error
+inet_set,activity_create,1,0,29,41
+,inet_devname_txt,,inet_login_txt,,inet_pass_txt,,inet_port_txt,,inet_server_txt,,label1,,label2,,label3,,label4,,label5,,save_ap_set_btn,statemanager,settings,statemanager,settingsfilename
+,inet_devname_txt,,inet_login_txt,,inet_pass_txt,,inet_port_txt,,inet_server_txt,,label1,,label2,,label3,,label4,,label5,,save_ap_set_btn,statemanager,settings
+statemanager,getsetting2,,proces_error
+inet_set,proces_error,1,0,73,75
+
+
+
+inet_set,activity_pause,0,0,47,49
+
+
+
+inet_set,activity_resume,0,0,43,45
+
+
+
+inet_set,finish_him,0,0,77,79
+
+
+
+inet_set,globals,0,1,12,27
+
+
+
+inet_set,label5_longclick,0,0,81,83
+
+
+
+inet_set,process_globals,0,1,6,10
+
+
+
+inet_set,save_ap_set_btn_click,1,0,52,71
+,inet_devname_txt,,inet_login_txt,,inet_pass_txt,,inet_port_txt,,inet_server_txt,statemanager,settings,statemanager,settingsfilename
+statemanager,settings
+statemanager,setsetting,,proces_error
 sta_set,activity_create,1,0,19,28
 ,label1,,label2,,save_sta_set_btn,,sta_mode_chk,,sta_pass_txt,,sta_ssid_txt,statemanager,settings,statemanager,settingsfilename
 ,label1,,label2,,save_sta_set_btn,,sta_mode_chk,,sta_pass_txt,,sta_ssid_txt,statemanager,settings
@@ -349,95 +441,3 @@ sta_set,set_sta_set,1,0,74,82
 ,sta_ssid_txt,,sta_pass_txt,,sta_mode_chk
 
 cm,obj2bool,,proces_error
-key_set,activity_create,1,1,27,80
-,scview,,lfont_size,,font_size,,lh_size,,h_size,,lv_size,,v_size,,lab,,chk,,txt,,save_ks_but,statemanager,settings,statemanager,settingsfilename
-,scview,statemanager,settings
-statemanager,getsetting2,,get_key_data,,proces_error,cm,obj2bool
-key_set,get_key_data,1,1,91,104
-,v_size,,h_size,,font_size,,chk,,txt,statemanager,settings,statemanager,settingsfilename
-statemanager,settings
-statemanager,getsetting2,cm,obj2bool,,proces_error
-key_set,proces_error,1,0,189,191
-
-
-
-key_set,activity_pause,0,1,87,89
-
-
-
-key_set,activity_resume,0,0,82,84
-
-
-
-key_set,finish_him,1,1,180,187
-
-
-,proces_error
-key_set,globals,0,1,11,25
-,key_n
-,key_n
-
-key_set,process_globals,0,1,6,9
-
-
-
-key_set,save_ks_but_click,1,1,106,115
-,key_n,,setbut_tmr
-,key_n
-,proces_error
-key_set,set_key,1,1,131,142
-,txt,,chk
-
-,proces_error
-key_set,set_key_info,1,1,143,155
-,font_size,,h_size,,v_size
-
-,proces_error
-key_set,set_key_set,1,1,160,167
-,txt,,chk
-
-cm,obj2bool,,proces_error
-key_set,set_keyinfo_set,1,1,169,177
-,font_size,,h_size,,v_size
-
-,proces_error
-key_set,setbut_tmr_tick,1,1,117,129
-,key_n,,setbut_tmr,,font_size,,h_size,,v_size,,txt,,chk
-,key_n
-,set_key_info,,set_key,,proces_error
-inet_set,activity_create,1,0,29,41
-,inet_devname_txt,,inet_login_txt,,inet_pass_txt,,inet_port_txt,,inet_server_txt,,label1,,label2,,label3,,label4,,label5,,save_ap_set_btn,statemanager,settings,statemanager,settingsfilename
-,inet_devname_txt,,inet_login_txt,,inet_pass_txt,,inet_port_txt,,inet_server_txt,,label1,,label2,,label3,,label4,,label5,,save_ap_set_btn,statemanager,settings
-statemanager,getsetting2,,proces_error
-inet_set,proces_error,1,0,73,75
-
-
-
-inet_set,activity_pause,0,0,47,49
-
-
-
-inet_set,activity_resume,0,0,43,45
-
-
-
-inet_set,finish_him,0,0,77,79
-
-
-
-inet_set,globals,0,1,12,27
-
-
-
-inet_set,label5_longclick,0,0,81,83
-
-
-
-inet_set,process_globals,0,1,6,10
-
-
-
-inet_set,save_ap_set_btn_click,1,0,52,71
-,inet_devname_txt,,inet_login_txt,,inet_pass_txt,,inet_port_txt,,inet_server_txt,statemanager,settings,statemanager,settingsfilename
-statemanager,settings
-statemanager,setsetting,,proces_error

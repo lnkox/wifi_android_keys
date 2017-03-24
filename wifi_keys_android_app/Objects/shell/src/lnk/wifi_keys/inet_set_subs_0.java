@@ -8,7 +8,7 @@ public class inet_set_subs_0 {
 
 public static RemoteObject  _activity_create(RemoteObject _firsttime) throws Exception{
 try {
-		Debug.PushSubsStack("Activity_Create (inet_set) ","inet_set",8,inet_set.mostCurrent.activityBA,inet_set.mostCurrent,29);
+		Debug.PushSubsStack("Activity_Create (inet_set) ","inet_set",7,inet_set.mostCurrent.activityBA,inet_set.mostCurrent,29);
 if (RapidSub.canDelegate("activity_create")) return inet_set.remoteMe.runUserSub(false, "inet_set","activity_create", _firsttime);
 Debug.locals.put("FirstTime", _firsttime);
  BA.debugLineNum = 29;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
@@ -56,7 +56,7 @@ finally {
 		}}
 public static RemoteObject  _activity_pause(RemoteObject _userclosed) throws Exception{
 try {
-		Debug.PushSubsStack("Activity_Pause (inet_set) ","inet_set",8,inet_set.mostCurrent.activityBA,inet_set.mostCurrent,47);
+		Debug.PushSubsStack("Activity_Pause (inet_set) ","inet_set",7,inet_set.mostCurrent.activityBA,inet_set.mostCurrent,47);
 if (RapidSub.canDelegate("activity_pause")) return inet_set.remoteMe.runUserSub(false, "inet_set","activity_pause", _userclosed);
 Debug.locals.put("UserClosed", _userclosed);
  BA.debugLineNum = 47;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
@@ -74,7 +74,7 @@ finally {
 		}}
 public static RemoteObject  _activity_resume() throws Exception{
 try {
-		Debug.PushSubsStack("Activity_Resume (inet_set) ","inet_set",8,inet_set.mostCurrent.activityBA,inet_set.mostCurrent,43);
+		Debug.PushSubsStack("Activity_Resume (inet_set) ","inet_set",7,inet_set.mostCurrent.activityBA,inet_set.mostCurrent,43);
 if (RapidSub.canDelegate("activity_resume")) return inet_set.remoteMe.runUserSub(false, "inet_set","activity_resume");
  BA.debugLineNum = 43;BA.debugLine="Sub Activity_Resume";
 Debug.ShouldStop(1024);
@@ -91,7 +91,7 @@ finally {
 		}}
 public static RemoteObject  _finish_him() throws Exception{
 try {
-		Debug.PushSubsStack("finish_him (inet_set) ","inet_set",8,inet_set.mostCurrent.activityBA,inet_set.mostCurrent,77);
+		Debug.PushSubsStack("finish_him (inet_set) ","inet_set",7,inet_set.mostCurrent.activityBA,inet_set.mostCurrent,77);
 if (RapidSub.canDelegate("finish_him")) return inet_set.remoteMe.runUserSub(false, "inet_set","finish_him");
  BA.debugLineNum = 77;BA.debugLine="Sub finish_him()";
 Debug.ShouldStop(4096);
@@ -138,7 +138,7 @@ return RemoteObject.createImmutable("");
 }
 public static RemoteObject  _label5_longclick() throws Exception{
 try {
-		Debug.PushSubsStack("Label5_LongClick (inet_set) ","inet_set",8,inet_set.mostCurrent.activityBA,inet_set.mostCurrent,81);
+		Debug.PushSubsStack("Label5_LongClick (inet_set) ","inet_set",7,inet_set.mostCurrent.activityBA,inet_set.mostCurrent,81);
 if (RapidSub.canDelegate("label5_longclick")) return inet_set.remoteMe.runUserSub(false, "inet_set","label5_longclick");
  BA.debugLineNum = 81;BA.debugLine="Sub Label5_LongClick";
 Debug.ShouldStop(65536);
@@ -155,7 +155,7 @@ finally {
 		}}
 public static RemoteObject  _proces_error(RemoteObject _msg) throws Exception{
 try {
-		Debug.PushSubsStack("proces_error (inet_set) ","inet_set",8,inet_set.mostCurrent.activityBA,inet_set.mostCurrent,73);
+		Debug.PushSubsStack("proces_error (inet_set) ","inet_set",7,inet_set.mostCurrent.activityBA,inet_set.mostCurrent,73);
 if (RapidSub.canDelegate("proces_error")) return inet_set.remoteMe.runUserSub(false, "inet_set","proces_error", _msg);
 Debug.locals.put("msg", _msg);
  BA.debugLineNum = 73;BA.debugLine="Sub proces_error(msg As String)";
@@ -181,7 +181,7 @@ return RemoteObject.createImmutable("");
 }
 public static RemoteObject  _save_ap_set_btn_click() throws Exception{
 try {
-		Debug.PushSubsStack("save_ap_set_btn_Click (inet_set) ","inet_set",8,inet_set.mostCurrent.activityBA,inet_set.mostCurrent,52);
+		Debug.PushSubsStack("save_ap_set_btn_Click (inet_set) ","inet_set",7,inet_set.mostCurrent.activityBA,inet_set.mostCurrent,52);
 if (RapidSub.canDelegate("save_ap_set_btn_click")) return inet_set.remoteMe.runUserSub(false, "inet_set","save_ap_set_btn_click");
 RemoteObject _data = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.Map");
  BA.debugLineNum = 52;BA.debugLine="Sub save_ap_set_btn_Click";

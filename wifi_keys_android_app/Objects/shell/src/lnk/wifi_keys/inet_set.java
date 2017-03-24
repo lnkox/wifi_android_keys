@@ -71,9 +71,9 @@ public static lnk.wifi_keys.starter _starter = null;
 public static lnk.wifi_keys.statemanager _statemanager = null;
 public static lnk.wifi_keys.sel_dev _sel_dev = null;
 public static lnk.wifi_keys.ap_set _ap_set = null;
-public static lnk.wifi_keys.sta_set _sta_set = null;
 public static lnk.wifi_keys.key_set _key_set = null;
 public static lnk.wifi_keys.cm _cm = null;
+public static lnk.wifi_keys.sta_set _sta_set = null;
   public Object[] GetGlobals() {
 		return new Object[] {"Activity",inet_set.mostCurrent._activity,"AP_SET",Debug.moduleToString(lnk.wifi_keys.ap_set.class),"CM",Debug.moduleToString(lnk.wifi_keys.cm.class),"inet_devname_txt",inet_set.mostCurrent._inet_devname_txt,"inet_login_txt",inet_set.mostCurrent._inet_login_txt,"inet_pass_txt",inet_set.mostCurrent._inet_pass_txt,"inet_port_txt",inet_set.mostCurrent._inet_port_txt,"inet_server_txt",inet_set.mostCurrent._inet_server_txt,"KEY_SET",Debug.moduleToString(lnk.wifi_keys.key_set.class),"Label1",inet_set.mostCurrent._label1,"Label2",inet_set.mostCurrent._label2,"Label3",inet_set.mostCurrent._label3,"Label4",inet_set.mostCurrent._label4,"Label5",inet_set.mostCurrent._label5,"Main",Debug.moduleToString(lnk.wifi_keys.main.class),"save_ap_set_btn",inet_set.mostCurrent._save_ap_set_btn,"sel_dev",Debug.moduleToString(lnk.wifi_keys.sel_dev.class),"STA_SET",Debug.moduleToString(lnk.wifi_keys.sta_set.class),"Starter",Debug.moduleToString(lnk.wifi_keys.starter.class),"StateManager",Debug.moduleToString(lnk.wifi_keys.statemanager.class)};
 }

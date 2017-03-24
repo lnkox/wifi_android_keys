@@ -54,10 +54,10 @@ public static lnk.wifi_keys.main _main = null;
 public static lnk.wifi_keys.starter _starter = null;
 public static lnk.wifi_keys.sel_dev _sel_dev = null;
 public static lnk.wifi_keys.ap_set _ap_set = null;
-public static lnk.wifi_keys.sta_set _sta_set = null;
 public static lnk.wifi_keys.key_set _key_set = null;
 public static lnk.wifi_keys.cm _cm = null;
 public static lnk.wifi_keys.inet_set _inet_set = null;
+public static lnk.wifi_keys.sta_set _sta_set = null;
   public Object[] GetGlobals() {
 		return new Object[] {"AP_SET",Debug.moduleToString(lnk.wifi_keys.ap_set.class),"CM",Debug.moduleToString(lnk.wifi_keys.cm.class),"INET_SET",Debug.moduleToString(lnk.wifi_keys.inet_set.class),"KEY_SET",Debug.moduleToString(lnk.wifi_keys.key_set.class),"listPosition",statemanager._listposition,"Main",Debug.moduleToString(lnk.wifi_keys.main.class),"sel_dev",Debug.moduleToString(lnk.wifi_keys.sel_dev.class),"settings",statemanager._settings,"settingsFileName",statemanager._settingsfilename,"STA_SET",Debug.moduleToString(lnk.wifi_keys.sta_set.class),"Starter",Debug.moduleToString(lnk.wifi_keys.starter.class),"states",statemanager._states,"statesFileName",statemanager._statesfilename};
 }

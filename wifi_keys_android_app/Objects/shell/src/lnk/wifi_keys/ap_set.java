@@ -66,10 +66,10 @@ public static lnk.wifi_keys.main _main = null;
 public static lnk.wifi_keys.starter _starter = null;
 public static lnk.wifi_keys.statemanager _statemanager = null;
 public static lnk.wifi_keys.sel_dev _sel_dev = null;
-public static lnk.wifi_keys.sta_set _sta_set = null;
 public static lnk.wifi_keys.key_set _key_set = null;
 public static lnk.wifi_keys.cm _cm = null;
 public static lnk.wifi_keys.inet_set _inet_set = null;
+public static lnk.wifi_keys.sta_set _sta_set = null;
   public Object[] GetGlobals() {
 		return new Object[] {"Activity",ap_set.mostCurrent._activity,"ap_mode_chk",ap_set.mostCurrent._ap_mode_chk,"ap_pass_txt",ap_set.mostCurrent._ap_pass_txt,"ap_ssid_txt",ap_set.mostCurrent._ap_ssid_txt,"CM",Debug.moduleToString(lnk.wifi_keys.cm.class),"hide_ssid_chk",ap_set.mostCurrent._hide_ssid_chk,"INET_SET",Debug.moduleToString(lnk.wifi_keys.inet_set.class),"KEY_SET",Debug.moduleToString(lnk.wifi_keys.key_set.class),"Label1",ap_set.mostCurrent._label1,"Label2",ap_set.mostCurrent._label2,"Main",Debug.moduleToString(lnk.wifi_keys.main.class),"save_ap_set_btn",ap_set.mostCurrent._save_ap_set_btn,"sel_dev",Debug.moduleToString(lnk.wifi_keys.sel_dev.class),"STA_SET",Debug.moduleToString(lnk.wifi_keys.sta_set.class),"Starter",Debug.moduleToString(lnk.wifi_keys.starter.class),"StateManager",Debug.moduleToString(lnk.wifi_keys.statemanager.class)};
 }

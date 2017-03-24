@@ -4,10 +4,10 @@ Module1=Starter
 Module2=StateManager
 Module3=sel_dev
 Module4=AP_SET
-Module5=STA_SET
-Module6=KEY_SET
-Module7=CM
-Module8=INET_SET
+Module5=KEY_SET
+Module6=CM
+Module7=INET_SET
+Module8=STA_SET
 Build1=Default,lnk.wifi_keys
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="14"/>~\n~<uses-permission android:name="android.permission.INTERNET"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~SetApplicationAttribute(android:theme, "@android:style/Theme.Holo")~\n~~\n~'End of default text.~\n~
 IconFile=
@@ -39,7 +39,6 @@ Library6=byteconverter
 
 
 Sub Process_Globals
-	Dim keys_is_load As Boolean
 	Dim conect_tmout As Int
 
 	Public  send_state_timer As Timer
@@ -141,21 +140,7 @@ Catch
 End Try
 End Sub
 
-Sub reload_key_state(mapar As Map)
-Try
-	Dim tmpid As Int
-	tmpid=CM.toint(mapar.Get ("rind"))
-	If tmpid>0 Then
-		If CM.toint(mapar.Get ("rcom"))=1 Then
-			butt(tmpid).Background =sld_on	
-		Else
-			butt(tmpid).Background =sld_norm
-		End If
-	End If	
-Catch
-  proces_error(LastException.Message)
-End Try
-End Sub
+
 
 Sub send_state_timer_Tick() ' таймер перевірки звязку з пристроєм та відправки запитів на отримання рівня сигналу WI-FI
 Try
@@ -185,11 +170,25 @@ Catch
 End Try
 End Sub
 
-Sub set_ris(rsi As Int)
+Sub set_ris(rstate As Map)
 Try
+	Dim sta As Boolean
+	Dim tmplong As Long
+	tmplong =CM.tolong(rstate.Get("st"))
+	For a=1 To 30
+		butstate(a)=CM.obj2Bool(Bit.And(tmplong , 1))
+		tmplong=Bit.ShiftRight(tmplong,1)
+		If butstate(a)=True Then 
+				butt(a).Background =sld_on
+			Else
+				butt(a).Background =sld_norm
+		End If
+	Next
+	
 	status_lab.TextColor=Colors.Green
-	status_lab.Text = " RSSI: " & rsi & "dbm   Connected"	
+	status_lab.Text = " RSSI: " & rstate.Get("rssi") & "dbm   Connected"	
 	conect_tmout=3
+	
 Catch
   proces_error(LastException.Message)
 End Try
@@ -208,7 +207,7 @@ Try
 	max_but =horiz_size*vert_size
 	cur_but_state=0
 	For a=1 To 32
-		If butstate(a)=True Then butt(a).Background=sld_on
+		butt(a).Background=sld_norm
 		If CM.toint(StateManager.GetSetting2("keytag" & a,""))>0 Then 
 			If cur_but_state>=max_but Then Return
 			posy=cur_but_state/horiz_size
@@ -228,6 +227,7 @@ Catch
   proces_error(LastException.Message)
 End Try
 End Sub
+
 '/////////////////////////////////////////////////////////////////////////////////////////////////////
 'Інтерфейс
 '/////////////////////////////////////////////////////////////////////////////////////////////////////

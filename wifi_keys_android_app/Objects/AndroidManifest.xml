@@ -51,13 +51,6 @@
 		<activity
 			android:windowSoftInputMode="stateHidden"
 			android:launchMode="singleTop"
-			android:name=".sta_set"
-			android:label="WIFIKEYS"
-			android:screenOrientation="unspecified">
-		</activity>
-		<activity
-			android:windowSoftInputMode="stateHidden"
-			android:launchMode="singleTop"
 			android:name=".key_set"
 			android:label="WIFIKEYS"
 			android:screenOrientation="unspecified">
@@ -66,6 +59,13 @@
 			android:windowSoftInputMode="stateHidden"
 			android:launchMode="singleTop"
 			android:name=".inet_set"
+			android:label="WIFIKEYS"
+			android:screenOrientation="unspecified">
+		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".sta_set"
 			android:label="WIFIKEYS"
 			android:screenOrientation="unspecified">
 		</activity>

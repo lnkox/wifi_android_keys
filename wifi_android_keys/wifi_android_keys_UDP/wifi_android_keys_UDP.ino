@@ -148,11 +148,25 @@ void proces_json(char *json_data)
 }
 void send_rssi()
 {
-  char i;
+  char i; 
+  long int state_int = 0;
   long rsi = WiFi.RSSI();
   StaticJsonBuffer<256> jsonBuffer;
   JsonObject& root = jsonBuffer.createObject();
   root["rssi"] = rsi;
+  for (char i = 30; i >0; i--)
+  {
+    state_int=state_int << 1;
+    if (but_state[i] > 0)
+    {
+      state_int = state_int | 1;
+    }
+    else
+    {
+      state_int = state_int | 0;
+    }
+  }
+  root["st"] = state_int;
   size_t len = root.measureLength() + 1;
   char bufferr[len];
   root.printTo(bufferr, sizeof(bufferr));
@@ -169,14 +183,7 @@ void do_command(char ind, boolean com, boolean lock)
   if (com == true && lock == false) {
     but_state[ind] = 8;
   }
-  JsonObject& root = jsonBuffer.createObject();
-  root["rcom"] = com;
-  root["rind"] = ind;
-  size_t len = root.measureLength() + 1;
-  char bufferr[len];
-  root.printTo(bufferr, sizeof(bufferr));
-  root.printTo(Serial);
-  send_udp(bufferr);
+  send_rssi();
 }
 void get_key(int ind)
 {
@@ -184,7 +191,6 @@ void get_key(int ind)
   StaticJsonBuffer<256> jsonBuffer;
   JsonObject& root = jsonBuffer.createObject();
   root["name"] = butnn[ind].txt;
-  root["state"] = but_state[ind];
   root["lock"] = butnn[ind].lock;
   root["key_id"] = ind;
   size_t len = root.measureLength() + 1;

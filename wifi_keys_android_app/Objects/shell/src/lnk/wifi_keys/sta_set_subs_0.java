@@ -8,7 +8,7 @@ public class sta_set_subs_0 {
 
 public static RemoteObject  _activity_create(RemoteObject _firsttime) throws Exception{
 try {
-		Debug.PushSubsStack("Activity_Create (sta_set) ","sta_set",5,sta_set.mostCurrent.activityBA,sta_set.mostCurrent,19);
+		Debug.PushSubsStack("Activity_Create (sta_set) ","sta_set",8,sta_set.mostCurrent.activityBA,sta_set.mostCurrent,19);
 if (RapidSub.canDelegate("activity_create")) return sta_set.remoteMe.runUserSub(false, "sta_set","activity_create", _firsttime);
 Debug.locals.put("FirstTime", _firsttime);
  BA.debugLineNum = 19;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
@@ -47,7 +47,7 @@ finally {
 		}}
 public static RemoteObject  _activity_pause(RemoteObject _userclosed) throws Exception{
 try {
-		Debug.PushSubsStack("Activity_Pause (sta_set) ","sta_set",5,sta_set.mostCurrent.activityBA,sta_set.mostCurrent,34);
+		Debug.PushSubsStack("Activity_Pause (sta_set) ","sta_set",8,sta_set.mostCurrent.activityBA,sta_set.mostCurrent,34);
 if (RapidSub.canDelegate("activity_pause")) return sta_set.remoteMe.runUserSub(false, "sta_set","activity_pause", _userclosed);
 Debug.locals.put("UserClosed", _userclosed);
  BA.debugLineNum = 34;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
@@ -65,7 +65,7 @@ finally {
 		}}
 public static RemoteObject  _activity_resume() throws Exception{
 try {
-		Debug.PushSubsStack("Activity_Resume (sta_set) ","sta_set",5,sta_set.mostCurrent.activityBA,sta_set.mostCurrent,30);
+		Debug.PushSubsStack("Activity_Resume (sta_set) ","sta_set",8,sta_set.mostCurrent.activityBA,sta_set.mostCurrent,30);
 if (RapidSub.canDelegate("activity_resume")) return sta_set.remoteMe.runUserSub(false, "sta_set","activity_resume");
  BA.debugLineNum = 30;BA.debugLine="Sub Activity_Resume";
 Debug.ShouldStop(536870912);
@@ -82,7 +82,7 @@ finally {
 		}}
 public static RemoteObject  _clear_field() throws Exception{
 try {
-		Debug.PushSubsStack("clear_field (sta_set) ","sta_set",5,sta_set.mostCurrent.activityBA,sta_set.mostCurrent,53);
+		Debug.PushSubsStack("clear_field (sta_set) ","sta_set",8,sta_set.mostCurrent.activityBA,sta_set.mostCurrent,53);
 if (RapidSub.canDelegate("clear_field")) return sta_set.remoteMe.runUserSub(false, "sta_set","clear_field");
  BA.debugLineNum = 53;BA.debugLine="Sub clear_field()";
 Debug.ShouldStop(1048576);
@@ -117,7 +117,7 @@ finally {
 		}}
 public static RemoteObject  _finish_him() throws Exception{
 try {
-		Debug.PushSubsStack("finish_him (sta_set) ","sta_set",5,sta_set.mostCurrent.activityBA,sta_set.mostCurrent,84);
+		Debug.PushSubsStack("finish_him (sta_set) ","sta_set",8,sta_set.mostCurrent.activityBA,sta_set.mostCurrent,84);
 if (RapidSub.canDelegate("finish_him")) return sta_set.remoteMe.runUserSub(false, "sta_set","finish_him");
  BA.debugLineNum = 84;BA.debugLine="Sub finish_him()";
 Debug.ShouldStop(524288);
@@ -137,7 +137,7 @@ finally {
 		}}
 public static RemoteObject  _get_staset() throws Exception{
 try {
-		Debug.PushSubsStack("get_staset (sta_set) ","sta_set",5,sta_set.mostCurrent.activityBA,sta_set.mostCurrent,63);
+		Debug.PushSubsStack("get_staset (sta_set) ","sta_set",8,sta_set.mostCurrent.activityBA,sta_set.mostCurrent,63);
 if (RapidSub.canDelegate("get_staset")) return sta_set.remoteMe.runUserSub(false, "sta_set","get_staset");
 RemoteObject _data = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.Map");
  BA.debugLineNum = 63;BA.debugLine="Sub get_staset()";
@@ -193,7 +193,7 @@ return RemoteObject.createImmutable("");
 }
 public static RemoteObject  _proces_error(RemoteObject _msg) throws Exception{
 try {
-		Debug.PushSubsStack("proces_error (sta_set) ","sta_set",5,sta_set.mostCurrent.activityBA,sta_set.mostCurrent,88);
+		Debug.PushSubsStack("proces_error (sta_set) ","sta_set",8,sta_set.mostCurrent.activityBA,sta_set.mostCurrent,88);
 if (RapidSub.canDelegate("proces_error")) return sta_set.remoteMe.runUserSub(false, "sta_set","proces_error", _msg);
 Debug.locals.put("msg", _msg);
  BA.debugLineNum = 88;BA.debugLine="Sub proces_error(msg As String)";
@@ -219,7 +219,7 @@ return RemoteObject.createImmutable("");
 }
 public static RemoteObject  _save_sta_set_btn_click() throws Exception{
 try {
-		Debug.PushSubsStack("save_sta_set_btn_Click (sta_set) ","sta_set",5,sta_set.mostCurrent.activityBA,sta_set.mostCurrent,39);
+		Debug.PushSubsStack("save_sta_set_btn_Click (sta_set) ","sta_set",8,sta_set.mostCurrent.activityBA,sta_set.mostCurrent,39);
 if (RapidSub.canDelegate("save_sta_set_btn_click")) return sta_set.remoteMe.runUserSub(false, "sta_set","save_sta_set_btn_click");
 RemoteObject _data = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.Map");
  BA.debugLineNum = 39;BA.debugLine="Sub save_sta_set_btn_Click";
@@ -267,7 +267,7 @@ finally {
 		}}
 public static RemoteObject  _set_sta_set(RemoteObject _mapar) throws Exception{
 try {
-		Debug.PushSubsStack("set_sta_set (sta_set) ","sta_set",5,sta_set.mostCurrent.activityBA,sta_set.mostCurrent,74);
+		Debug.PushSubsStack("set_sta_set (sta_set) ","sta_set",8,sta_set.mostCurrent.activityBA,sta_set.mostCurrent,74);
 if (RapidSub.canDelegate("set_sta_set")) return sta_set.remoteMe.runUserSub(false, "sta_set","set_sta_set", _mapar);
 Debug.locals.put("mapar", _mapar);
  BA.debugLineNum = 74;BA.debugLine="Sub set_sta_set (mapar As Map)";

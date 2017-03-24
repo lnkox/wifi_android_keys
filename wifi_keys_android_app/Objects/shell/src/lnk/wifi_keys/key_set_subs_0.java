@@ -8,7 +8,7 @@ public class key_set_subs_0 {
 
 public static RemoteObject  _activity_create(RemoteObject _firsttime) throws Exception{
 try {
-		Debug.PushSubsStack("Activity_Create (key_set) ","key_set",6,key_set.mostCurrent.activityBA,key_set.mostCurrent,27);
+		Debug.PushSubsStack("Activity_Create (key_set) ","key_set",5,key_set.mostCurrent.activityBA,key_set.mostCurrent,27);
 if (RapidSub.canDelegate("activity_create")) return key_set.remoteMe.runUserSub(false, "key_set","activity_create", _firsttime);
 int _i = 0;
 RemoteObject _tchk = RemoteObject.declareNull("anywheresoftware.b4a.objects.CompoundButtonWrapper.CheckBoxWrapper");
@@ -190,7 +190,7 @@ finally {
 		}}
 public static RemoteObject  _activity_pause(RemoteObject _userclosed) throws Exception{
 try {
-		Debug.PushSubsStack("Activity_Pause (key_set) ","key_set",6,key_set.mostCurrent.activityBA,key_set.mostCurrent,87);
+		Debug.PushSubsStack("Activity_Pause (key_set) ","key_set",5,key_set.mostCurrent.activityBA,key_set.mostCurrent,87);
 if (RapidSub.canDelegate("activity_pause")) return key_set.remoteMe.runUserSub(false, "key_set","activity_pause", _userclosed);
 Debug.locals.put("UserClosed", _userclosed);
  BA.debugLineNum = 87;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
@@ -208,7 +208,7 @@ finally {
 		}}
 public static RemoteObject  _activity_resume() throws Exception{
 try {
-		Debug.PushSubsStack("Activity_Resume (key_set) ","key_set",6,key_set.mostCurrent.activityBA,key_set.mostCurrent,82);
+		Debug.PushSubsStack("Activity_Resume (key_set) ","key_set",5,key_set.mostCurrent.activityBA,key_set.mostCurrent,82);
 if (RapidSub.canDelegate("activity_resume")) return key_set.remoteMe.runUserSub(false, "key_set","activity_resume");
  BA.debugLineNum = 82;BA.debugLine="Sub Activity_Resume";
 Debug.ShouldStop(131072);
@@ -225,7 +225,7 @@ finally {
 		}}
 public static RemoteObject  _finish_him() throws Exception{
 try {
-		Debug.PushSubsStack("finish_him (key_set) ","key_set",6,key_set.mostCurrent.activityBA,key_set.mostCurrent,180);
+		Debug.PushSubsStack("finish_him (key_set) ","key_set",5,key_set.mostCurrent.activityBA,key_set.mostCurrent,180);
 if (RapidSub.canDelegate("finish_him")) return key_set.remoteMe.runUserSub(false, "key_set","finish_him");
  BA.debugLineNum = 180;BA.debugLine="Sub finish_him()";
 Debug.ShouldStop(524288);
@@ -257,7 +257,7 @@ finally {
 		}}
 public static RemoteObject  _get_key_data() throws Exception{
 try {
-		Debug.PushSubsStack("get_key_data (key_set) ","key_set",6,key_set.mostCurrent.activityBA,key_set.mostCurrent,91);
+		Debug.PushSubsStack("get_key_data (key_set) ","key_set",5,key_set.mostCurrent.activityBA,key_set.mostCurrent,91);
 if (RapidSub.canDelegate("get_key_data")) return key_set.remoteMe.runUserSub(false, "key_set","get_key_data");
 int _a = 0;
  BA.debugLineNum = 91;BA.debugLine="Sub get_key_data() 'заповнення полів налаштування";
@@ -340,7 +340,7 @@ return RemoteObject.createImmutable("");
 }
 public static RemoteObject  _proces_error(RemoteObject _msg) throws Exception{
 try {
-		Debug.PushSubsStack("proces_error (key_set) ","key_set",6,key_set.mostCurrent.activityBA,key_set.mostCurrent,189);
+		Debug.PushSubsStack("proces_error (key_set) ","key_set",5,key_set.mostCurrent.activityBA,key_set.mostCurrent,189);
 if (RapidSub.canDelegate("proces_error")) return key_set.remoteMe.runUserSub(false, "key_set","proces_error", _msg);
 Debug.locals.put("msg", _msg);
  BA.debugLineNum = 189;BA.debugLine="Sub proces_error(msg As String)";
@@ -368,7 +368,7 @@ return RemoteObject.createImmutable("");
 }
 public static RemoteObject  _save_ks_but_click() throws Exception{
 try {
-		Debug.PushSubsStack("save_ks_but_Click (key_set) ","key_set",6,key_set.mostCurrent.activityBA,key_set.mostCurrent,106);
+		Debug.PushSubsStack("save_ks_but_Click (key_set) ","key_set",5,key_set.mostCurrent.activityBA,key_set.mostCurrent,106);
 if (RapidSub.canDelegate("save_ks_but_click")) return key_set.remoteMe.runUserSub(false, "key_set","save_ks_but_click");
  BA.debugLineNum = 106;BA.debugLine="Sub save_ks_but_Click";
 Debug.ShouldStop(512);
@@ -406,7 +406,7 @@ finally {
 		}}
 public static RemoteObject  _set_key(RemoteObject _ind) throws Exception{
 try {
-		Debug.PushSubsStack("set_key (key_set) ","key_set",6,key_set.mostCurrent.activityBA,key_set.mostCurrent,131);
+		Debug.PushSubsStack("set_key (key_set) ","key_set",5,key_set.mostCurrent.activityBA,key_set.mostCurrent,131);
 if (RapidSub.canDelegate("set_key")) return key_set.remoteMe.runUserSub(false, "key_set","set_key", _ind);
 RemoteObject _data = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.Map");
 Debug.locals.put("ind", _ind);
@@ -452,7 +452,7 @@ finally {
 		}}
 public static RemoteObject  _set_key_info() throws Exception{
 try {
-		Debug.PushSubsStack("set_key_info (key_set) ","key_set",6,key_set.mostCurrent.activityBA,key_set.mostCurrent,143);
+		Debug.PushSubsStack("set_key_info (key_set) ","key_set",5,key_set.mostCurrent.activityBA,key_set.mostCurrent,143);
 if (RapidSub.canDelegate("set_key_info")) return key_set.remoteMe.runUserSub(false, "key_set","set_key_info");
 RemoteObject _data = RemoteObject.declareNull("anywheresoftware.b4a.objects.collections.Map");
  BA.debugLineNum = 143;BA.debugLine="Sub set_key_info()";
@@ -500,7 +500,7 @@ finally {
 		}}
 public static RemoteObject  _set_key_set(RemoteObject _mapar) throws Exception{
 try {
-		Debug.PushSubsStack("set_key_set (key_set) ","key_set",6,key_set.mostCurrent.activityBA,key_set.mostCurrent,160);
+		Debug.PushSubsStack("set_key_set (key_set) ","key_set",5,key_set.mostCurrent.activityBA,key_set.mostCurrent,160);
 if (RapidSub.canDelegate("set_key_set")) return key_set.remoteMe.runUserSub(false, "key_set","set_key_set", _mapar);
 Debug.locals.put("mapar", _mapar);
  BA.debugLineNum = 160;BA.debugLine="Sub set_key_set (mapar As Map)";
@@ -533,7 +533,7 @@ finally {
 		}}
 public static RemoteObject  _set_keyinfo_set(RemoteObject _mapar) throws Exception{
 try {
-		Debug.PushSubsStack("set_keyinfo_set (key_set) ","key_set",6,key_set.mostCurrent.activityBA,key_set.mostCurrent,169);
+		Debug.PushSubsStack("set_keyinfo_set (key_set) ","key_set",5,key_set.mostCurrent.activityBA,key_set.mostCurrent,169);
 if (RapidSub.canDelegate("set_keyinfo_set")) return key_set.remoteMe.runUserSub(false, "key_set","set_keyinfo_set", _mapar);
 Debug.locals.put("mapar", _mapar);
  BA.debugLineNum = 169;BA.debugLine="Sub set_keyinfo_set (mapar As Map)";
@@ -572,7 +572,7 @@ finally {
 		}}
 public static RemoteObject  _setbut_tmr_tick() throws Exception{
 try {
-		Debug.PushSubsStack("setbut_tmr_Tick (key_set) ","key_set",6,key_set.mostCurrent.activityBA,key_set.mostCurrent,117);
+		Debug.PushSubsStack("setbut_tmr_Tick (key_set) ","key_set",5,key_set.mostCurrent.activityBA,key_set.mostCurrent,117);
 if (RapidSub.canDelegate("setbut_tmr_tick")) return key_set.remoteMe.runUserSub(false, "key_set","setbut_tmr_tick");
  BA.debugLineNum = 117;BA.debugLine="Sub setbut_tmr_Tick()";
 Debug.ShouldStop(1048576);

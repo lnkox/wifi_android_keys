@@ -4,7 +4,7 @@ ModulesStructureVersion=1
 B4A=true
 @EndOfDesignText@
 Sub Process_Globals
-
+Public bc As ByteConverter
 
 End Sub
 
@@ -19,6 +19,15 @@ End Sub
 
 Sub toint(dig As String) As Int
 	Dim i As Int
+	If IsNumber(dig) Then 
+	    i = dig
+	Else
+	    i = 0  
+	End If
+	Return i
+End Sub
+Sub tolong(dig As String) As Int
+	Dim i As Long
 	If IsNumber(dig) Then 
 	    i = dig
 	Else
