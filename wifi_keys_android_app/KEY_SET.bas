@@ -122,7 +122,7 @@ End Sub
 Sub setbut_tmr_Tick()
 Try
 	key_n=key_n+1
-	If key_n>=32 Then 
+	If key_n>=31 Then 
 		set_key_info
 		setbut_tmr.Enabled =False
 		Return

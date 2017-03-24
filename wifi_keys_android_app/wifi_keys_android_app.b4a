@@ -19,13 +19,14 @@ File4=sel_dev_lay.bal
 File5=set_lay.bal
 File6=sta_set.bal
 File7=STA_SET.bas
-NumberOfLibraries=6
+NumberOfLibraries=7
 Library1=core
 Library2=randomaccessfile
 Library3=json
 Library4=reflection
 Library5=network
 Library6=byteconverter
+Library7=abwifi
 @EndOfDesignText@
 #Region  Project Attributes 
 	#ApplicationLabel: WIFIKEYS
@@ -40,11 +41,13 @@ Library6=byteconverter
 
 Sub Process_Globals
 	Dim conect_tmout As Int
-
+	
 	Public  send_state_timer As Timer
 End Sub
 Sub Globals
-
+	dim antidouble as Boolean
+	Dim wifi As ABWifi
+	Dim wifisignal As Int
 	Dim butt(33) As Button
 	Dim status_lab As Label
 	Dim butlock(33) As Boolean
@@ -82,6 +85,7 @@ Try
 	status_lab.TextColor=Colors.Red
 	status_lab.Text = "No connected"	
    	Activity.AddView(status_lab, 0dip, Activity.Height-20dip, Activity.Width,20dip) 
+	wifi.Initialize("wifi")	
 	For i = 1 To 32
         Dim tbuts As Button
 		tbuts.Initialize("tbuts")
@@ -90,6 +94,7 @@ Try
 		butt(i)=tbuts
 	Next
 		add_key_to_panel
+	
 	send_state_timer.Initialize("send_state_timer", 1000)
 	send_state_timer.Enabled =True
 Catch
@@ -99,10 +104,13 @@ End Sub
 
 Sub Activity_Resume
 	add_key_to_panel
+	wifi.StartWifi
+	wifi.GetNewReadingWifi
 End Sub
 
 Sub Activity_Pause (UserClosed As Boolean)
 Try
+		wifi.StopWifi
 	StateManager.SaveSettings
 Catch
   proces_error(LastException.Message)
@@ -159,6 +167,11 @@ Catch
 End Try
 End Sub
 
+Sub wifi_FoundReadings(readings As List)
+		Dim reading As ABWifiReading = readings.Get(0)
+		wifisignal=reading.Level
+End Sub
+
  Sub get_rssi() 'Відправка запиту на отримання рівня сигналу WI-FI
  Try
 	Dim Data As Map
@@ -172,7 +185,6 @@ End Sub
 
 Sub set_ris(rstate As Map)
 Try
-	Dim sta As Boolean
 	Dim tmplong As Long
 	tmplong =CM.tolong(rstate.Get("st"))
 	For a=1 To 30
@@ -186,7 +198,12 @@ Try
 	Next
 	
 	status_lab.TextColor=Colors.Green
-	status_lab.Text = " RSSI: " & rstate.Get("rssi") & "dbm   Connected"	
+	If CM.toint (rstate.Get("rssi"))<0 Then
+		 status_lab.Text = " RSSI: " & rstate.Get("rssi") & "dbm   Connected" 
+		 Else
+		 	wifi.GetNewReadingWifi
+		 	status_lab.Text = " myRSSI: " & wifisignal & "dbm   Connected" 	
+	End If
 	conect_tmout=3
 	
 Catch
@@ -234,6 +251,8 @@ End Sub
 
 Sub tbuts_down()
 Try	
+	If antidouble=True Then Return
+	antidouble=True
     Dim p As Button
 	Dim tmind As Int
     p = Sender
@@ -259,6 +278,7 @@ End Sub
 
 Sub tbuts_click()
 Try
+	antidouble=False
     Dim p As Button
 	Dim tmind As Int
     p = Sender
