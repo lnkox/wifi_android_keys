@@ -19,7 +19,7 @@ File4=sel_dev_lay.bal
 File5=set_lay.bal
 File6=sta_set.bal
 File7=STA_SET.bas
-NumberOfLibraries=7
+NumberOfLibraries=8
 Library1=core
 Library2=randomaccessfile
 Library3=json
@@ -27,6 +27,7 @@ Library4=reflection
 Library5=network
 Library6=byteconverter
 Library7=abwifi
+Library8=mqtt
 @EndOfDesignText@
 #Region  Project Attributes 
 	#ApplicationLabel: WIFIKEYS

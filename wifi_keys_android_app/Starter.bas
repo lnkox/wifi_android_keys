@@ -12,6 +12,7 @@ Sub Process_Globals
 	'These global variables will be declared once when the application starts.
 	'These variables can be accessed from all modules.
 		Dim UDPSocket As UDPSocket
+		Dim objMqtt As MQTT
 End Sub
 
 Sub Service_Create
@@ -35,6 +36,7 @@ End Sub
 '/////////////////////////////////////////////////////////////////////////////////////////////////////
 'Мережа
 '/////////////////////////////////////////////////////////////////////////////////////////////////////
+
 Sub udp_init() 
 Try
 	UDPSocket.Initialize("UDP", 1407,255)
