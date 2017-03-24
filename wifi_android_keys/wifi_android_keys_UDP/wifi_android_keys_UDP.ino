@@ -414,7 +414,6 @@ void callback(char* topic, byte* payload, unsigned int lengt)
   Serial.println();
   memcpy(incomingPacket, payload, lengt);
   proces_json (incomingPacket);
-
 }
 void send_udp(char *data)
 {
