@@ -32,7 +32,7 @@ public class sel_dev extends Activity implements B4AActivity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		if (isFirst) {
-			processBA = new anywheresoftware.b4a.ShellBA(this.getApplicationContext(), null, null, "lnk.wifi_keys", "lnk.wifi_keys.sel_dev");
+			processBA = new BA(this.getApplicationContext(), null, null, "lnk.wifi_keys", "lnk.wifi_keys.sel_dev");
 			processBA.loadHtSubs(this.getClass());
 	        float deviceScale = getApplicationContext().getResources().getDisplayMetrics().density;
 	        BALayout.setDeviceScale(deviceScale);
@@ -308,15 +308,6 @@ public class sel_dev extends Activity implements B4AActivity{
 		processBA.raiseEvent2(null, true, "globals", false, (Object[])null);
 	}
 
-
-
-public static void initializeProcessGlobals() {
-             try {
-                Class.forName(BA.applicationContext.getPackageName() + ".main").getMethod("initializeProcessGlobals").invoke(null, null);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-}
 public anywheresoftware.b4a.keywords.Common __c = null;
 public static anywheresoftware.b4a.objects.Timer _mgetbut_tmr = null;
 public anywheresoftware.b4a.objects.ListViewWrapper _dev_list = null;
@@ -329,314 +320,221 @@ public lnk.wifi_keys.key_set _key_set = null;
 public lnk.wifi_keys.cm _cm = null;
 public lnk.wifi_keys.inet_set _inet_set = null;
 public lnk.wifi_keys.sta_set _sta_set = null;
-public static String  _activity_create(boolean _firsttime) throws Exception{
-RDebugUtils.currentModule="sel_dev";
-if (Debug.shouldDelegate("activity_create"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime});
-RDebugUtils.currentLine=3997696;
- //BA.debugLineNum = 3997696;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
-RDebugUtils.currentLine=3997697;
- //BA.debugLineNum = 3997697;BA.debugLine="Activity.LoadLayout(\"sel_dev_lay\")";
-mostCurrent._activity.LoadLayout("sel_dev_lay",mostCurrent.activityBA);
-RDebugUtils.currentLine=3997698;
- //BA.debugLineNum = 3997698;BA.debugLine="get_name";
-_get_name();
-RDebugUtils.currentLine=3997699;
- //BA.debugLineNum = 3997699;BA.debugLine="End Sub";
-return "";
+
+public static void initializeProcessGlobals() {
+             try {
+                Class.forName(BA.applicationContext.getPackageName() + ".main").getMethod("initializeProcessGlobals").invoke(null, null);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
 }
-public static String  _get_name() throws Exception{
-RDebugUtils.currentModule="sel_dev";
-if (Debug.shouldDelegate("get_name"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "get_name", null);
-anywheresoftware.b4a.objects.collections.Map _data = null;
-RDebugUtils.currentLine=4259840;
- //BA.debugLineNum = 4259840;BA.debugLine="Sub get_name()";
-RDebugUtils.currentLine=4259841;
- //BA.debugLineNum = 4259841;BA.debugLine="Try";
-try {RDebugUtils.currentLine=4259842;
- //BA.debugLineNum = 4259842;BA.debugLine="Dim Data As Map";
-_data = new anywheresoftware.b4a.objects.collections.Map();
-RDebugUtils.currentLine=4259843;
- //BA.debugLineNum = 4259843;BA.debugLine="Data.Initialize";
-_data.Initialize();
-RDebugUtils.currentLine=4259844;
- //BA.debugLineNum = 4259844;BA.debugLine="Data.Put (\"getname\",1)";
-_data.Put((Object)("getname"),(Object)(1));
-RDebugUtils.currentLine=4259845;
- //BA.debugLineNum = 4259845;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
-anywheresoftware.b4a.keywords.Common.CallSubDelayed2(mostCurrent.activityBA,(Object)(mostCurrent._starter.getObject()),"send_to_dev",(Object)(_data));
- } 
-       catch (Exception e30) {
-			processBA.setLastException(e30);RDebugUtils.currentLine=4259847;
- //BA.debugLineNum = 4259847;BA.debugLine="proces_error(LastException.Message)";
-_proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
- };
-RDebugUtils.currentLine=4259849;
- //BA.debugLineNum = 4259849;BA.debugLine="End Sub";
+public static String  _activity_create(boolean _firsttime) throws Exception{
+ //BA.debugLineNum = 15;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+ //BA.debugLineNum = 16;BA.debugLine="Activity.LoadLayout(\"sel_dev_lay\")";
+mostCurrent._activity.LoadLayout("sel_dev_lay",mostCurrent.activityBA);
+ //BA.debugLineNum = 17;BA.debugLine="get_name";
+_get_name();
+ //BA.debugLineNum = 18;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
-RDebugUtils.currentModule="sel_dev";
-if (Debug.shouldDelegate("activity_pause"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "activity_pause", new Object[] {_userclosed});
-RDebugUtils.currentLine=4128768;
- //BA.debugLineNum = 4128768;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
-RDebugUtils.currentLine=4128770;
- //BA.debugLineNum = 4128770;BA.debugLine="End Sub";
+ //BA.debugLineNum = 24;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 26;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
-RDebugUtils.currentModule="sel_dev";
-if (Debug.shouldDelegate("activity_resume"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null);
-RDebugUtils.currentLine=4063232;
- //BA.debugLineNum = 4063232;BA.debugLine="Sub Activity_Resume";
-RDebugUtils.currentLine=4063234;
- //BA.debugLineNum = 4063234;BA.debugLine="End Sub";
+ //BA.debugLineNum = 20;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 22;BA.debugLine="End Sub";
 return "";
 }
 public static String  _add_dev_tolist(String _dev_name,String _dev_ip) throws Exception{
-RDebugUtils.currentModule="sel_dev";
-if (Debug.shouldDelegate("add_dev_tolist"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "add_dev_tolist", new Object[] {_dev_name,_dev_ip});
-RDebugUtils.currentLine=4325376;
- //BA.debugLineNum = 4325376;BA.debugLine="Sub add_dev_tolist(dev_name As String,dev_ip As St";
-RDebugUtils.currentLine=4325377;
- //BA.debugLineNum = 4325377;BA.debugLine="dev_list.AddTwoLines(dev_name,dev_ip)";
+ //BA.debugLineNum = 48;BA.debugLine="Sub add_dev_tolist(dev_name As String,dev_ip As St";
+ //BA.debugLineNum = 49;BA.debugLine="dev_list.AddTwoLines(dev_name,dev_ip)";
 mostCurrent._dev_list.AddTwoLines(_dev_name,_dev_ip);
-RDebugUtils.currentLine=4325378;
- //BA.debugLineNum = 4325378;BA.debugLine="End Sub";
+ //BA.debugLineNum = 50;BA.debugLine="End Sub";
 return "";
 }
 public static String  _clear_field() throws Exception{
-RDebugUtils.currentModule="sel_dev";
-if (Debug.shouldDelegate("clear_field"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "clear_field", null);
 int _i = 0;
-RDebugUtils.currentLine=4653056;
- //BA.debugLineNum = 4653056;BA.debugLine="Sub clear_field()";
-RDebugUtils.currentLine=4653057;
- //BA.debugLineNum = 4653057;BA.debugLine="Try";
-try {RDebugUtils.currentLine=4653058;
- //BA.debugLineNum = 4653058;BA.debugLine="For i = 1 To 30";
+ //BA.debugLineNum = 98;BA.debugLine="Sub clear_field()";
+ //BA.debugLineNum = 99;BA.debugLine="Try";
+try { //BA.debugLineNum = 100;BA.debugLine="For i = 1 To 30";
 {
 final int step2 = 1;
 final int limit2 = (int) (30);
 for (_i = (int) (1) ; (step2 > 0 && _i <= limit2) || (step2 < 0 && _i >= limit2); _i = ((int)(0 + _i + step2)) ) {
-RDebugUtils.currentLine=4653059;
- //BA.debugLineNum = 4653059;BA.debugLine="StateManager.SetSetting(\"keytext\" & i,\"\")";
+ //BA.debugLineNum = 101;BA.debugLine="StateManager.SetSetting(\"keytext\" & i,\"\")";
 mostCurrent._statemanager._setsetting(mostCurrent.activityBA,"keytext"+BA.NumberToString(_i),"");
-RDebugUtils.currentLine=4653060;
- //BA.debugLineNum = 4653060;BA.debugLine="StateManager.SetSetting(\"keytag\" & i,\"\" )";
+ //BA.debugLineNum = 102;BA.debugLine="StateManager.SetSetting(\"keytag\" & i,\"\" )";
 mostCurrent._statemanager._setsetting(mostCurrent.activityBA,"keytag"+BA.NumberToString(_i),"");
-RDebugUtils.currentLine=4653061;
- //BA.debugLineNum = 4653061;BA.debugLine="StateManager.SetSetting(\"keylock\" & i, False)";
+ //BA.debugLineNum = 103;BA.debugLine="StateManager.SetSetting(\"keylock\" & i, False)";
 mostCurrent._statemanager._setsetting(mostCurrent.activityBA,"keylock"+BA.NumberToString(_i),BA.ObjectToString(anywheresoftware.b4a.keywords.Common.False));
  }
 };
-RDebugUtils.currentLine=4653063;
- //BA.debugLineNum = 4653063;BA.debugLine="StateManager.SetSetting(\"font_size\", \"\")";
+ //BA.debugLineNum = 105;BA.debugLine="StateManager.SetSetting(\"font_size\", \"\")";
 mostCurrent._statemanager._setsetting(mostCurrent.activityBA,"font_size","");
-RDebugUtils.currentLine=4653064;
- //BA.debugLineNum = 4653064;BA.debugLine="StateManager.SetSetting(\"h_size\", \"\")";
+ //BA.debugLineNum = 106;BA.debugLine="StateManager.SetSetting(\"h_size\", \"\")";
 mostCurrent._statemanager._setsetting(mostCurrent.activityBA,"h_size","");
-RDebugUtils.currentLine=4653065;
- //BA.debugLineNum = 4653065;BA.debugLine="StateManager.SetSetting(\"v_size\", \"\")";
+ //BA.debugLineNum = 107;BA.debugLine="StateManager.SetSetting(\"v_size\", \"\")";
 mostCurrent._statemanager._setsetting(mostCurrent.activityBA,"v_size","");
-RDebugUtils.currentLine=4653066;
- //BA.debugLineNum = 4653066;BA.debugLine="StateManager.SaveSettings";
+ //BA.debugLineNum = 108;BA.debugLine="StateManager.SaveSettings";
 mostCurrent._statemanager._savesettings(mostCurrent.activityBA);
  } 
        catch (Exception e90) {
-			processBA.setLastException(e90);RDebugUtils.currentLine=4653068;
- //BA.debugLineNum = 4653068;BA.debugLine="proces_error(LastException.Message)";
+			processBA.setLastException(e90); //BA.debugLineNum = 110;BA.debugLine="proces_error(LastException.Message)";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
  };
-RDebugUtils.currentLine=4653070;
- //BA.debugLineNum = 4653070;BA.debugLine="End Sub";
-return "";
-}
-public static String  _proces_error(String _msg) throws Exception{
-RDebugUtils.currentModule="sel_dev";
-if (Debug.shouldDelegate("proces_error"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "proces_error", new Object[] {_msg});
-RDebugUtils.currentLine=4784128;
- //BA.debugLineNum = 4784128;BA.debugLine="Sub proces_error(msg As String)";
-RDebugUtils.currentLine=4784129;
- //BA.debugLineNum = 4784129;BA.debugLine="Msgbox(msg,\"error\")";
-anywheresoftware.b4a.keywords.Common.Msgbox(_msg,"error",mostCurrent.activityBA);
-RDebugUtils.currentLine=4784130;
- //BA.debugLineNum = 4784130;BA.debugLine="End Sub";
+ //BA.debugLineNum = 112;BA.debugLine="End Sub";
 return "";
 }
 public static String  _dev_list_itemclick(int _position,Object _value) throws Exception{
-RDebugUtils.currentModule="sel_dev";
-if (Debug.shouldDelegate("dev_list_itemclick"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "dev_list_itemclick", new Object[] {_position,_value});
-RDebugUtils.currentLine=4194304;
- //BA.debugLineNum = 4194304;BA.debugLine="Sub dev_list_ItemClick (Position As Int, Value As";
-RDebugUtils.currentLine=4194305;
- //BA.debugLineNum = 4194305;BA.debugLine="Try";
-try {RDebugUtils.currentLine=4194306;
- //BA.debugLineNum = 4194306;BA.debugLine="StateManager.SetSetting(\"cur_dev_name\",dev_list.G";
+ //BA.debugLineNum = 28;BA.debugLine="Sub dev_list_ItemClick (Position As Int, Value As";
+ //BA.debugLineNum = 29;BA.debugLine="Try";
+try { //BA.debugLineNum = 30;BA.debugLine="StateManager.SetSetting(\"cur_dev_name\",dev_list.G";
 mostCurrent._statemanager._setsetting(mostCurrent.activityBA,"cur_dev_name",BA.ObjectToString(mostCurrent._dev_list.GetItem(_position)));
-RDebugUtils.currentLine=4194307;
- //BA.debugLineNum = 4194307;BA.debugLine="load_keys";
+ //BA.debugLineNum = 31;BA.debugLine="load_keys";
 _load_keys();
  } 
        catch (Exception e20) {
-			processBA.setLastException(e20);RDebugUtils.currentLine=4194309;
- //BA.debugLineNum = 4194309;BA.debugLine="proces_error(LastException.Message)";
+			processBA.setLastException(e20); //BA.debugLineNum = 33;BA.debugLine="proces_error(LastException.Message)";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
  };
-RDebugUtils.currentLine=4194311;
- //BA.debugLineNum = 4194311;BA.debugLine="End Sub";
-return "";
-}
-public static String  _load_keys() throws Exception{
-RDebugUtils.currentModule="sel_dev";
-if (Debug.shouldDelegate("load_keys"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "load_keys", null);
-RDebugUtils.currentLine=4390912;
- //BA.debugLineNum = 4390912;BA.debugLine="Sub load_keys()";
-RDebugUtils.currentLine=4390913;
- //BA.debugLineNum = 4390913;BA.debugLine="Try";
-try {RDebugUtils.currentLine=4390914;
- //BA.debugLineNum = 4390914;BA.debugLine="ToastMessageShow(\"Loading data...\",True)";
-anywheresoftware.b4a.keywords.Common.ToastMessageShow("Loading data...",anywheresoftware.b4a.keywords.Common.True);
-RDebugUtils.currentLine=4390915;
- //BA.debugLineNum = 4390915;BA.debugLine="clear_field";
-_clear_field();
-RDebugUtils.currentLine=4390916;
- //BA.debugLineNum = 4390916;BA.debugLine="get_key_info";
-_get_key_info();
-RDebugUtils.currentLine=4390917;
- //BA.debugLineNum = 4390917;BA.debugLine="key_n=0";
-_key_n = (int) (0);
-RDebugUtils.currentLine=4390918;
- //BA.debugLineNum = 4390918;BA.debugLine="mgetbut_tmr.Initialize(\"mgetbut_tmr\", 210)";
-_mgetbut_tmr.Initialize(processBA,"mgetbut_tmr",(long) (210));
-RDebugUtils.currentLine=4390919;
- //BA.debugLineNum = 4390919;BA.debugLine="mgetbut_tmr.Enabled =True";
-_mgetbut_tmr.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- } 
-       catch (Exception e45) {
-			processBA.setLastException(e45);RDebugUtils.currentLine=4390921;
- //BA.debugLineNum = 4390921;BA.debugLine="proces_error(LastException.Message)";
-_proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
- };
-RDebugUtils.currentLine=4390923;
- //BA.debugLineNum = 4390923;BA.debugLine="End Sub";
+ //BA.debugLineNum = 35;BA.debugLine="End Sub";
 return "";
 }
 public static String  _finish_him() throws Exception{
-RDebugUtils.currentModule="sel_dev";
-if (Debug.shouldDelegate("finish_him"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "finish_him", null);
-RDebugUtils.currentLine=4718592;
- //BA.debugLineNum = 4718592;BA.debugLine="Sub finish_him()";
-RDebugUtils.currentLine=4718593;
- //BA.debugLineNum = 4718593;BA.debugLine="CallSubDelayed(Main,\"add_key_to_panel\")";
+ //BA.debugLineNum = 114;BA.debugLine="Sub finish_him()";
+ //BA.debugLineNum = 115;BA.debugLine="CallSubDelayed(Main,\"add_key_to_panel\")";
 anywheresoftware.b4a.keywords.Common.CallSubDelayed(mostCurrent.activityBA,(Object)(mostCurrent._main.getObject()),"add_key_to_panel");
-RDebugUtils.currentLine=4718594;
- //BA.debugLineNum = 4718594;BA.debugLine="Activity.Finish";
+ //BA.debugLineNum = 116;BA.debugLine="Activity.Finish";
 mostCurrent._activity.Finish();
-RDebugUtils.currentLine=4718596;
- //BA.debugLineNum = 4718596;BA.debugLine="End Sub";
+ //BA.debugLineNum = 118;BA.debugLine="End Sub";
 return "";
 }
 public static String  _get_key(int _ind) throws Exception{
-RDebugUtils.currentModule="sel_dev";
-if (Debug.shouldDelegate("get_key"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "get_key", new Object[] {_ind});
 anywheresoftware.b4a.objects.collections.Map _data = null;
-RDebugUtils.currentLine=4521984;
- //BA.debugLineNum = 4521984;BA.debugLine="Sub get_key(ind As Int)";
-RDebugUtils.currentLine=4521985;
- //BA.debugLineNum = 4521985;BA.debugLine="Try";
-try {RDebugUtils.currentLine=4521986;
- //BA.debugLineNum = 4521986;BA.debugLine="Dim Data As Map";
+ //BA.debugLineNum = 75;BA.debugLine="Sub get_key(ind As Int)";
+ //BA.debugLineNum = 76;BA.debugLine="Try";
+try { //BA.debugLineNum = 77;BA.debugLine="Dim Data As Map";
 _data = new anywheresoftware.b4a.objects.collections.Map();
-RDebugUtils.currentLine=4521987;
- //BA.debugLineNum = 4521987;BA.debugLine="Data.Initialize";
+ //BA.debugLineNum = 78;BA.debugLine="Data.Initialize";
 _data.Initialize();
-RDebugUtils.currentLine=4521988;
- //BA.debugLineNum = 4521988;BA.debugLine="Data.Put (\"getkey\",ind)";
+ //BA.debugLineNum = 79;BA.debugLine="Data.Put (\"getkey\",ind)";
 _data.Put((Object)("getkey"),(Object)(_ind));
-RDebugUtils.currentLine=4521989;
- //BA.debugLineNum = 4521989;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
+ //BA.debugLineNum = 80;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
 anywheresoftware.b4a.keywords.Common.CallSubDelayed2(mostCurrent.activityBA,(Object)(mostCurrent._starter.getObject()),"send_to_dev",(Object)(_data));
  } 
        catch (Exception e64) {
-			processBA.setLastException(e64);RDebugUtils.currentLine=4521991;
- //BA.debugLineNum = 4521991;BA.debugLine="proces_error(LastException.Message)";
+			processBA.setLastException(e64); //BA.debugLineNum = 82;BA.debugLine="proces_error(LastException.Message)";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
  };
-RDebugUtils.currentLine=4521993;
- //BA.debugLineNum = 4521993;BA.debugLine="End Sub";
+ //BA.debugLineNum = 84;BA.debugLine="End Sub";
 return "";
 }
 public static String  _get_key_info() throws Exception{
-RDebugUtils.currentModule="sel_dev";
-if (Debug.shouldDelegate("get_key_info"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "get_key_info", null);
 anywheresoftware.b4a.objects.collections.Map _data = null;
-RDebugUtils.currentLine=4587520;
- //BA.debugLineNum = 4587520;BA.debugLine="Sub get_key_info()";
-RDebugUtils.currentLine=4587521;
- //BA.debugLineNum = 4587521;BA.debugLine="Try";
-try {RDebugUtils.currentLine=4587522;
- //BA.debugLineNum = 4587522;BA.debugLine="Dim Data As Map";
+ //BA.debugLineNum = 86;BA.debugLine="Sub get_key_info()";
+ //BA.debugLineNum = 87;BA.debugLine="Try";
+try { //BA.debugLineNum = 88;BA.debugLine="Dim Data As Map";
 _data = new anywheresoftware.b4a.objects.collections.Map();
-RDebugUtils.currentLine=4587523;
- //BA.debugLineNum = 4587523;BA.debugLine="Data.Initialize";
+ //BA.debugLineNum = 89;BA.debugLine="Data.Initialize";
 _data.Initialize();
-RDebugUtils.currentLine=4587524;
- //BA.debugLineNum = 4587524;BA.debugLine="Data.Put (\"dev_name\",StateManager.GetSetting2(\"cu";
+ //BA.debugLineNum = 90;BA.debugLine="Data.Put (\"dev_name\",StateManager.GetSetting2(\"cu";
 _data.Put((Object)("dev_name"),(Object)(mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"cur_dev_name","none")));
-RDebugUtils.currentLine=4587525;
- //BA.debugLineNum = 4587525;BA.debugLine="Data.Put (\"getkey_info\",1)";
+ //BA.debugLineNum = 91;BA.debugLine="Data.Put (\"getkey_info\",1)";
 _data.Put((Object)("getkey_info"),(Object)(1));
-RDebugUtils.currentLine=4587526;
- //BA.debugLineNum = 4587526;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
+ //BA.debugLineNum = 92;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
 anywheresoftware.b4a.keywords.Common.CallSubDelayed2(mostCurrent.activityBA,(Object)(mostCurrent._starter.getObject()),"send_to_dev",(Object)(_data));
  } 
        catch (Exception e75) {
-			processBA.setLastException(e75);RDebugUtils.currentLine=4587528;
- //BA.debugLineNum = 4587528;BA.debugLine="proces_error(LastException.Message)";
+			processBA.setLastException(e75); //BA.debugLineNum = 94;BA.debugLine="proces_error(LastException.Message)";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
  };
-RDebugUtils.currentLine=4587530;
- //BA.debugLineNum = 4587530;BA.debugLine="End Sub";
+ //BA.debugLineNum = 96;BA.debugLine="End Sub";
+return "";
+}
+public static String  _get_name() throws Exception{
+anywheresoftware.b4a.objects.collections.Map _data = null;
+ //BA.debugLineNum = 37;BA.debugLine="Sub get_name()";
+ //BA.debugLineNum = 38;BA.debugLine="Try";
+try { //BA.debugLineNum = 39;BA.debugLine="Dim Data As Map";
+_data = new anywheresoftware.b4a.objects.collections.Map();
+ //BA.debugLineNum = 40;BA.debugLine="Data.Initialize";
+_data.Initialize();
+ //BA.debugLineNum = 41;BA.debugLine="Data.Put (\"getname\",1)";
+_data.Put((Object)("getname"),(Object)(1));
+ //BA.debugLineNum = 42;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
+anywheresoftware.b4a.keywords.Common.CallSubDelayed2(mostCurrent.activityBA,(Object)(mostCurrent._starter.getObject()),"send_to_dev",(Object)(_data));
+ } 
+       catch (Exception e30) {
+			processBA.setLastException(e30); //BA.debugLineNum = 44;BA.debugLine="proces_error(LastException.Message)";
+_proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
+ };
+ //BA.debugLineNum = 46;BA.debugLine="End Sub";
+return "";
+}
+public static String  _globals() throws Exception{
+ //BA.debugLineNum = 10;BA.debugLine="Sub Globals";
+ //BA.debugLineNum = 11;BA.debugLine="Public dev_list As ListView";
+mostCurrent._dev_list = new anywheresoftware.b4a.objects.ListViewWrapper();
+ //BA.debugLineNum = 12;BA.debugLine="Dim key_n As Int =0";
+_key_n = (int) (0);
+ //BA.debugLineNum = 13;BA.debugLine="End Sub";
+return "";
+}
+public static String  _load_keys() throws Exception{
+ //BA.debugLineNum = 53;BA.debugLine="Sub load_keys()";
+ //BA.debugLineNum = 54;BA.debugLine="Try";
+try { //BA.debugLineNum = 55;BA.debugLine="ToastMessageShow(\"Loading data...\",True)";
+anywheresoftware.b4a.keywords.Common.ToastMessageShow("Loading data...",anywheresoftware.b4a.keywords.Common.True);
+ //BA.debugLineNum = 56;BA.debugLine="clear_field";
+_clear_field();
+ //BA.debugLineNum = 57;BA.debugLine="get_key_info";
+_get_key_info();
+ //BA.debugLineNum = 58;BA.debugLine="key_n=0";
+_key_n = (int) (0);
+ //BA.debugLineNum = 59;BA.debugLine="mgetbut_tmr.Initialize(\"mgetbut_tmr\", 210)";
+_mgetbut_tmr.Initialize(processBA,"mgetbut_tmr",(long) (210));
+ //BA.debugLineNum = 60;BA.debugLine="mgetbut_tmr.Enabled =True";
+_mgetbut_tmr.setEnabled(anywheresoftware.b4a.keywords.Common.True);
+ } 
+       catch (Exception e45) {
+			processBA.setLastException(e45); //BA.debugLineNum = 62;BA.debugLine="proces_error(LastException.Message)";
+_proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
+ };
+ //BA.debugLineNum = 64;BA.debugLine="End Sub";
 return "";
 }
 public static String  _mgetbut_tmr_tick() throws Exception{
-RDebugUtils.currentModule="sel_dev";
-if (Debug.shouldDelegate("mgetbut_tmr_tick"))
-	return (String) Debug.delegate(mostCurrent.activityBA, "mgetbut_tmr_tick", null);
-RDebugUtils.currentLine=4456448;
- //BA.debugLineNum = 4456448;BA.debugLine="Sub mgetbut_tmr_Tick()";
-RDebugUtils.currentLine=4456449;
- //BA.debugLineNum = 4456449;BA.debugLine="Try";
-try {RDebugUtils.currentLine=4456450;
- //BA.debugLineNum = 4456450;BA.debugLine="key_n=key_n+1";
+ //BA.debugLineNum = 65;BA.debugLine="Sub mgetbut_tmr_Tick()";
+ //BA.debugLineNum = 66;BA.debugLine="Try";
+try { //BA.debugLineNum = 67;BA.debugLine="key_n=key_n+1";
 _key_n = (int) (_key_n+1);
-RDebugUtils.currentLine=4456451;
- //BA.debugLineNum = 4456451;BA.debugLine="get_key(key_n)";
+ //BA.debugLineNum = 68;BA.debugLine="get_key(key_n)";
 _get_key(_key_n);
-RDebugUtils.currentLine=4456452;
- //BA.debugLineNum = 4456452;BA.debugLine="If key_n=30 Then mgetbut_tmr.Enabled =False";
+ //BA.debugLineNum = 69;BA.debugLine="If key_n=30 Then mgetbut_tmr.Enabled =False";
 if (_key_n==30) { 
 _mgetbut_tmr.setEnabled(anywheresoftware.b4a.keywords.Common.False);};
  } 
        catch (Exception e54) {
-			processBA.setLastException(e54);RDebugUtils.currentLine=4456454;
- //BA.debugLineNum = 4456454;BA.debugLine="proces_error(LastException.Message)";
+			processBA.setLastException(e54); //BA.debugLineNum = 71;BA.debugLine="proces_error(LastException.Message)";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
  };
-RDebugUtils.currentLine=4456456;
- //BA.debugLineNum = 4456456;BA.debugLine="End Sub";
+ //BA.debugLineNum = 73;BA.debugLine="End Sub";
+return "";
+}
+public static String  _proces_error(String _msg) throws Exception{
+ //BA.debugLineNum = 121;BA.debugLine="Sub proces_error(msg As String)";
+ //BA.debugLineNum = 122;BA.debugLine="Msgbox(msg,\"error\")";
+anywheresoftware.b4a.keywords.Common.Msgbox(_msg,"error",mostCurrent.activityBA);
+ //BA.debugLineNum = 123;BA.debugLine="End Sub";
+return "";
+}
+public static String  _process_globals() throws Exception{
+ //BA.debugLineNum = 6;BA.debugLine="Sub Process_Globals";
+ //BA.debugLineNum = 7;BA.debugLine="Public  mgetbut_tmr As Timer";
+_mgetbut_tmr = new anywheresoftware.b4a.objects.Timer();
+ //BA.debugLineNum = 8;BA.debugLine="End Sub";
 return "";
 }
 }

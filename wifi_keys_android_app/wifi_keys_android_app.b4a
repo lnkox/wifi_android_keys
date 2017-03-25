@@ -79,13 +79,18 @@ Try
 	grn.Initialize(Colors.RGB(0,150,0), 0dip)
   	sld_norm.Initialize
   	sld_norm.AddState(sld_norm.State_Pressed, ups)
-	sld_norm.AddState(sld_norm.State_Enabled, ups)
+	sld_norm.AddState(sld_norm.State_Enabled,ups)
+	sld_norm.AddState(sld_on.State_Focused, ups)
 	sld_on.Initialize
   	sld_on.AddState(sld_on.State_Pressed, grn)
 	sld_on.AddState(sld_on.State_Enabled, grn)
+	sld_on.AddState(sld_on.State_Disabled, grn)
+	sld_on.AddState(sld_on.State_Focused, grn)
 	sld_down.Initialize
   	sld_down.AddState(sld_on.State_Pressed, prs)
 	sld_down.AddState(sld_on.State_Enabled, prs)
+	sld_down.AddState(sld_on.State_Disabled,prs)
+	sld_down.AddState(sld_on.State_Focused,prs)
 	status_lab.Initialize("status_lab")
 	status_lab.TextColor=Colors.Red
 	status_lab.Text = "No connected"	
@@ -108,8 +113,7 @@ Try
 		butt(i)=tbuts
 	Next
 		add_key_to_panel
-	
-	send_state_timer.Initialize("send_state_timer", 1000)
+ 	send_state_timer.Initialize("send_state_timer", 1000)
 	send_state_timer.Enabled =True
 	
 Catch
@@ -118,9 +122,12 @@ End Try
 End Sub
 
 Sub Activity_Resume
+Try
 	add_key_to_panel
-	wifi.StartWifi
-	wifi.GetNewReadingWifi
+
+Catch
+  proces_error(LastException.Message)
+End Try
 End Sub
 
 Sub Activity_Pause (UserClosed As Boolean)
@@ -176,15 +183,18 @@ Try
 			status_lab.Text = "No connected"	
 		End If
 	End If
-	
 Catch
   proces_error(LastException.Message)
 End Try
 End Sub
 
 Sub wifi_FoundReadings(readings As List)
+Try
 		Dim reading As ABWifiReading = readings.Get(0)
 		wifisignal=reading.Level
+Catch
+  proces_error(LastException.Message)
+End Try
 End Sub
 
  Sub get_rssi() 'Відправка запиту на отримання рівня сигналу WI-FI
@@ -216,13 +226,14 @@ Try
 	If CM.toint (rstate.Get("rssi"))<0 Then
 		 status_lab.Text = " RSSI: " & rstate.Get("rssi") & "dbm   Connected" 
 		 Else
+		 	wifi.StartWifi
 		 	wifi.GetNewReadingWifi
 		 	status_lab.Text = " myRSSI: " & wifisignal & "dbm   Connected" 	
 	End If
 	conect_tmout=3
 	
 Catch
-  proces_error(LastException.Message)
+  proces_error(LastException.Message & "set_ris")
 End Try
 End Sub
 
@@ -285,6 +296,7 @@ Try
     p = Sender
 	p.Background =sld_down
 	tmind=CM.toint(p.Tag)
+	If tmind<1 Then Return
 	If butlock(tmind) =True Then
 		If butstate(tmind)=True Then
 			send_comm(tmind,False,False)
@@ -299,7 +311,7 @@ Try
 		prs_but=tmind	
 	End If
 Catch
-  proces_error(LastException.Message)
+  proces_error(LastException.Message & "tbuts_cdown")
 End Try
 End Sub
 
@@ -310,13 +322,14 @@ Try
 	Dim tmind As Int
     p = Sender
 	tmind=CM.toint(p.Tag)
+	If tmind<1 Then Return
 	If butlock(tmind) =False Then
 		prs_but=0
 		send_comm(tmind,False,False)
 		butstate(tmind)=False
 	End If
 Catch
-  proces_error(LastException.Message)
+  proces_error(LastException.Message & "tbuts_click")
 End Try
 End Sub
 
@@ -334,6 +347,9 @@ Sub keys_set_Click()
 End Sub
 Sub inet_setm_Click()
     StartActivity(INET_SET)
+End Sub
+Sub exit_prg_click()
+	ExitApplication
 End Sub
 Sub reset_dev_Click()
 Try

@@ -184,7 +184,7 @@ End Sub
 
 Sub finish_him()
 Try
-	CallSubDelayed(Main,"load_keys")
+	CallSubDelayed(sel_dev,"load_keys")
 	Activity.Finish
 Catch
   proces_error(LastException.Message)

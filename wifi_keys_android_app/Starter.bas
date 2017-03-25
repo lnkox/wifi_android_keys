@@ -43,6 +43,7 @@ Sub mqtt_init()
 	objMqtt.JavaDebug = True
 	objMqtt.CleanSession = True
 	objMqtt.Initialize("oMqtt")
+	objMqtt.KeepAliveInterval =3
 End Sub
 Sub mqtt_disconnect()
 Try
@@ -74,6 +75,7 @@ Sub oMqtt_onInitialized()
 End Sub
 Sub oMqtt_connectionLost()
 		CallSubDelayed2(Main,"set_mqtt_state",False)
+		ToastMessageShow("MQTT connect error",False)
 End Sub
 Sub oMqtt_onConnect(Status As Boolean)
 	If Status=False Then
