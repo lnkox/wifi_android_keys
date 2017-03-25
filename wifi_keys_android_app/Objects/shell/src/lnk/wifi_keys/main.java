@@ -61,6 +61,7 @@ public static RemoteObject _antidouble = RemoteObject.createImmutable(false);
 public static RemoteObject _wifi = RemoteObject.declareNull("com.AB.ABWifi.ABWifi");
 public static RemoteObject _wifisignal = RemoteObject.createImmutable(0);
 public static RemoteObject _butt = null;
+public static RemoteObject _mqtt_but = RemoteObject.declareNull("anywheresoftware.b4a.objects.LabelWrapper");
 public static RemoteObject _status_lab = RemoteObject.declareNull("anywheresoftware.b4a.objects.LabelWrapper");
 public static RemoteObject _butlock = null;
 public static RemoteObject _butstate = null;
@@ -81,6 +82,6 @@ public static lnk.wifi_keys.cm _cm = null;
 public static lnk.wifi_keys.inet_set _inet_set = null;
 public static lnk.wifi_keys.sta_set _sta_set = null;
   public Object[] GetGlobals() {
-		return new Object[] {"Activity",main.mostCurrent._activity,"antidouble",main._antidouble,"AP_SET",Debug.moduleToString(lnk.wifi_keys.ap_set.class),"butlock",main._butlock,"butstate",main._butstate,"butt",main.mostCurrent._butt,"CM",Debug.moduleToString(lnk.wifi_keys.cm.class),"conect_tmout",main._conect_tmout,"cur_but_state",main._cur_but_state,"grn",main.mostCurrent._grn,"INET_SET",Debug.moduleToString(lnk.wifi_keys.inet_set.class),"KEY_SET",Debug.moduleToString(lnk.wifi_keys.key_set.class),"prs",main.mostCurrent._prs,"prs_but",main._prs_but,"sel_dev",Debug.moduleToString(lnk.wifi_keys.sel_dev.class),"send_state_timer",main._send_state_timer,"sld_down",main.mostCurrent._sld_down,"sld_norm",main.mostCurrent._sld_norm,"sld_on",main.mostCurrent._sld_on,"STA_SET",Debug.moduleToString(lnk.wifi_keys.sta_set.class),"Starter",Debug.moduleToString(lnk.wifi_keys.starter.class),"StateManager",Debug.moduleToString(lnk.wifi_keys.statemanager.class),"status_lab",main.mostCurrent._status_lab,"ups",main.mostCurrent._ups,"wifi",main.mostCurrent._wifi,"wifisignal",main._wifisignal};
+		return new Object[] {"Activity",main.mostCurrent._activity,"antidouble",main._antidouble,"AP_SET",Debug.moduleToString(lnk.wifi_keys.ap_set.class),"butlock",main._butlock,"butstate",main._butstate,"butt",main.mostCurrent._butt,"CM",Debug.moduleToString(lnk.wifi_keys.cm.class),"conect_tmout",main._conect_tmout,"cur_but_state",main._cur_but_state,"grn",main.mostCurrent._grn,"INET_SET",Debug.moduleToString(lnk.wifi_keys.inet_set.class),"KEY_SET",Debug.moduleToString(lnk.wifi_keys.key_set.class),"mqtt_but",main.mostCurrent._mqtt_but,"prs",main.mostCurrent._prs,"prs_but",main._prs_but,"sel_dev",Debug.moduleToString(lnk.wifi_keys.sel_dev.class),"send_state_timer",main._send_state_timer,"sld_down",main.mostCurrent._sld_down,"sld_norm",main.mostCurrent._sld_norm,"sld_on",main.mostCurrent._sld_on,"STA_SET",Debug.moduleToString(lnk.wifi_keys.sta_set.class),"Starter",Debug.moduleToString(lnk.wifi_keys.starter.class),"StateManager",Debug.moduleToString(lnk.wifi_keys.statemanager.class),"status_lab",main.mostCurrent._status_lab,"ups",main.mostCurrent._ups,"wifi",main.mostCurrent._wifi,"wifisignal",main._wifisignal};
 }
 }

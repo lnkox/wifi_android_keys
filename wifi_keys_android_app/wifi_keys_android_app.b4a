@@ -9,7 +9,7 @@ Module6=CM
 Module7=INET_SET
 Module8=STA_SET
 Build1=Default,lnk.wifi_keys
-ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="14"/>~\n~<uses-permission android:name="android.permission.INTERNET"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~SetApplicationAttribute(android:theme, "@android:style/Theme.Holo")~\n~~\n~'End of default text.~\n~
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="5" android:targetSdkVersion="14"/>~\n~<uses-permission android:name="android.permission.INTERNET"/>~\n~<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~SetApplicationAttribute(android:theme, "@android:style/Theme.Holo")~\n~~\n~'End of default text.~\n~
 IconFile=
 NumberOfFiles=7
 File1=ap_set.bal
@@ -19,7 +19,7 @@ File4=sel_dev_lay.bal
 File5=set_lay.bal
 File6=sta_set.bal
 File7=STA_SET.bas
-NumberOfLibraries=8
+NumberOfLibraries=9
 Library1=core
 Library2=randomaccessfile
 Library3=json
@@ -28,6 +28,7 @@ Library5=network
 Library6=byteconverter
 Library7=abwifi
 Library8=mqtt
+Library9=phone
 @EndOfDesignText@
 #Region  Project Attributes 
 	#ApplicationLabel: WIFIKEYS
@@ -42,14 +43,15 @@ Library8=mqtt
 
 Sub Process_Globals
 	Dim conect_tmout As Int
-	
 	Public  send_state_timer As Timer
+	Public connect_type As Boolean
 End Sub
 Sub Globals
-	dim antidouble as Boolean
+	Dim antidouble As Boolean
 	Dim wifi As ABWifi
 	Dim wifisignal As Int
 	Dim butt(33) As Button
+	Dim mqtt_but As Label
 	Dim status_lab As Label
 	Dim butlock(33) As Boolean
 	Dim butstate(33) As Boolean
@@ -86,6 +88,10 @@ Try
 	status_lab.TextColor=Colors.Red
 	status_lab.Text = "No connected"	
    	Activity.AddView(status_lab, 0dip, Activity.Height-20dip, Activity.Width,20dip) 
+	mqtt_but.Initialize ("mqtt_but")
+	mqtt_but.Text ="MQTT"
+	mqtt_but.TextSize=12
+	Activity.AddView(mqtt_but,Activity.Width-50dip, Activity.Height-20dip, 50dip,20dip) 
 	wifi.Initialize("wifi")	
 	For i = 1 To 32
         Dim tbuts As Button
@@ -247,6 +253,18 @@ End Try
 End Sub
 
 '/////////////////////////////////////////////////////////////////////////////////////////////////////
+'MQTT
+'/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Sub set_mqtt_state(state As Boolean)
+	connect_type=state
+	If state=True Then
+		mqtt_but.textColor=Colors.Green	
+	Else
+		mqtt_but.textColor=Colors.Gray	
+	End If
+End Sub
+'/////////////////////////////////////////////////////////////////////////////////////////////////////
 'Інтерфейс
 '/////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -324,7 +342,15 @@ End Sub
 Sub status_lab_LongClick
 
 End Sub
+Sub mqtt_but_LongClick
+	If connect_type=True Then
+		CallSubDelayed(Starter,"mqtt_disconnect")
+	Else
+		CallSubDelayed(Starter,"mqtt_connect")
+	End If
 
+
+End Sub
 Sub proces_error(msg As String)
 	Msgbox(msg,"error")
 End Sub

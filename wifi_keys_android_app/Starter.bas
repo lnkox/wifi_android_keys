@@ -23,6 +23,8 @@ End Sub
 
 Sub Service_Start (StartingIntent As Intent)
 	udp_init ' ініціалізація UDP
+	mqtt_init' ініціалізація MQTT 
+	
 End Sub
 
 'Return true to allow the OS default exceptions handler to handle the uncaught exception.
@@ -34,9 +36,66 @@ Sub Service_Destroy
 
 End Sub
 '/////////////////////////////////////////////////////////////////////////////////////////////////////
-'Мережа
+'MQTT
 '/////////////////////////////////////////////////////////////////////////////////////////////////////
+Sub mqtt_init()
+	objMqtt.JavaDebug = True
+	objMqtt.CleanSession = True
+	objMqtt.Initialize("oMqtt")
+End Sub
+Sub mqtt_connect()
+Try
+	objMqtt.Disconnect
+Catch
+	proces_error(LastException.Message)
+End Try	
+End Sub
 
+Sub mqtt_disconnect()
+Try
+	Dim strBroker As String = "tcp://" & StateManager.GetSetting2("inet_server","MQTT server") & ":" & StateManager.GetSetting2("inet_port","1234")
+	Dim strUsername As String  = StateManager.GetSetting2("inet_login","MQTT login")
+	Dim strPassword As String  = StateManager.GetSetting2("inet_pass","MQTT pass")
+	ToastMessageShow("Connecting to " & strBroker,False)
+
+	Dim bRet As Boolean = objMqtt.Connect(strBroker,"",strUsername,strPassword)
+	If bRet=False Then
+		 ToastMessageShow("MQTT error",False)
+		 CallSubDelayed2(Main,"set_mqtt_state",False)
+	End If
+Catch
+	proces_error(LastException.Message)
+End Try	
+End Sub
+
+Sub oMqtt_onInitialized()
+	CallSubDelayed2(Main,"set_mqtt_state",False)
+End Sub
+Sub oMqtt_connectionLost()
+	
+End Sub
+Sub oMqtt_onConnect(Status As Boolean)
+	If Status=False Then
+		ToastMessageShow("MQTT connect error",False)
+		CallSubDelayed2(Main,"set_mqtt_state",False)		
+	Else
+		ToastMessageShow("MQTT is connected",False)
+		 CallSubDelayed2(Main,"set_mqtt_state",True)
+	End If
+End Sub
+Sub oMqtt_onDisconnect(Status As Boolean)
+	CallSubDelayed2(Main,"set_mqtt_state",False)
+End Sub
+Sub oMqtt_messageArrived(Topic As String, Message As String)
+
+End Sub
+Sub oMqtt_deliverycomplete(Token As String)
+
+End Sub
+
+'/////////////////////////////////////////////////////////////////////////////////////////////////////
+'UDP
+'/////////////////////////////////////////////////////////////////////////////////////////////////////
 Sub udp_init() 
 Try
 	UDPSocket.Initialize("UDP", 1407,255)
@@ -79,7 +138,6 @@ Try
 	End If
 Catch
 	proces_error(LastException.Message)
-
 End Try	
 End Sub
 Sub set_key_set (mapar As Map)
@@ -131,5 +189,5 @@ Catch
 End Try	
 End Sub
 Sub proces_error(msg As String)
-	Msgbox(msg,"error")
+	ToastMessageShow(msg,True)
 End Sub
