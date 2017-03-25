@@ -22,10 +22,11 @@ unsigned int localUdpPort = 2201; // Порт для прослуховання
 
 char modes = 0; //тип зєднання пристрою
 char but_state[33]; // стан кнопок
-char incomingPacket[255];  // Буфер для пакету UDP
+char incomingPacket[512];  // Буфер для пакету UDP
 char ap_but = 0;
 int mqtt_conect_tout = 2;
 
+char yourid[40];
 
 struct butn_st
 {
@@ -77,13 +78,15 @@ PubSubClient mqttclient("server", 123, callback, wclient);
 void proces_json(char *json_data)
 {
   char tmp[15];
-  StaticJsonBuffer<256> jsonBuffer;
+  StaticJsonBuffer<512> jsonBuffer;
   JsonObject& root = jsonBuffer.parseObject(json_data);
   if (!root.success())
   {
     Serial.println("parseObject() failed");
     return;
   }
+  if (root.containsKey("myid") == false) { return; }
+  strcpy(yourid, root["myid"]);
   if (root["getname"] == 1) {
     get_name();
     return;
@@ -154,6 +157,7 @@ void send_rssi()
   StaticJsonBuffer<256> jsonBuffer;
   JsonObject& root = jsonBuffer.createObject();
   root["rssi"] = rsi;
+  root["yourid"] = yourid;
   for (char i = 30; i >0; i--)
   {
     state_int=state_int << 1;
@@ -193,6 +197,7 @@ void get_key(int ind)
   root["name"] = butnn[ind].txt;
   root["lock"] = butnn[ind].lock;
   root["key_id"] = ind;
+  root["yourid"] = yourid;
   size_t len = root.measureLength() + 1;
   char bufferr[len];
   root.printTo(bufferr, sizeof(bufferr));
@@ -207,6 +212,7 @@ void getkey_info()
   root["font_size"] = dinfo.font_size;
   root["h_size"] = dinfo.h_size;
   root["v_size"] = dinfo.v_size;
+  root["yourid"] = yourid;
   size_t len = root.measureLength() + 1;
   char bufferr[len];
   root.printTo(bufferr, sizeof(bufferr));
@@ -219,6 +225,7 @@ void  get_name(void)
   StaticJsonBuffer<256> jsonBuffer;
   JsonObject& root = jsonBuffer.createObject();
   root["namedev"] = dinfo.name_dev;
+  root["yourid"] = yourid;
   size_t len = root.measureLength() + 1;
   char bufferr[len];
   root.printTo(bufferr, sizeof(bufferr));
@@ -230,6 +237,7 @@ void  send_saveok(int sn)
   StaticJsonBuffer<256> jsonBuffer;
   JsonObject& root = jsonBuffer.createObject();
   root["save_ok"] = sn;
+  root["yourid"] = yourid;
   size_t len = root.measureLength() + 1;
   char bufferr[len];
   root.printTo(bufferr, sizeof(bufferr));
@@ -244,6 +252,7 @@ void  get_apset(void)
   root["pass_ap"] = dinfo.pass_ap;
   root["hide_ssid"] = dinfo.hide_ssid;
   root["mode_ap"] = not(dinfo.stmode);
+  root["yourid"] = yourid;
   size_t len = root.measureLength() + 1;
   char bufferr[len];
   root.printTo(bufferr, sizeof(bufferr));
@@ -259,6 +268,7 @@ void  get_staset(void)
   root["ssid_sta"] = dinfo.ssid_sta;
   root["pass_sta"] = dinfo.pass_sta;
   root["mode_sta"] = dinfo.stmode;
+  root["yourid"] = yourid;
   size_t len = root.measureLength() + 1;
   char bufferr[len];
   root.printTo(bufferr, sizeof(bufferr));
@@ -299,7 +309,7 @@ void time_tick(void)
     }
   }
 
-  mqtt_conect_tout--;
+  if ( mqtt_conect_tout> 1 ) mqtt_conect_tout--;
 }
 //////////////////////////////////////////////////////////////////
 //Службові функції
@@ -369,7 +379,7 @@ void loop()
   int packetSize = Udp.parsePacket();
   if (packetSize)
   {
-    int len = Udp.read(incomingPacket, 255);
+    int len = Udp.read(incomingPacket, 512);
     if (len > 0)
     {
       incomingPacket[len] = 0;
@@ -407,6 +417,7 @@ void callback(char* topic, byte* payload, unsigned int lengt)
 {
   Serial.print("Message arrived [");
   Serial.print(topic);
+  Serial.print(lengt);
   Serial.print("] ");
   for (int i = 0; i < lengt; i++) {
     Serial.print((char)payload[i]);

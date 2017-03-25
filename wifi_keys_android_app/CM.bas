@@ -5,7 +5,8 @@ B4A=true
 @EndOfDesignText@
 Sub Process_Globals
 Public bc As ByteConverter
-
+Public connect_type As Boolean
+Public myid as String
 End Sub
 
 Sub obj2Bool(value As Object) As Boolean

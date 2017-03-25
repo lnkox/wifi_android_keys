@@ -1,99 +1,99 @@
 lnk.wifi_keys
 0
 0
-main,activity_create,1,0,33,78
-,prs,,ups,,grn,,sld_norm,,sld_on,,sld_down,,status_lab,,mqtt_but,,wifi,,butt,,send_state_timer,statemanager,settings,statemanager,settingsfilename,,cur_but_state,,butlock
+main,activity_create,1,1,35,86
+,prs,,ups,,grn,,sld_norm,,sld_on,,sld_down,,status_lab,,mqtt_but,cm,connect_type,,wifi,,butt,,send_state_timer,statemanager,settings,statemanager,settingsfilename,,cur_but_state,,butlock
 statemanager,settings,,cur_but_state
 statemanager,getsetting2,,add_key_to_panel,,proces_error,,clear_keys,cm,toint,cm,obj2bool
-main,add_key_to_panel,1,0,190,221
+main,add_key_to_panel,1,1,198,229
 ,cur_but_state,,butt,,sld_norm,,butlock,statemanager,settings,statemanager,settingsfilename
 ,cur_but_state,statemanager,settings
 ,clear_keys,statemanager,getsetting2,cm,toint,cm,obj2bool,,proces_error
-main,proces_error,1,0,316,318
+main,proces_error,1,0,330,332
 
 
 
-main,activity_pause,1,0,86,93
+main,activity_pause,1,1,94,101
 ,wifi,statemanager,settings,statemanager,settingsfilename
 
 statemanager,savesettings,,proces_error
-main,activity_resume,1,0,80,84
+main,activity_resume,1,0,88,92
 ,wifi,,cur_but_state,,butt,,sld_norm,,butlock,statemanager,settings,statemanager,settingsfilename
 ,cur_but_state,statemanager,settings
 ,add_key_to_panel,,clear_keys,statemanager,getsetting2,cm,toint,cm,obj2bool,,proces_error
-main,clear_keys,1,0,96,106
+main,clear_keys,1,1,104,114
 ,butt
 
 ,proces_error
-main,get_rssi,1,0,150,159
+main,get_rssi,1,1,158,167
 
 
 ,proces_error
-main,globals,0,1,17,31
+main,globals,0,1,17,33
 
 
 
-main,inet_setm_click,0,0,294,296
+main,inet_setm_click,0,0,303,305
 
 
 
-main,keys_set_click,0,0,291,293
+main,keys_set_click,0,0,300,302
 
 
 
-main,mqtt_but_longclick,0,0,312,315
-,connect_type
+main,mqtt_but_longclick,0,0,321,329
+cm,connect_type
 
 
 main,process_globals,0,1,12,16
 
 
 
-main,reset_dev_click,1,1,297,308
+main,reset_dev_click,1,1,306,317
 
 
 ,proces_error
-main,sel_dev_click,0,0,282,284
+main,sel_dev_click,0,0,291,293
 
 
 
-main,send_comm,1,0,113,124
+main,send_comm,1,1,121,132
 
 
 ,proces_error
-main,send_state_timer_tick,1,0,128,143
+main,send_state_timer_tick,1,1,136,151
 ,prs_but,,conect_tmout,,status_lab
 ,conect_tmout
 ,send_comm,,get_rssi,,proces_error
-main,set_mqtt_state,0,1,227,233
-,connect_type,,mqtt_but
-,connect_type
+main,set_mqtt_state,0,0,235,242
+cm,connect_type,,mqtt_but
+cm,connect_type
 
-main,set_ris,1,0,161,187
+main,set_ris,1,1,169,195
 ,butstate,,butt,,sld_on,,sld_norm,,status_lab,,wifi,,wifisignal,,conect_tmout
 ,conect_tmout
 cm,tolong,cm,obj2bool,cm,toint,,proces_error
-main,status_lab_longclick,0,0,309,311
+main,status_lab_longclick,0,0,318,320
 
 
 
-main,tbuts_click,1,1,265,280
+main,tbuts_click,1,1,274,289
 ,antidouble,,butlock,,prs_but,,butstate
 ,antidouble,,prs_but
 cm,toint,,send_comm,,proces_error
-main,tbuts_down,1,1,238,263
+main,tbuts_down,1,1,247,272
 ,antidouble,,sld_down,,butlock,,butstate,,prs_but
 ,antidouble,,prs_but
 cm,toint,,send_comm,,proces_error
-main,wf_ap_set_click,0,0,285,287
+main,wf_ap_set_click,0,0,294,296
 
 
 
-main,wf_sta_set_click,0,0,288,290
+main,wf_sta_set_click,0,0,297,299
 
 
 
-main,wifi_foundreadings,0,0,145,148
+main,wifi_foundreadings,0,0,153,156
 ,wifisignal
 ,wifisignal
 
@@ -145,110 +145,122 @@ statemanager,savestate,1,0,58,68
 ,states,,statesfilename
 
 ,innersavestate,,writestatetofile
-cm,toint,0,0,15,23
+cm,toint,0,0,16,24
 
 
 
-cm,obj2bool,0,0,6,13
+cm,obj2bool,0,0,7,14
 
 
 
-cm,tolong,0,0,24,32
+cm,tolong,0,0,25,33
 
 
 
-cm,byte_to_object,0,0,38,41
+cm,byte_to_object,0,0,39,42
 
 
 
-cm,object_to_byte,0,0,33,36
+cm,object_to_byte,0,0,34,37
 
 
 
-cm,process_globals,0,1,1,4
+cm,process_globals,0,1,1,5
 
 
 
-starter,application_error,0,0,26,28
+starter,application_error,0,0,27,29
 
 
 
-starter,mqtt_connect,0,1,41,47
-,objmqtt
-
-,proces_error
-starter,proces_error,0,0,186,188
-
-
-
-starter,mqtt_disconnect,0,1,49,64
+starter,mqtt_connect,0,0,50,65
 ,objmqtt,statemanager,settings,statemanager,settingsfilename
 statemanager,settings
 statemanager,getsetting2,,proces_error
-starter,mqtt_init,0,0,36,40
+starter,proces_error,0,0,218,220
+
+
+
+starter,mqtt_disconnect,0,0,42,48
+,objmqtt
+
+,proces_error
+starter,mqtt_init,0,0,37,41
 ,objmqtt
 
 
-starter,omqtt_connectionlost,0,1,69,71
+starter,omqtt_connectionlost,0,0,70,72
 
 
 
-starter,omqtt_deliverycomplete,0,0,87,89
+starter,omqtt_deliverycomplete,0,0,90,92
 
 
 
-starter,omqtt_messagearrived,0,0,84,86
-
-
-
-starter,omqtt_onconnect,0,1,72,80
-
-
-
-starter,omqtt_ondisconnect,0,1,81,83
-
-
-
-starter,omqtt_oninitialized,0,1,66,68
-
-
-
-starter,process_globals,0,1,6,11
-
-
-
-starter,send_to_dev,0,1,167,185
-,udpsocket,statemanager,settings,statemanager,settingsfilename
+starter,omqtt_messagearrived,0,0,87,89
+cm,myid,statemanager,settings,statemanager,settingsfilename
 statemanager,settings
-statemanager,getsetting2,,proces_error
-starter,service_create,0,0,13,17
+,proces_json,,set_key_set,,set_keyinfo_set,cm,toint,statemanager,setsetting,cm,obj2bool,statemanager,savesettings,,proces_error
+starter,proces_json,0,1,113,148
+cm,myid,statemanager,settings,statemanager,settingsfilename
+statemanager,settings
+,set_key_set,,set_keyinfo_set,cm,toint,statemanager,setsetting,cm,obj2bool,statemanager,savesettings,,proces_error
+starter,omqtt_onconnect,0,0,73,82
+,objmqtt
+
+
+starter,omqtt_ondisconnect,0,0,83,86
 
 
 
-starter,service_destroy,0,0,30,32
+starter,omqtt_oninitialized,0,0,67,69
 
 
 
-starter,service_start,0,0,19,23
-,udpsocket,,objmqtt
-
-,udp_init,,mqtt_init,,proces_error
-starter,udp_init,0,1,94,100
-,udpsocket
-
-,proces_error
-starter,set_key_set,0,1,138,156
+starter,set_key_set,0,1,149,167
 statemanager,settings,statemanager,settingsfilename
 statemanager,settings
 cm,toint,statemanager,setsetting,cm,obj2bool,statemanager,savesettings,,proces_error
-starter,set_keyinfo_set,0,1,157,166
+starter,set_keyinfo_set,0,1,168,177
 statemanager,settings,statemanager,settingsfilename
 statemanager,settings
 statemanager,setsetting,cm,toint,statemanager,savesettings,,proces_error
-starter,udp_packetarrived,0,1,102,137
-statemanager,settings,statemanager,settingsfilename
+starter,process_globals,0,1,6,12
+
+
+
+starter,send_to_dev,0,0,178,190
+cm,myid,cm,connect_type,statemanager,settings,statemanager,settingsfilename,,objmqtt,,udpsocket
 statemanager,settings
-,set_key_set,,set_keyinfo_set,cm,toint,,proces_error,statemanager,setsetting,cm,obj2bool,statemanager,savesettings
+statemanager,getsetting2,,send_to_dev_mqtt,,send_to_dev_udp,,proces_error
+starter,send_to_dev_mqtt,0,1,192,201
+,objmqtt
+
+,proces_error
+starter,send_to_dev_udp,0,1,203,216
+,udpsocket
+
+,proces_error
+starter,service_create,0,0,14,18
+
+
+
+starter,service_destroy,0,0,31,33
+
+
+
+starter,service_start,0,0,20,24
+cm,myid,,objphone,,udpsocket,,objmqtt
+cm,myid
+,udp_init,,mqtt_init,,proces_error
+starter,udp_init,0,0,97,103
+,udpsocket
+
+,proces_error
+starter,udp_packetarrived,0,0,105,112
+cm,myid,statemanager,settings,statemanager,settingsfilename
+statemanager,settings
+,proces_json,,proces_error,,set_key_set,,set_keyinfo_set,cm,toint,statemanager,setsetting,cm,obj2bool,statemanager,savesettings
 sel_dev,activity_create,1,0,15,18
 ,dev_list
 ,dev_list

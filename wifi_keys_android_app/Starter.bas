@@ -13,6 +13,7 @@ Sub Process_Globals
 	'These variables can be accessed from all modules.
 		Dim UDPSocket As UDPSocket
 		Dim objMqtt As MQTT
+		Dim objPhone As Phone 
 End Sub
 
 Sub Service_Create
@@ -24,7 +25,7 @@ End Sub
 Sub Service_Start (StartingIntent As Intent)
 	udp_init ' ініціалізація UDP
 	mqtt_init' ініціалізація MQTT 
-	
+	CM.myid=objPhone.GetSettings("android_id")
 End Sub
 
 'Return true to allow the OS default exceptions handler to handle the uncaught exception.
@@ -43,7 +44,7 @@ Sub mqtt_init()
 	objMqtt.CleanSession = True
 	objMqtt.Initialize("oMqtt")
 End Sub
-Sub mqtt_connect()
+Sub mqtt_disconnect()
 Try
 	objMqtt.Disconnect
 Catch
@@ -51,7 +52,7 @@ Catch
 End Try	
 End Sub
 
-Sub mqtt_disconnect()
+Sub mqtt_connect()
 Try
 	Dim strBroker As String = "tcp://" & StateManager.GetSetting2("inet_server","MQTT server") & ":" & StateManager.GetSetting2("inet_port","1234")
 	Dim strUsername As String  = StateManager.GetSetting2("inet_login","MQTT login")
@@ -69,10 +70,10 @@ End Try
 End Sub
 
 Sub oMqtt_onInitialized()
-	CallSubDelayed2(Main,"set_mqtt_state",False)
+
 End Sub
 Sub oMqtt_connectionLost()
-	
+		CallSubDelayed2(Main,"set_mqtt_state",False)
 End Sub
 Sub oMqtt_onConnect(Status As Boolean)
 	If Status=False Then
@@ -81,13 +82,15 @@ Sub oMqtt_onConnect(Status As Boolean)
 	Else
 		ToastMessageShow("MQTT is connected",False)
 		 CallSubDelayed2(Main,"set_mqtt_state",True)
+		 objMqtt.Subscribe("wfkey") 
 	End If
 End Sub
 Sub oMqtt_onDisconnect(Status As Boolean)
+	ToastMessageShow("MQTT disconnect",False)
 	CallSubDelayed2(Main,"set_mqtt_state",False)
 End Sub
 Sub oMqtt_messageArrived(Topic As String, Message As String)
-
+	proces_json(Message,"MQTT")
 End Sub
 Sub oMqtt_deliverycomplete(Token As String)
 
@@ -107,14 +110,25 @@ End Sub
 Sub UDP_PacketArrived (Packet As UDPPacket)
 Try
     Dim result As String = BytesToString(Packet.Data, Packet.Offset, Packet.Length, "UTF8")
+	proces_json(result,Packet.HostAddress)
+Catch
+	proces_error(LastException.Message)
+End Try	
+End Sub
+Sub proces_json(result As String,host As String)
 	result=result.Replace(Chr(0),"")
 	result=result.Replace("}{",",")
 	Dim JSON As JSONParser
 	Dim Mapar As Map
 	JSON.Initialize(result) 
 	Mapar = JSON.NextObject
+	
+	If Mapar.ContainsKey("yourid")=False Then Return
+	Dim tmpid As String=Mapar.Get("yourid")
+	If tmpid.EqualsIgnoreCase(CM.myid)=False Then Return
+	
 	If Mapar.ContainsKey("rssi")=True Then   CallSubDelayed2(Main,"set_ris",Mapar)
-	If Mapar.ContainsKey("namedev")=True Then CallSubDelayed3(sel_dev,"add_dev_tolist",Mapar.Get ("namedev"),Packet.HostAddress)
+	If Mapar.ContainsKey("namedev")=True Then CallSubDelayed3(sel_dev,"add_dev_tolist",Mapar.Get ("namedev"),host)
 	If Mapar.ContainsKey("ssid_ap")=True Then CallSubDelayed2(AP_SET,"set_ap_set",Mapar)
 	If Mapar.ContainsKey("ssid_sta")=True Then CallSubDelayed2(STA_SET,"set_sta_set",Mapar)
 	If Mapar.ContainsKey("key_id")=True Then set_key_set(Mapar) 
@@ -135,10 +149,7 @@ Try
 		 If (CM.toint (Mapar.Get ("save_ok"))=4) Then
 		  CallSubDelayed(INET_SET,"finish_him") 
 		 End If
-	End If
-Catch
-	proces_error(LastException.Message)
-End Try	
+	End If	
 End Sub
 Sub set_key_set (mapar As Map)
 Try
@@ -170,15 +181,35 @@ Catch
 End Try
 End Sub
 Sub send_to_dev(data As Map) As Boolean ' Відправка асоційованого масиву (data) в пристрій у вигляді JSON
+	Dim msg As String 
+	Dim JSONGenerator As JSONGenerator
+	data.Put ("dev_name",StateManager.GetSetting2("cur_dev_name","none"))
+	data.Put ("myid",CM.myid)
+	JSONGenerator.Initialize(data)
+	msg = JSONGenerator.ToString  
+	If CM.connect_type=True Then
+		Return send_to_dev_mqtt(msg)	
+	Else
+		Return send_to_dev_udp(msg)	
+	End If
+End Sub
+
+Sub send_to_dev_mqtt(msg As String) As Boolean ' Відправка в пристрій через MQTT
+Try
+	If objMqtt.isConnected =False Then Return False
+	objMqtt.Publish("wfkeyin",msg,  objMqtt.QoS_ExactlyOnce,True) 
+	Return True
+Catch
+	proces_error(LastException.Message)
+	 Return False
+End Try	
+End Sub
+
+Sub send_to_dev_udp(msg As String) As Boolean ' Відправка в пристрій через UDP
 Try
 	If UDPSocket.IsInitialized =False Then Return False
 	Dim Packet As UDPPacket
 	Dim Buffer() As Byte 
-	Dim msg As String 
-	Dim JSONGenerator As JSONGenerator
-	data.Put ("dev_name",StateManager.GetSetting2("cur_dev_name","none"))
-	JSONGenerator.Initialize(data)
-	msg = JSONGenerator.ToString  
 	Buffer = msg.GetBytes("UTF8")
     Packet.Initialize(Buffer, "255.255.255.255", "2201")
 	UDPSocket.Send(Packet)
@@ -188,6 +219,7 @@ Catch
 	 Return False
 End Try	
 End Sub
+
 Sub proces_error(msg As String)
 	ToastMessageShow(msg,True)
 End Sub

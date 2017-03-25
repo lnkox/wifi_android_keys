@@ -341,95 +341,95 @@ public static String  _activity_create(boolean _firsttime) throws Exception{
 RDebugUtils.currentModule="inet_set";
 if (Debug.shouldDelegate("activity_create"))
 	return (String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime});
-RDebugUtils.currentLine=6684672;
- //BA.debugLineNum = 6684672;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
-RDebugUtils.currentLine=6684673;
- //BA.debugLineNum = 6684673;BA.debugLine="Try";
-try {RDebugUtils.currentLine=6684674;
- //BA.debugLineNum = 6684674;BA.debugLine="Activity.LoadLayout(\"INET_SET\")";
+RDebugUtils.currentLine=7012352;
+ //BA.debugLineNum = 7012352;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+RDebugUtils.currentLine=7012353;
+ //BA.debugLineNum = 7012353;BA.debugLine="Try";
+try {RDebugUtils.currentLine=7012354;
+ //BA.debugLineNum = 7012354;BA.debugLine="Activity.LoadLayout(\"INET_SET\")";
 mostCurrent._activity.LoadLayout("INET_SET",mostCurrent.activityBA);
-RDebugUtils.currentLine=6684675;
- //BA.debugLineNum = 6684675;BA.debugLine="Activity.Title =\"Inet MQTT set - \" & StateManager";
+RDebugUtils.currentLine=7012355;
+ //BA.debugLineNum = 7012355;BA.debugLine="Activity.Title =\"Inet MQTT set - \" & StateManager";
 mostCurrent._activity.setTitle((Object)("Inet MQTT set - "+mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"cur_dev_name","none")));
-RDebugUtils.currentLine=6684676;
- //BA.debugLineNum = 6684676;BA.debugLine="inet_devname_txt.Text=StateManager.GetSetting2(\"c";
+RDebugUtils.currentLine=7012356;
+ //BA.debugLineNum = 7012356;BA.debugLine="inet_devname_txt.Text=StateManager.GetSetting2(\"c";
 mostCurrent._inet_devname_txt.setText((Object)(mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"cur_dev_name","none")));
-RDebugUtils.currentLine=6684677;
- //BA.debugLineNum = 6684677;BA.debugLine="inet_login_txt.Text=StateManager.GetSetting2(\"ine";
+RDebugUtils.currentLine=7012357;
+ //BA.debugLineNum = 7012357;BA.debugLine="inet_login_txt.Text=StateManager.GetSetting2(\"ine";
 mostCurrent._inet_login_txt.setText((Object)(mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"inet_login","MQTT login")));
-RDebugUtils.currentLine=6684678;
- //BA.debugLineNum = 6684678;BA.debugLine="inet_pass_txt.Text=StateManager.GetSetting2(\"inet";
+RDebugUtils.currentLine=7012358;
+ //BA.debugLineNum = 7012358;BA.debugLine="inet_pass_txt.Text=StateManager.GetSetting2(\"inet";
 mostCurrent._inet_pass_txt.setText((Object)(mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"inet_pass","MQTT pass")));
-RDebugUtils.currentLine=6684679;
- //BA.debugLineNum = 6684679;BA.debugLine="inet_port_txt.Text=StateManager.GetSetting2(\"inet";
+RDebugUtils.currentLine=7012359;
+ //BA.debugLineNum = 7012359;BA.debugLine="inet_port_txt.Text=StateManager.GetSetting2(\"inet";
 mostCurrent._inet_port_txt.setText((Object)(mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"inet_port","1234")));
-RDebugUtils.currentLine=6684680;
- //BA.debugLineNum = 6684680;BA.debugLine="inet_server_txt.Text=StateManager.GetSetting2(\"in";
+RDebugUtils.currentLine=7012360;
+ //BA.debugLineNum = 7012360;BA.debugLine="inet_server_txt.Text=StateManager.GetSetting2(\"in";
 mostCurrent._inet_server_txt.setText((Object)(mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"inet_server","MQTT server")));
  } 
        catch (Exception e25) {
-			processBA.setLastException(e25);RDebugUtils.currentLine=6684682;
- //BA.debugLineNum = 6684682;BA.debugLine="proces_error(LastException.Message)";
+			processBA.setLastException(e25);RDebugUtils.currentLine=7012362;
+ //BA.debugLineNum = 7012362;BA.debugLine="proces_error(LastException.Message)";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
  };
-RDebugUtils.currentLine=6684684;
- //BA.debugLineNum = 6684684;BA.debugLine="End Sub";
+RDebugUtils.currentLine=7012364;
+ //BA.debugLineNum = 7012364;BA.debugLine="End Sub";
 return "";
 }
 public static String  _proces_error(String _msg) throws Exception{
 RDebugUtils.currentModule="inet_set";
 if (Debug.shouldDelegate("proces_error"))
 	return (String) Debug.delegate(mostCurrent.activityBA, "proces_error", new Object[] {_msg});
-RDebugUtils.currentLine=6946816;
- //BA.debugLineNum = 6946816;BA.debugLine="Sub proces_error(msg As String)";
-RDebugUtils.currentLine=6946817;
- //BA.debugLineNum = 6946817;BA.debugLine="Msgbox(msg,\"error\")";
+RDebugUtils.currentLine=7274496;
+ //BA.debugLineNum = 7274496;BA.debugLine="Sub proces_error(msg As String)";
+RDebugUtils.currentLine=7274497;
+ //BA.debugLineNum = 7274497;BA.debugLine="Msgbox(msg,\"error\")";
 anywheresoftware.b4a.keywords.Common.Msgbox(_msg,"error",mostCurrent.activityBA);
-RDebugUtils.currentLine=6946818;
- //BA.debugLineNum = 6946818;BA.debugLine="End Sub";
+RDebugUtils.currentLine=7274498;
+ //BA.debugLineNum = 7274498;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
 RDebugUtils.currentModule="inet_set";
 if (Debug.shouldDelegate("activity_pause"))
 	return (String) Debug.delegate(mostCurrent.activityBA, "activity_pause", new Object[] {_userclosed});
-RDebugUtils.currentLine=6815744;
- //BA.debugLineNum = 6815744;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
-RDebugUtils.currentLine=6815746;
- //BA.debugLineNum = 6815746;BA.debugLine="End Sub";
+RDebugUtils.currentLine=7143424;
+ //BA.debugLineNum = 7143424;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+RDebugUtils.currentLine=7143426;
+ //BA.debugLineNum = 7143426;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
 RDebugUtils.currentModule="inet_set";
 if (Debug.shouldDelegate("activity_resume"))
 	return (String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null);
-RDebugUtils.currentLine=6750208;
- //BA.debugLineNum = 6750208;BA.debugLine="Sub Activity_Resume";
-RDebugUtils.currentLine=6750210;
- //BA.debugLineNum = 6750210;BA.debugLine="End Sub";
+RDebugUtils.currentLine=7077888;
+ //BA.debugLineNum = 7077888;BA.debugLine="Sub Activity_Resume";
+RDebugUtils.currentLine=7077890;
+ //BA.debugLineNum = 7077890;BA.debugLine="End Sub";
 return "";
 }
 public static String  _finish_him() throws Exception{
 RDebugUtils.currentModule="inet_set";
 if (Debug.shouldDelegate("finish_him"))
 	return (String) Debug.delegate(mostCurrent.activityBA, "finish_him", null);
-RDebugUtils.currentLine=7012352;
- //BA.debugLineNum = 7012352;BA.debugLine="Sub finish_him()";
-RDebugUtils.currentLine=7012353;
- //BA.debugLineNum = 7012353;BA.debugLine="Activity.Finish";
+RDebugUtils.currentLine=7340032;
+ //BA.debugLineNum = 7340032;BA.debugLine="Sub finish_him()";
+RDebugUtils.currentLine=7340033;
+ //BA.debugLineNum = 7340033;BA.debugLine="Activity.Finish";
 mostCurrent._activity.Finish();
-RDebugUtils.currentLine=7012354;
- //BA.debugLineNum = 7012354;BA.debugLine="End Sub";
+RDebugUtils.currentLine=7340034;
+ //BA.debugLineNum = 7340034;BA.debugLine="End Sub";
 return "";
 }
 public static String  _label5_longclick() throws Exception{
 RDebugUtils.currentModule="inet_set";
 if (Debug.shouldDelegate("label5_longclick"))
 	return (String) Debug.delegate(mostCurrent.activityBA, "label5_longclick", null);
-RDebugUtils.currentLine=7077888;
- //BA.debugLineNum = 7077888;BA.debugLine="Sub Label5_LongClick";
-RDebugUtils.currentLine=7077890;
- //BA.debugLineNum = 7077890;BA.debugLine="End Sub";
+RDebugUtils.currentLine=7405568;
+ //BA.debugLineNum = 7405568;BA.debugLine="Sub Label5_LongClick";
+RDebugUtils.currentLine=7405570;
+ //BA.debugLineNum = 7405570;BA.debugLine="End Sub";
 return "";
 }
 public static String  _save_ap_set_btn_click() throws Exception{
@@ -437,60 +437,60 @@ RDebugUtils.currentModule="inet_set";
 if (Debug.shouldDelegate("save_ap_set_btn_click"))
 	return (String) Debug.delegate(mostCurrent.activityBA, "save_ap_set_btn_click", null);
 anywheresoftware.b4a.objects.collections.Map _data = null;
-RDebugUtils.currentLine=6881280;
- //BA.debugLineNum = 6881280;BA.debugLine="Sub save_ap_set_btn_Click";
-RDebugUtils.currentLine=6881281;
- //BA.debugLineNum = 6881281;BA.debugLine="Try";
-try {RDebugUtils.currentLine=6881282;
- //BA.debugLineNum = 6881282;BA.debugLine="StateManager.SetSetting(\"new_dev_name\",inet_devna";
+RDebugUtils.currentLine=7208960;
+ //BA.debugLineNum = 7208960;BA.debugLine="Sub save_ap_set_btn_Click";
+RDebugUtils.currentLine=7208961;
+ //BA.debugLineNum = 7208961;BA.debugLine="Try";
+try {RDebugUtils.currentLine=7208962;
+ //BA.debugLineNum = 7208962;BA.debugLine="StateManager.SetSetting(\"new_dev_name\",inet_devna";
 mostCurrent._statemanager._setsetting(mostCurrent.activityBA,"new_dev_name",mostCurrent._inet_devname_txt.getText());
-RDebugUtils.currentLine=6881283;
- //BA.debugLineNum = 6881283;BA.debugLine="StateManager.SetSetting(\"inet_login\",inet_login_t";
+RDebugUtils.currentLine=7208963;
+ //BA.debugLineNum = 7208963;BA.debugLine="StateManager.SetSetting(\"inet_login\",inet_login_t";
 mostCurrent._statemanager._setsetting(mostCurrent.activityBA,"inet_login",mostCurrent._inet_login_txt.getText());
-RDebugUtils.currentLine=6881284;
- //BA.debugLineNum = 6881284;BA.debugLine="StateManager.SetSetting(\"inet_pass\",inet_pass_txt";
+RDebugUtils.currentLine=7208964;
+ //BA.debugLineNum = 7208964;BA.debugLine="StateManager.SetSetting(\"inet_pass\",inet_pass_txt";
 mostCurrent._statemanager._setsetting(mostCurrent.activityBA,"inet_pass",mostCurrent._inet_pass_txt.getText());
-RDebugUtils.currentLine=6881285;
- //BA.debugLineNum = 6881285;BA.debugLine="StateManager.SetSetting(\"inet_port\",inet_port_txt";
+RDebugUtils.currentLine=7208965;
+ //BA.debugLineNum = 7208965;BA.debugLine="StateManager.SetSetting(\"inet_port\",inet_port_txt";
 mostCurrent._statemanager._setsetting(mostCurrent.activityBA,"inet_port",mostCurrent._inet_port_txt.getText());
-RDebugUtils.currentLine=6881286;
- //BA.debugLineNum = 6881286;BA.debugLine="StateManager.SetSetting(\"inet_server\",inet_server";
+RDebugUtils.currentLine=7208966;
+ //BA.debugLineNum = 7208966;BA.debugLine="StateManager.SetSetting(\"inet_server\",inet_server";
 mostCurrent._statemanager._setsetting(mostCurrent.activityBA,"inet_server",mostCurrent._inet_server_txt.getText());
-RDebugUtils.currentLine=6881287;
- //BA.debugLineNum = 6881287;BA.debugLine="Dim Data As Map";
+RDebugUtils.currentLine=7208967;
+ //BA.debugLineNum = 7208967;BA.debugLine="Dim Data As Map";
 _data = new anywheresoftware.b4a.objects.collections.Map();
-RDebugUtils.currentLine=6881288;
- //BA.debugLineNum = 6881288;BA.debugLine="Data.Initialize";
+RDebugUtils.currentLine=7208968;
+ //BA.debugLineNum = 7208968;BA.debugLine="Data.Initialize";
 _data.Initialize();
-RDebugUtils.currentLine=6881289;
- //BA.debugLineNum = 6881289;BA.debugLine="Data.Put (\"newdevname\",inet_devname_txt.Text)";
+RDebugUtils.currentLine=7208969;
+ //BA.debugLineNum = 7208969;BA.debugLine="Data.Put (\"newdevname\",inet_devname_txt.Text)";
 _data.Put((Object)("newdevname"),(Object)(mostCurrent._inet_devname_txt.getText()));
-RDebugUtils.currentLine=6881290;
- //BA.debugLineNum = 6881290;BA.debugLine="Data.Put (\"inet_login\",inet_login_txt.Text)";
+RDebugUtils.currentLine=7208970;
+ //BA.debugLineNum = 7208970;BA.debugLine="Data.Put (\"inet_login\",inet_login_txt.Text)";
 _data.Put((Object)("inet_login"),(Object)(mostCurrent._inet_login_txt.getText()));
-RDebugUtils.currentLine=6881291;
- //BA.debugLineNum = 6881291;BA.debugLine="Data.Put (\"inet_pass\",inet_pass_txt.Text)";
+RDebugUtils.currentLine=7208971;
+ //BA.debugLineNum = 7208971;BA.debugLine="Data.Put (\"inet_pass\",inet_pass_txt.Text)";
 _data.Put((Object)("inet_pass"),(Object)(mostCurrent._inet_pass_txt.getText()));
-RDebugUtils.currentLine=6881292;
- //BA.debugLineNum = 6881292;BA.debugLine="Data.Put (\"inet_port\",inet_port_txt.Text)";
+RDebugUtils.currentLine=7208972;
+ //BA.debugLineNum = 7208972;BA.debugLine="Data.Put (\"inet_port\",inet_port_txt.Text)";
 _data.Put((Object)("inet_port"),(Object)(mostCurrent._inet_port_txt.getText()));
-RDebugUtils.currentLine=6881293;
- //BA.debugLineNum = 6881293;BA.debugLine="Data.Put (\"inet_server\",inet_server_txt.Text)";
+RDebugUtils.currentLine=7208973;
+ //BA.debugLineNum = 7208973;BA.debugLine="Data.Put (\"inet_server\",inet_server_txt.Text)";
 _data.Put((Object)("inet_server"),(Object)(mostCurrent._inet_server_txt.getText()));
-RDebugUtils.currentLine=6881294;
- //BA.debugLineNum = 6881294;BA.debugLine="Data.Put (\"save_info\",4)";
+RDebugUtils.currentLine=7208974;
+ //BA.debugLineNum = 7208974;BA.debugLine="Data.Put (\"save_info\",4)";
 _data.Put((Object)("save_info"),(Object)(4));
-RDebugUtils.currentLine=6881295;
- //BA.debugLineNum = 6881295;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
+RDebugUtils.currentLine=7208975;
+ //BA.debugLineNum = 7208975;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
 anywheresoftware.b4a.keywords.Common.CallSubDelayed2(mostCurrent.activityBA,(Object)(mostCurrent._starter.getObject()),"send_to_dev",(Object)(_data));
  } 
        catch (Exception e49) {
-			processBA.setLastException(e49);RDebugUtils.currentLine=6881297;
- //BA.debugLineNum = 6881297;BA.debugLine="proces_error(LastException.Message)";
+			processBA.setLastException(e49);RDebugUtils.currentLine=7208977;
+ //BA.debugLineNum = 7208977;BA.debugLine="proces_error(LastException.Message)";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
  };
-RDebugUtils.currentLine=6881299;
- //BA.debugLineNum = 6881299;BA.debugLine="End Sub";
+RDebugUtils.currentLine=7208979;
+ //BA.debugLineNum = 7208979;BA.debugLine="End Sub";
 return "";
 }
 }

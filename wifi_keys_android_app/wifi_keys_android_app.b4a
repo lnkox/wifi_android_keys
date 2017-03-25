@@ -44,7 +44,7 @@ Library9=phone
 Sub Process_Globals
 	Dim conect_tmout As Int
 	Public  send_state_timer As Timer
-	Public connect_type As Boolean
+	
 End Sub
 Sub Globals
 	Dim antidouble As Boolean
@@ -60,6 +60,8 @@ Sub Globals
 
 	Dim cur_but_state As Int
 	Dim prs_but As Int
+	
+   
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -92,6 +94,11 @@ Try
 	mqtt_but.Text ="MQTT"
 	mqtt_but.TextSize=12
 	Activity.AddView(mqtt_but,Activity.Width-50dip, Activity.Height-20dip, 50dip,20dip) 
+	If CM.connect_type=True Then
+		mqtt_but.textColor=Colors.Green	
+	Else
+		mqtt_but.textColor=Colors.Gray	
+	End If
 	wifi.Initialize("wifi")	
 	For i = 1 To 32
         Dim tbuts As Button
@@ -104,6 +111,7 @@ Try
 	
 	send_state_timer.Initialize("send_state_timer", 1000)
 	send_state_timer.Enabled =True
+	
 Catch
   proces_error(LastException.Message)
 End Try
@@ -257,7 +265,7 @@ End Sub
 '/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Sub set_mqtt_state(state As Boolean)
-	connect_type=state
+	CM.connect_type=state
 	If state=True Then
 		mqtt_but.textColor=Colors.Green	
 	Else
@@ -343,7 +351,7 @@ Sub status_lab_LongClick
 
 End Sub
 Sub mqtt_but_LongClick
-	If connect_type=True Then
+	If CM.connect_type=True Then
 		CallSubDelayed(Starter,"mqtt_disconnect")
 	Else
 		CallSubDelayed(Starter,"mqtt_connect")
