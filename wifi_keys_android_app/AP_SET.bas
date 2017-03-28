@@ -104,4 +104,5 @@ End Sub
 
 Sub menu_pass_txt_TextChanged (Old As String, New As String)
 	StateManager.SetSetting("menu_pass",New)
+	StateManager.SaveSettings
 End Sub

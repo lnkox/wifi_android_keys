@@ -435,7 +435,9 @@ public static String  _menu_pass_txt_textchanged(String _old,String _new) throws
  //BA.debugLineNum = 100;BA.debugLine="Sub menu_pass_txt_TextChanged (Old As String, New";
  //BA.debugLineNum = 101;BA.debugLine="StateManager.SetSetting(\"menu_pass\",New)";
 mostCurrent._statemanager._setsetting(mostCurrent.activityBA,"menu_pass",_new);
- //BA.debugLineNum = 102;BA.debugLine="End Sub";
+ //BA.debugLineNum = 102;BA.debugLine="StateManager.SaveSettings";
+mostCurrent._statemanager._savesettings(mostCurrent.activityBA);
+ //BA.debugLineNum = 103;BA.debugLine="End Sub";
 return "";
 }
 public static String  _proces_error(String _msg) throws Exception{

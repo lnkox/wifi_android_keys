@@ -329,6 +329,7 @@ public anywheresoftware.b4a.objects.EditTextWrapper _menu_pass_txt = null;
 public static int _cur_but_state = 0;
 public static int _prs_but = 0;
 public static String _enter_menu_pass = "";
+public static boolean _allow_menu = false;
 public lnk.wifi_keys.starter _starter = null;
 public lnk.wifi_keys.statemanager _statemanager = null;
 public lnk.wifi_keys.sel_dev _sel_dev = null;
@@ -350,149 +351,149 @@ return vis;}
 public static String  _activity_create(boolean _firsttime) throws Exception{
 int _i = 0;
 anywheresoftware.b4a.objects.ButtonWrapper _tbuts = null;
- //BA.debugLineNum = 35;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 36;BA.debugLine="Try";
-try { //BA.debugLineNum = 38;BA.debugLine="Activity.AddMenuItem(\"Keys set\",\"keys_set\")";
+ //BA.debugLineNum = 36;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+ //BA.debugLineNum = 37;BA.debugLine="Try";
+try { //BA.debugLineNum = 39;BA.debugLine="Activity.AddMenuItem(\"Keys set\",\"keys_set\")";
 mostCurrent._activity.AddMenuItem("Keys set","keys_set");
- //BA.debugLineNum = 39;BA.debugLine="Activity.AddMenuItem(\"Wi-Fi AP set\",\"wf_ap_set";
+ //BA.debugLineNum = 40;BA.debugLine="Activity.AddMenuItem(\"Wi-Fi AP set\",\"wf_ap_set";
 mostCurrent._activity.AddMenuItem("Wi-Fi AP set","wf_ap_set");
- //BA.debugLineNum = 40;BA.debugLine="Activity.AddMenuItem(\"Wi-Fi client set\",\"wf_ST";
+ //BA.debugLineNum = 41;BA.debugLine="Activity.AddMenuItem(\"Wi-Fi client set\",\"wf_ST";
 mostCurrent._activity.AddMenuItem("Wi-Fi client set","wf_STA_set");
- //BA.debugLineNum = 41;BA.debugLine="Activity.AddMenuItem(\"Select device\",\"sel_dev\")";
+ //BA.debugLineNum = 42;BA.debugLine="Activity.AddMenuItem(\"Select device\",\"sel_dev\")";
 mostCurrent._activity.AddMenuItem("Select device","sel_dev");
- //BA.debugLineNum = 42;BA.debugLine="Activity.AddMenuItem(\"Inet set\",\"inet_setm\")";
+ //BA.debugLineNum = 43;BA.debugLine="Activity.AddMenuItem(\"Inet set\",\"inet_setm\")";
 mostCurrent._activity.AddMenuItem("Inet set","inet_setm");
- //BA.debugLineNum = 43;BA.debugLine="Activity.AddMenuItem(\"Reset device\",\"reset_dev\")";
+ //BA.debugLineNum = 44;BA.debugLine="Activity.AddMenuItem(\"Reset device\",\"reset_dev\")";
 mostCurrent._activity.AddMenuItem("Reset device","reset_dev");
- //BA.debugLineNum = 44;BA.debugLine="Activity.AddMenuItem(\"EXIT\",\"exit_prg\")";
+ //BA.debugLineNum = 45;BA.debugLine="Activity.AddMenuItem(\"EXIT\",\"exit_prg\")";
 mostCurrent._activity.AddMenuItem("EXIT","exit_prg");
- //BA.debugLineNum = 45;BA.debugLine="prs.Initialize(Colors.Gray,0dip)";
+ //BA.debugLineNum = 46;BA.debugLine="prs.Initialize(Colors.Gray,0dip)";
 mostCurrent._prs.Initialize(anywheresoftware.b4a.keywords.Common.Colors.Gray,anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (0)));
- //BA.debugLineNum = 46;BA.debugLine="ups.Initialize(Colors.DarkGray, 0dip)";
+ //BA.debugLineNum = 47;BA.debugLine="ups.Initialize(Colors.DarkGray, 0dip)";
 mostCurrent._ups.Initialize(anywheresoftware.b4a.keywords.Common.Colors.DarkGray,anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (0)));
- //BA.debugLineNum = 47;BA.debugLine="grn.Initialize(Colors.RGB(0,150,0), 0dip)";
+ //BA.debugLineNum = 48;BA.debugLine="grn.Initialize(Colors.RGB(0,150,0), 0dip)";
 mostCurrent._grn.Initialize(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (0),(int) (150),(int) (0)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (0)));
- //BA.debugLineNum = 48;BA.debugLine="sld_norm.Initialize";
+ //BA.debugLineNum = 49;BA.debugLine="sld_norm.Initialize";
 mostCurrent._sld_norm.Initialize();
- //BA.debugLineNum = 49;BA.debugLine="sld_norm.AddState(sld_norm.State_Pressed, ups)";
+ //BA.debugLineNum = 50;BA.debugLine="sld_norm.AddState(sld_norm.State_Pressed, ups)";
 mostCurrent._sld_norm.AddState(mostCurrent._sld_norm.State_Pressed,(android.graphics.drawable.Drawable)(mostCurrent._ups.getObject()));
- //BA.debugLineNum = 50;BA.debugLine="sld_norm.AddState(sld_norm.State_Enabled,ups)";
+ //BA.debugLineNum = 51;BA.debugLine="sld_norm.AddState(sld_norm.State_Enabled,ups)";
 mostCurrent._sld_norm.AddState(mostCurrent._sld_norm.State_Enabled,(android.graphics.drawable.Drawable)(mostCurrent._ups.getObject()));
- //BA.debugLineNum = 51;BA.debugLine="sld_norm.AddState(sld_on.State_Focused, ups)";
+ //BA.debugLineNum = 52;BA.debugLine="sld_norm.AddState(sld_on.State_Focused, ups)";
 mostCurrent._sld_norm.AddState(mostCurrent._sld_on.State_Focused,(android.graphics.drawable.Drawable)(mostCurrent._ups.getObject()));
- //BA.debugLineNum = 52;BA.debugLine="sld_on.Initialize";
+ //BA.debugLineNum = 53;BA.debugLine="sld_on.Initialize";
 mostCurrent._sld_on.Initialize();
- //BA.debugLineNum = 53;BA.debugLine="sld_on.AddState(sld_on.State_Pressed, grn)";
+ //BA.debugLineNum = 54;BA.debugLine="sld_on.AddState(sld_on.State_Pressed, grn)";
 mostCurrent._sld_on.AddState(mostCurrent._sld_on.State_Pressed,(android.graphics.drawable.Drawable)(mostCurrent._grn.getObject()));
- //BA.debugLineNum = 54;BA.debugLine="sld_on.AddState(sld_on.State_Enabled, grn)";
+ //BA.debugLineNum = 55;BA.debugLine="sld_on.AddState(sld_on.State_Enabled, grn)";
 mostCurrent._sld_on.AddState(mostCurrent._sld_on.State_Enabled,(android.graphics.drawable.Drawable)(mostCurrent._grn.getObject()));
- //BA.debugLineNum = 55;BA.debugLine="sld_on.AddState(sld_on.State_Disabled, grn)";
+ //BA.debugLineNum = 56;BA.debugLine="sld_on.AddState(sld_on.State_Disabled, grn)";
 mostCurrent._sld_on.AddState(mostCurrent._sld_on.State_Disabled,(android.graphics.drawable.Drawable)(mostCurrent._grn.getObject()));
- //BA.debugLineNum = 56;BA.debugLine="sld_on.AddState(sld_on.State_Focused, grn)";
+ //BA.debugLineNum = 57;BA.debugLine="sld_on.AddState(sld_on.State_Focused, grn)";
 mostCurrent._sld_on.AddState(mostCurrent._sld_on.State_Focused,(android.graphics.drawable.Drawable)(mostCurrent._grn.getObject()));
- //BA.debugLineNum = 57;BA.debugLine="sld_down.Initialize";
+ //BA.debugLineNum = 58;BA.debugLine="sld_down.Initialize";
 mostCurrent._sld_down.Initialize();
- //BA.debugLineNum = 58;BA.debugLine="sld_down.AddState(sld_on.State_Pressed, prs)";
+ //BA.debugLineNum = 59;BA.debugLine="sld_down.AddState(sld_on.State_Pressed, prs)";
 mostCurrent._sld_down.AddState(mostCurrent._sld_on.State_Pressed,(android.graphics.drawable.Drawable)(mostCurrent._prs.getObject()));
- //BA.debugLineNum = 59;BA.debugLine="sld_down.AddState(sld_on.State_Enabled, prs)";
+ //BA.debugLineNum = 60;BA.debugLine="sld_down.AddState(sld_on.State_Enabled, prs)";
 mostCurrent._sld_down.AddState(mostCurrent._sld_on.State_Enabled,(android.graphics.drawable.Drawable)(mostCurrent._prs.getObject()));
- //BA.debugLineNum = 60;BA.debugLine="sld_down.AddState(sld_on.State_Disabled,prs)";
+ //BA.debugLineNum = 61;BA.debugLine="sld_down.AddState(sld_on.State_Disabled,prs)";
 mostCurrent._sld_down.AddState(mostCurrent._sld_on.State_Disabled,(android.graphics.drawable.Drawable)(mostCurrent._prs.getObject()));
- //BA.debugLineNum = 61;BA.debugLine="sld_down.AddState(sld_on.State_Focused,prs)";
+ //BA.debugLineNum = 62;BA.debugLine="sld_down.AddState(sld_on.State_Focused,prs)";
 mostCurrent._sld_down.AddState(mostCurrent._sld_on.State_Focused,(android.graphics.drawable.Drawable)(mostCurrent._prs.getObject()));
- //BA.debugLineNum = 62;BA.debugLine="status_lab.Initialize(\"status_lab\")";
+ //BA.debugLineNum = 63;BA.debugLine="status_lab.Initialize(\"status_lab\")";
 mostCurrent._status_lab.Initialize(mostCurrent.activityBA,"status_lab");
- //BA.debugLineNum = 63;BA.debugLine="status_lab.TextColor=Colors.Red";
+ //BA.debugLineNum = 64;BA.debugLine="status_lab.TextColor=Colors.Red";
 mostCurrent._status_lab.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Red);
- //BA.debugLineNum = 64;BA.debugLine="status_lab.Text = \"No connected\"";
+ //BA.debugLineNum = 65;BA.debugLine="status_lab.Text = \"No connected\"";
 mostCurrent._status_lab.setText((Object)("No connected"));
- //BA.debugLineNum = 65;BA.debugLine="Activity.AddView(status_lab, 0dip, Activity.He";
+ //BA.debugLineNum = 66;BA.debugLine="Activity.AddView(status_lab, 0dip, Activity.He";
 mostCurrent._activity.AddView((android.view.View)(mostCurrent._status_lab.getObject()),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (0)),(int) (mostCurrent._activity.getHeight()-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20))),mostCurrent._activity.getWidth(),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20)));
- //BA.debugLineNum = 66;BA.debugLine="mqtt_but.Initialize (\"mqtt_but\")";
+ //BA.debugLineNum = 67;BA.debugLine="mqtt_but.Initialize (\"mqtt_but\")";
 mostCurrent._mqtt_but.Initialize(mostCurrent.activityBA,"mqtt_but");
- //BA.debugLineNum = 67;BA.debugLine="mqtt_but.Text =\"MQTT\"";
+ //BA.debugLineNum = 68;BA.debugLine="mqtt_but.Text =\"MQTT\"";
 mostCurrent._mqtt_but.setText((Object)("MQTT"));
- //BA.debugLineNum = 68;BA.debugLine="mqtt_but.TextSize=12";
+ //BA.debugLineNum = 69;BA.debugLine="mqtt_but.TextSize=12";
 mostCurrent._mqtt_but.setTextSize((float) (12));
- //BA.debugLineNum = 69;BA.debugLine="Activity.AddView(mqtt_but,Activity.Width-50dip, A";
+ //BA.debugLineNum = 70;BA.debugLine="Activity.AddView(mqtt_but,Activity.Width-50dip, A";
 mostCurrent._activity.AddView((android.view.View)(mostCurrent._mqtt_but.getObject()),(int) (mostCurrent._activity.getWidth()-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (50))),(int) (mostCurrent._activity.getHeight()-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20))),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (50)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20)));
- //BA.debugLineNum = 70;BA.debugLine="If CM.connect_type=True Then";
+ //BA.debugLineNum = 71;BA.debugLine="If CM.connect_type=True Then";
 if (mostCurrent._cm._connect_type==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 71;BA.debugLine="mqtt_but.textColor=Colors.Green";
+ //BA.debugLineNum = 72;BA.debugLine="mqtt_but.textColor=Colors.Green";
 mostCurrent._mqtt_but.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Green);
  }else {
- //BA.debugLineNum = 73;BA.debugLine="mqtt_but.textColor=Colors.Gray";
+ //BA.debugLineNum = 74;BA.debugLine="mqtt_but.textColor=Colors.Gray";
 mostCurrent._mqtt_but.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Gray);
  };
- //BA.debugLineNum = 75;BA.debugLine="wifi.Initialize(\"wifi\")";
+ //BA.debugLineNum = 76;BA.debugLine="wifi.Initialize(\"wifi\")";
 mostCurrent._wifi.Initialize(processBA,"wifi");
- //BA.debugLineNum = 76;BA.debugLine="For i = 1 To 32";
+ //BA.debugLineNum = 77;BA.debugLine="For i = 1 To 32";
 {
 final int step40 = 1;
 final int limit40 = (int) (32);
 for (_i = (int) (1) ; (step40 > 0 && _i <= limit40) || (step40 < 0 && _i >= limit40); _i = ((int)(0 + _i + step40)) ) {
- //BA.debugLineNum = 77;BA.debugLine="Dim tbuts As Button";
+ //BA.debugLineNum = 78;BA.debugLine="Dim tbuts As Button";
 _tbuts = new anywheresoftware.b4a.objects.ButtonWrapper();
- //BA.debugLineNum = 78;BA.debugLine="tbuts.Initialize(\"tbuts\")";
+ //BA.debugLineNum = 79;BA.debugLine="tbuts.Initialize(\"tbuts\")";
 _tbuts.Initialize(mostCurrent.activityBA,"tbuts");
- //BA.debugLineNum = 79;BA.debugLine="Activity.AddView(tbuts, -2000dip, 0, 20dip";
+ //BA.debugLineNum = 80;BA.debugLine="Activity.AddView(tbuts, -2000dip, 0, 20dip";
 mostCurrent._activity.AddView((android.view.View)(_tbuts.getObject()),(int) (-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (2000))),(int) (0),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20)));
- //BA.debugLineNum = 80;BA.debugLine="tbuts.Background=sld_norm";
+ //BA.debugLineNum = 81;BA.debugLine="tbuts.Background=sld_norm";
 _tbuts.setBackground((android.graphics.drawable.Drawable)(mostCurrent._sld_norm.getObject()));
- //BA.debugLineNum = 81;BA.debugLine="butt(i)=tbuts";
+ //BA.debugLineNum = 82;BA.debugLine="butt(i)=tbuts";
 mostCurrent._butt[_i] = _tbuts;
  }
 };
- //BA.debugLineNum = 83;BA.debugLine="add_key_to_panel";
+ //BA.debugLineNum = 84;BA.debugLine="add_key_to_panel";
 _add_key_to_panel();
- //BA.debugLineNum = 84;BA.debugLine="menu_pass_txt.Initialize(\"menu_pass_txt\")";
+ //BA.debugLineNum = 85;BA.debugLine="menu_pass_txt.Initialize(\"menu_pass_txt\")";
 mostCurrent._menu_pass_txt.Initialize(mostCurrent.activityBA,"menu_pass_txt");
- //BA.debugLineNum = 85;BA.debugLine="menu_pass_txt.Visible =False";
+ //BA.debugLineNum = 86;BA.debugLine="menu_pass_txt.Visible =False";
 mostCurrent._menu_pass_txt.setVisible(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 86;BA.debugLine="menu_pass_txt.TextSize=6";
+ //BA.debugLineNum = 87;BA.debugLine="menu_pass_txt.TextSize=6";
 mostCurrent._menu_pass_txt.setTextSize((float) (6));
- //BA.debugLineNum = 87;BA.debugLine="menu_pass_txt.PasswordMode=True";
+ //BA.debugLineNum = 88;BA.debugLine="menu_pass_txt.PasswordMode=True";
 mostCurrent._menu_pass_txt.setPasswordMode(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 88;BA.debugLine="Activity.AddView(menu_pass_txt,Activity.Width/2.5";
+ //BA.debugLineNum = 89;BA.debugLine="Activity.AddView(menu_pass_txt,Activity.Width/2.5";
 mostCurrent._activity.AddView((android.view.View)(mostCurrent._menu_pass_txt.getObject()),(int) (mostCurrent._activity.getWidth()/(double)2.5),(int) (mostCurrent._activity.getHeight()-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (30))),(int) (mostCurrent._activity.getWidth()/(double)5),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (30)));
- //BA.debugLineNum = 89;BA.debugLine="send_state_timer.Initialize(\"send_state_timer\",";
+ //BA.debugLineNum = 90;BA.debugLine="send_state_timer.Initialize(\"send_state_timer\",";
 _send_state_timer.Initialize(processBA,"send_state_timer",(long) (1000));
- //BA.debugLineNum = 90;BA.debugLine="send_state_timer.Enabled =True";
+ //BA.debugLineNum = 91;BA.debugLine="send_state_timer.Enabled =True";
 _send_state_timer.setEnabled(anywheresoftware.b4a.keywords.Common.True);
  } 
-       catch (Exception e76) {
-			processBA.setLastException(e76); //BA.debugLineNum = 94;BA.debugLine="proces_error(LastException.Message & \"activ. cre";
+       catch (Exception e77) {
+			processBA.setLastException(e77); //BA.debugLineNum = 95;BA.debugLine="proces_error(LastException.Message & \"activ. cre";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage()+"activ. creat");
  };
- //BA.debugLineNum = 96;BA.debugLine="End Sub";
+ //BA.debugLineNum = 97;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 107;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 108;BA.debugLine="Try";
-try { //BA.debugLineNum = 109;BA.debugLine="wifi.StopWifi";
+ //BA.debugLineNum = 108;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 109;BA.debugLine="Try";
+try { //BA.debugLineNum = 110;BA.debugLine="wifi.StopWifi";
 mostCurrent._wifi.StopWifi();
- //BA.debugLineNum = 110;BA.debugLine="StateManager.SaveSettings";
+ //BA.debugLineNum = 111;BA.debugLine="StateManager.SaveSettings";
 mostCurrent._statemanager._savesettings(mostCurrent.activityBA);
  } 
-       catch (Exception e91) {
-			processBA.setLastException(e91); //BA.debugLineNum = 112;BA.debugLine="proces_error(LastException.Message & \"active.pau";
+       catch (Exception e92) {
+			processBA.setLastException(e92); //BA.debugLineNum = 113;BA.debugLine="proces_error(LastException.Message & \"active.pau";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage()+"active.pause");
  };
- //BA.debugLineNum = 114;BA.debugLine="End Sub";
+ //BA.debugLineNum = 115;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 98;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 99;BA.debugLine="Try";
-try { //BA.debugLineNum = 100;BA.debugLine="add_key_to_panel";
+ //BA.debugLineNum = 99;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 100;BA.debugLine="Try";
+try { //BA.debugLineNum = 101;BA.debugLine="add_key_to_panel";
 _add_key_to_panel();
  } 
-       catch (Exception e83) {
-			processBA.setLastException(e83); //BA.debugLineNum = 103;BA.debugLine="proces_error(LastException.Message & \"active. re";
+       catch (Exception e84) {
+			processBA.setLastException(e84); //BA.debugLineNum = 104;BA.debugLine="proces_error(LastException.Message & \"active. re";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage()+"active. resume");
  };
- //BA.debugLineNum = 105;BA.debugLine="End Sub";
+ //BA.debugLineNum = 106;BA.debugLine="End Sub";
 return "";
 }
 public static String  _add_key_to_panel() throws Exception{
@@ -505,128 +506,128 @@ int _posx = 0;
 int _posy = 0;
 int _max_but = 0;
 int _a = 0;
- //BA.debugLineNum = 216;BA.debugLine="Sub add_key_to_panel() 'розміщення кнопок керуванн";
- //BA.debugLineNum = 217;BA.debugLine="Try";
-try { //BA.debugLineNum = 218;BA.debugLine="Activity.Title =\"Wi-Fi keys - \" & StateManager.Ge";
+ //BA.debugLineNum = 217;BA.debugLine="Sub add_key_to_panel() 'розміщення кнопок керуванн";
+ //BA.debugLineNum = 218;BA.debugLine="Try";
+try { //BA.debugLineNum = 219;BA.debugLine="Activity.Title =\"Wi-Fi keys - \" & StateManager.Ge";
 mostCurrent._activity.setTitle((Object)("Wi-Fi keys - "+mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"cur_dev_name","none")));
- //BA.debugLineNum = 220;BA.debugLine="clear_keys";
+ //BA.debugLineNum = 221;BA.debugLine="clear_keys";
 _clear_keys();
- //BA.debugLineNum = 221;BA.debugLine="Dim vert_size As Int=CM.toint(StateManager.GetSet";
+ //BA.debugLineNum = 222;BA.debugLine="Dim vert_size As Int=CM.toint(StateManager.GetSet";
 _vert_size = mostCurrent._cm._toint(mostCurrent.activityBA,mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"v_size",""));
- //BA.debugLineNum = 222;BA.debugLine="Dim horiz_size As Int=CM.toint(StateManager.GetSe";
+ //BA.debugLineNum = 223;BA.debugLine="Dim horiz_size As Int=CM.toint(StateManager.GetSe";
 _horiz_size = mostCurrent._cm._toint(mostCurrent.activityBA,mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"h_size",""));
- //BA.debugLineNum = 223;BA.debugLine="Dim font_size As Int=CM.toint(StateManager.GetSet";
+ //BA.debugLineNum = 224;BA.debugLine="Dim font_size As Int=CM.toint(StateManager.GetSet";
 _font_size = mostCurrent._cm._toint(mostCurrent.activityBA,mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"font_size",""));
- //BA.debugLineNum = 224;BA.debugLine="If vert_size <1 Then Return";
+ //BA.debugLineNum = 225;BA.debugLine="If vert_size <1 Then Return";
 if (_vert_size<1) { 
 if (true) return "";};
- //BA.debugLineNum = 225;BA.debugLine="Dim b_width,b_height,posx,posy,max_but As Int";
+ //BA.debugLineNum = 226;BA.debugLine="Dim b_width,b_height,posx,posy,max_but As Int";
 _b_width = 0;
 _b_height = 0;
 _posx = 0;
 _posy = 0;
 _max_but = 0;
- //BA.debugLineNum = 226;BA.debugLine="b_width=Activity.Width/horiz_size";
+ //BA.debugLineNum = 227;BA.debugLine="b_width=Activity.Width/horiz_size";
 _b_width = (int) (mostCurrent._activity.getWidth()/(double)_horiz_size);
- //BA.debugLineNum = 227;BA.debugLine="b_height=(Activity.height-20dip)/vert_size";
+ //BA.debugLineNum = 228;BA.debugLine="b_height=(Activity.height-20dip)/vert_size";
 _b_height = (int) ((mostCurrent._activity.getHeight()-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (20)))/(double)_vert_size);
- //BA.debugLineNum = 228;BA.debugLine="max_but =horiz_size*vert_size";
+ //BA.debugLineNum = 229;BA.debugLine="max_but =horiz_size*vert_size";
 _max_but = (int) (_horiz_size*_vert_size);
- //BA.debugLineNum = 229;BA.debugLine="cur_but_state=0";
+ //BA.debugLineNum = 230;BA.debugLine="cur_but_state=0";
 _cur_but_state = (int) (0);
- //BA.debugLineNum = 230;BA.debugLine="For a=1 To 32";
+ //BA.debugLineNum = 231;BA.debugLine="For a=1 To 32";
 {
 final int step13 = 1;
 final int limit13 = (int) (32);
 for (_a = (int) (1) ; (step13 > 0 && _a <= limit13) || (step13 < 0 && _a >= limit13); _a = ((int)(0 + _a + step13)) ) {
- //BA.debugLineNum = 231;BA.debugLine="butt(a).Background=sld_norm";
+ //BA.debugLineNum = 232;BA.debugLine="butt(a).Background=sld_norm";
 mostCurrent._butt[_a].setBackground((android.graphics.drawable.Drawable)(mostCurrent._sld_norm.getObject()));
- //BA.debugLineNum = 232;BA.debugLine="If CM.toint(StateManager.GetSetting2(\"keytag\" &";
+ //BA.debugLineNum = 233;BA.debugLine="If CM.toint(StateManager.GetSetting2(\"keytag\" &";
 if (mostCurrent._cm._toint(mostCurrent.activityBA,mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"keytag"+BA.NumberToString(_a),""))>0) { 
- //BA.debugLineNum = 233;BA.debugLine="If cur_but_state>=max_but Then Return";
+ //BA.debugLineNum = 234;BA.debugLine="If cur_but_state>=max_but Then Return";
 if (_cur_but_state>=_max_but) { 
 if (true) return "";};
- //BA.debugLineNum = 234;BA.debugLine="posy=cur_but_state/horiz_size";
+ //BA.debugLineNum = 235;BA.debugLine="posy=cur_but_state/horiz_size";
 _posy = (int) (_cur_but_state/(double)_horiz_size);
- //BA.debugLineNum = 235;BA.debugLine="posx=cur_but_state mod horiz_size";
+ //BA.debugLineNum = 236;BA.debugLine="posx=cur_but_state mod horiz_size";
 _posx = (int) (_cur_but_state%_horiz_size);
- //BA.debugLineNum = 236;BA.debugLine="butlock(a)=CM.obj2Bool(StateManager.GetSetting2";
+ //BA.debugLineNum = 237;BA.debugLine="butlock(a)=CM.obj2Bool(StateManager.GetSetting2";
 _butlock[_a] = mostCurrent._cm._obj2bool(mostCurrent.activityBA,(Object)(mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"keylock"+BA.NumberToString(_a),BA.NumberToString(0))));
- //BA.debugLineNum = 237;BA.debugLine="butt(a).Text =StateManager.GetSetting2(\"keytext";
+ //BA.debugLineNum = 238;BA.debugLine="butt(a).Text =StateManager.GetSetting2(\"keytext";
 mostCurrent._butt[_a].setText((Object)(mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"keytext"+BA.NumberToString(_a),"")));
- //BA.debugLineNum = 238;BA.debugLine="butt(a).tag =StateManager.GetSetting2(\"keytag\"";
+ //BA.debugLineNum = 239;BA.debugLine="butt(a).tag =StateManager.GetSetting2(\"keytag\"";
 mostCurrent._butt[_a].setTag((Object)(mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"keytag"+BA.NumberToString(_a),"")));
- //BA.debugLineNum = 239;BA.debugLine="butt(a).Left =posx*(b_width+1dip)";
+ //BA.debugLineNum = 240;BA.debugLine="butt(a).Left =posx*(b_width+1dip)";
 mostCurrent._butt[_a].setLeft((int) (_posx*(_b_width+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (1)))));
- //BA.debugLineNum = 240;BA.debugLine="butt(a).top =posy*(b_height+1dip)";
+ //BA.debugLineNum = 241;BA.debugLine="butt(a).top =posy*(b_height+1dip)";
 mostCurrent._butt[_a].setTop((int) (_posy*(_b_height+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (1)))));
- //BA.debugLineNum = 241;BA.debugLine="butt(a).width =b_width-2dip";
+ //BA.debugLineNum = 242;BA.debugLine="butt(a).width =b_width-2dip";
 mostCurrent._butt[_a].setWidth((int) (_b_width-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (2))));
- //BA.debugLineNum = 242;BA.debugLine="butt(a).height =b_height-2dip";
+ //BA.debugLineNum = 243;BA.debugLine="butt(a).height =b_height-2dip";
 mostCurrent._butt[_a].setHeight((int) (_b_height-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (2))));
- //BA.debugLineNum = 243;BA.debugLine="butt(a).TextSize =font_size";
+ //BA.debugLineNum = 244;BA.debugLine="butt(a).TextSize =font_size";
 mostCurrent._butt[_a].setTextSize((float) (_font_size));
- //BA.debugLineNum = 244;BA.debugLine="cur_but_state=cur_but_state+1";
+ //BA.debugLineNum = 245;BA.debugLine="cur_but_state=cur_but_state+1";
 _cur_but_state = (int) (_cur_but_state+1);
  };
  }
 };
  } 
-       catch (Exception e207) {
-			processBA.setLastException(e207); //BA.debugLineNum = 248;BA.debugLine="proces_error(LastException.Message & \"add_key_to";
+       catch (Exception e208) {
+			processBA.setLastException(e208); //BA.debugLineNum = 249;BA.debugLine="proces_error(LastException.Message & \"add_key_to";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage()+"add_key_to_panel");
  };
- //BA.debugLineNum = 250;BA.debugLine="End Sub";
+ //BA.debugLineNum = 251;BA.debugLine="End Sub";
 return "";
 }
 public static String  _clear_keys() throws Exception{
 int _i = 0;
- //BA.debugLineNum = 117;BA.debugLine="Sub clear_keys";
- //BA.debugLineNum = 118;BA.debugLine="Try";
-try { //BA.debugLineNum = 119;BA.debugLine="For i = 1 To 32";
+ //BA.debugLineNum = 118;BA.debugLine="Sub clear_keys";
+ //BA.debugLineNum = 119;BA.debugLine="Try";
+try { //BA.debugLineNum = 120;BA.debugLine="For i = 1 To 32";
 {
 final int step2 = 1;
 final int limit2 = (int) (32);
 for (_i = (int) (1) ; (step2 > 0 && _i <= limit2) || (step2 < 0 && _i >= limit2); _i = ((int)(0 + _i + step2)) ) {
- //BA.debugLineNum = 120;BA.debugLine="butt(i).Left =-2000";
+ //BA.debugLineNum = 121;BA.debugLine="butt(i).Left =-2000";
 mostCurrent._butt[_i].setLeft((int) (-2000));
- //BA.debugLineNum = 121;BA.debugLine="butt(i).Tag =\"\"";
+ //BA.debugLineNum = 122;BA.debugLine="butt(i).Tag =\"\"";
 mostCurrent._butt[_i].setTag((Object)(""));
  }
 };
  } 
-       catch (Exception e101) {
-			processBA.setLastException(e101); //BA.debugLineNum = 125;BA.debugLine="proces_error(LastException.Message & \"clear.keys";
+       catch (Exception e102) {
+			processBA.setLastException(e102); //BA.debugLineNum = 126;BA.debugLine="proces_error(LastException.Message & \"clear.keys";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage()+"clear.keys");
  };
- //BA.debugLineNum = 127;BA.debugLine="End Sub";
+ //BA.debugLineNum = 128;BA.debugLine="End Sub";
 return "";
 }
 public static String  _exit_prg_click() throws Exception{
- //BA.debugLineNum = 334;BA.debugLine="Sub exit_prg_click()";
- //BA.debugLineNum = 335;BA.debugLine="ExitApplication";
+ //BA.debugLineNum = 335;BA.debugLine="Sub exit_prg_click()";
+ //BA.debugLineNum = 336;BA.debugLine="ExitApplication";
 anywheresoftware.b4a.keywords.Common.ExitApplication();
- //BA.debugLineNum = 336;BA.debugLine="End Sub";
+ //BA.debugLineNum = 337;BA.debugLine="End Sub";
 return "";
 }
 public static String  _get_rssi() throws Exception{
 anywheresoftware.b4a.objects.collections.Map _data = null;
- //BA.debugLineNum = 175;BA.debugLine="Sub get_rssi() 'Відправка запиту на отримання рів";
- //BA.debugLineNum = 176;BA.debugLine="Try";
-try { //BA.debugLineNum = 177;BA.debugLine="Dim Data As Map";
+ //BA.debugLineNum = 176;BA.debugLine="Sub get_rssi() 'Відправка запиту на отримання рів";
+ //BA.debugLineNum = 177;BA.debugLine="Try";
+try { //BA.debugLineNum = 178;BA.debugLine="Dim Data As Map";
 _data = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 178;BA.debugLine="Data.Initialize";
+ //BA.debugLineNum = 179;BA.debugLine="Data.Initialize";
 _data.Initialize();
- //BA.debugLineNum = 179;BA.debugLine="Data.Put (\"rssi\",1)";
+ //BA.debugLineNum = 180;BA.debugLine="Data.Put (\"rssi\",1)";
 _data.Put((Object)("rssi"),(Object)(1));
- //BA.debugLineNum = 180;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
+ //BA.debugLineNum = 181;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
 anywheresoftware.b4a.keywords.Common.CallSubDelayed2(mostCurrent.activityBA,(Object)(mostCurrent._starter.getObject()),"send_to_dev",(Object)(_data));
  } 
-       catch (Exception e147) {
-			processBA.setLastException(e147); //BA.debugLineNum = 182;BA.debugLine="proces_error(LastException.Message & \"get_rssi\")";
+       catch (Exception e148) {
+			processBA.setLastException(e148); //BA.debugLineNum = 183;BA.debugLine="proces_error(LastException.Message & \"get_rssi\")";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage()+"get_rssi");
  };
- //BA.debugLineNum = 184;BA.debugLine="End Sub";
+ //BA.debugLineNum = 185;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{
@@ -672,48 +673,61 @@ _cur_but_state = 0;
 _prs_but = 0;
  //BA.debugLineNum = 31;BA.debugLine="Dim enter_menu_pass As String";
 mostCurrent._enter_menu_pass = "";
- //BA.debugLineNum = 33;BA.debugLine="End Sub";
+ //BA.debugLineNum = 32;BA.debugLine="Dim allow_menu As Boolean";
+_allow_menu = false;
+ //BA.debugLineNum = 34;BA.debugLine="End Sub";
 return "";
 }
 public static String  _inet_setm_click() throws Exception{
- //BA.debugLineNum = 330;BA.debugLine="Sub inet_setm_Click()";
- //BA.debugLineNum = 331;BA.debugLine="If  valid_menu_pass=False Then Return";
+ //BA.debugLineNum = 331;BA.debugLine="Sub inet_setm_Click()";
+ //BA.debugLineNum = 332;BA.debugLine="If  valid_menu_pass=False Then Return";
 if (_valid_menu_pass()==anywheresoftware.b4a.keywords.Common.False) { 
 if (true) return "";};
- //BA.debugLineNum = 332;BA.debugLine="StartActivity(INET_SET)";
+ //BA.debugLineNum = 333;BA.debugLine="StartActivity(INET_SET)";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._inet_set.getObject()));
- //BA.debugLineNum = 333;BA.debugLine="End Sub";
+ //BA.debugLineNum = 334;BA.debugLine="End Sub";
 return "";
 }
 public static String  _keys_set_click() throws Exception{
- //BA.debugLineNum = 326;BA.debugLine="Sub keys_set_Click()";
- //BA.debugLineNum = 327;BA.debugLine="If  valid_menu_pass=False Then Return";
+ //BA.debugLineNum = 327;BA.debugLine="Sub keys_set_Click()";
+ //BA.debugLineNum = 328;BA.debugLine="If  valid_menu_pass=False Then Return";
 if (_valid_menu_pass()==anywheresoftware.b4a.keywords.Common.False) { 
 if (true) return "";};
- //BA.debugLineNum = 328;BA.debugLine="StartActivity(KEY_SET)";
+ //BA.debugLineNum = 329;BA.debugLine="StartActivity(KEY_SET)";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._key_set.getObject()));
- //BA.debugLineNum = 329;BA.debugLine="End Sub";
+ //BA.debugLineNum = 330;BA.debugLine="End Sub";
 return "";
 }
 public static String  _menu_pass_txt_enterpressed() throws Exception{
+String _ppas = "";
+String _ptxt = "";
  //BA.debugLineNum = 373;BA.debugLine="Sub menu_pass_txt_EnterPressed";
- //BA.debugLineNum = 374;BA.debugLine="enter_menu_pass=menu_pass_txt.Text";
-mostCurrent._enter_menu_pass = mostCurrent._menu_pass_txt.getText();
- //BA.debugLineNum = 375;BA.debugLine="menu_pass_txt.Visible =False";
+ //BA.debugLineNum = 374;BA.debugLine="Dim ppas As String =StateManager.getSetting2(\"men";
+_ppas = mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"menu_pass","");
+ //BA.debugLineNum = 375;BA.debugLine="Dim ptxt As String =menu_pass_txt.Text";
+_ptxt = mostCurrent._menu_pass_txt.getText();
+ //BA.debugLineNum = 376;BA.debugLine="If ppas.EqualsIgnoreCase(ptxt)=True Then";
+if (_ppas.equalsIgnoreCase(_ptxt)==anywheresoftware.b4a.keywords.Common.True) { 
+ //BA.debugLineNum = 377;BA.debugLine="ToastMessageShow(\"Corect\",False)";
+anywheresoftware.b4a.keywords.Common.ToastMessageShow("Corect",anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 378;BA.debugLine="allow_menu=True";
+_allow_menu = anywheresoftware.b4a.keywords.Common.True;
+ }else {
+ //BA.debugLineNum = 380;BA.debugLine="ToastMessageShow(\"Invalid pass\",False)";
+anywheresoftware.b4a.keywords.Common.ToastMessageShow("Invalid pass",anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 381;BA.debugLine="allow_menu=False";
+_allow_menu = anywheresoftware.b4a.keywords.Common.False;
+ };
+ //BA.debugLineNum = 383;BA.debugLine="menu_pass_txt.Visible =False";
 mostCurrent._menu_pass_txt.setVisible(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 376;BA.debugLine="End Sub";
+ //BA.debugLineNum = 384;BA.debugLine="End Sub";
 return "";
 }
-public static String  _menu_pass_txt_focuschanged(boolean _hasfocus) throws Exception{
- //BA.debugLineNum = 378;BA.debugLine="Sub menu_pass_txt_FocusChanged (HasFocus As Boolea";
- //BA.debugLineNum = 379;BA.debugLine="If HasFocus=False Then";
-if (_hasfocus==anywheresoftware.b4a.keywords.Common.False) { 
- //BA.debugLineNum = 380;BA.debugLine="enter_menu_pass=menu_pass_txt.Text";
-mostCurrent._enter_menu_pass = mostCurrent._menu_pass_txt.getText();
- //BA.debugLineNum = 381;BA.debugLine="menu_pass_txt.Visible =False";
-mostCurrent._menu_pass_txt.setVisible(anywheresoftware.b4a.keywords.Common.False);
- };
- //BA.debugLineNum = 383;BA.debugLine="End Sub";
+public static String  _menu_pass_txt_textchanged(String _old,String _new) throws Exception{
+ //BA.debugLineNum = 387;BA.debugLine="Sub menu_pass_txt_TextChanged(Old As String, New A";
+ //BA.debugLineNum = 388;BA.debugLine="enter_menu_pass=New";
+mostCurrent._enter_menu_pass = _new;
+ //BA.debugLineNum = 389;BA.debugLine="End Sub";
 return "";
 }
 public static String  _mqtt_but_longclick() throws Exception{
@@ -767,151 +781,151 @@ return "";
 }
 public static String  _reset_dev_click() throws Exception{
 anywheresoftware.b4a.objects.collections.Map _data = null;
- //BA.debugLineNum = 337;BA.debugLine="Sub reset_dev_Click()";
- //BA.debugLineNum = 338;BA.debugLine="Try";
-try { //BA.debugLineNum = 339;BA.debugLine="Dim Data As Map";
+ //BA.debugLineNum = 338;BA.debugLine="Sub reset_dev_Click()";
+ //BA.debugLineNum = 339;BA.debugLine="Try";
+try { //BA.debugLineNum = 340;BA.debugLine="Dim Data As Map";
 _data = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 340;BA.debugLine="Data.Initialize";
+ //BA.debugLineNum = 341;BA.debugLine="Data.Initialize";
 _data.Initialize();
- //BA.debugLineNum = 341;BA.debugLine="Data.Put (\"rst\",1)";
+ //BA.debugLineNum = 342;BA.debugLine="Data.Put (\"rst\",1)";
 _data.Put((Object)("rst"),(Object)(1));
- //BA.debugLineNum = 342;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
+ //BA.debugLineNum = 343;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
 anywheresoftware.b4a.keywords.Common.CallSubDelayed2(mostCurrent.activityBA,(Object)(mostCurrent._starter.getObject()),"send_to_dev",(Object)(_data));
  } 
-       catch (Exception e292) {
-			processBA.setLastException(e292); //BA.debugLineNum = 344;BA.debugLine="proces_error(LastException.Message & \"reset_dev\"";
+       catch (Exception e293) {
+			processBA.setLastException(e293); //BA.debugLineNum = 345;BA.debugLine="proces_error(LastException.Message & \"reset_dev\"";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage()+"reset_dev");
  };
- //BA.debugLineNum = 348;BA.debugLine="End Sub";
+ //BA.debugLineNum = 349;BA.debugLine="End Sub";
 return "";
 }
 public static String  _sel_dev_click() throws Exception{
- //BA.debugLineNum = 314;BA.debugLine="Sub sel_dev_Click()";
- //BA.debugLineNum = 315;BA.debugLine="If  valid_menu_pass=False Then Return";
+ //BA.debugLineNum = 315;BA.debugLine="Sub sel_dev_Click()";
+ //BA.debugLineNum = 316;BA.debugLine="If  valid_menu_pass=False Then Return";
 if (_valid_menu_pass()==anywheresoftware.b4a.keywords.Common.False) { 
 if (true) return "";};
- //BA.debugLineNum = 316;BA.debugLine="StartActivity(sel_dev)";
+ //BA.debugLineNum = 317;BA.debugLine="StartActivity(sel_dev)";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._sel_dev.getObject()));
- //BA.debugLineNum = 317;BA.debugLine="End Sub";
+ //BA.debugLineNum = 318;BA.debugLine="End Sub";
 return "";
 }
 public static String  _send_comm(int _ind,boolean _com,boolean _lock) throws Exception{
 anywheresoftware.b4a.objects.collections.Map _data = null;
- //BA.debugLineNum = 134;BA.debugLine="Sub send_comm(ind As Int,com As Boolean,lock As Bo";
- //BA.debugLineNum = 135;BA.debugLine="Try";
-try { //BA.debugLineNum = 136;BA.debugLine="Dim Data As Map";
+ //BA.debugLineNum = 135;BA.debugLine="Sub send_comm(ind As Int,com As Boolean,lock As Bo";
+ //BA.debugLineNum = 136;BA.debugLine="Try";
+try { //BA.debugLineNum = 137;BA.debugLine="Dim Data As Map";
 _data = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 137;BA.debugLine="Data.Initialize";
+ //BA.debugLineNum = 138;BA.debugLine="Data.Initialize";
 _data.Initialize();
- //BA.debugLineNum = 138;BA.debugLine="Data.Put (\"ncom\",ind)";
+ //BA.debugLineNum = 139;BA.debugLine="Data.Put (\"ncom\",ind)";
 _data.Put((Object)("ncom"),(Object)(_ind));
- //BA.debugLineNum = 139;BA.debugLine="Data.Put (\"com\",com)";
+ //BA.debugLineNum = 140;BA.debugLine="Data.Put (\"com\",com)";
 _data.Put((Object)("com"),(Object)(_com));
- //BA.debugLineNum = 140;BA.debugLine="Data.Put (\"lock\",lock)";
+ //BA.debugLineNum = 141;BA.debugLine="Data.Put (\"lock\",lock)";
 _data.Put((Object)("lock"),(Object)(_lock));
- //BA.debugLineNum = 141;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
+ //BA.debugLineNum = 142;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
 anywheresoftware.b4a.keywords.Common.CallSubDelayed2(mostCurrent.activityBA,(Object)(mostCurrent._starter.getObject()),"send_to_dev",(Object)(_data));
  } 
-       catch (Exception e113) {
-			processBA.setLastException(e113); //BA.debugLineNum = 143;BA.debugLine="proces_error(LastException.Message & \"send_comm\"";
+       catch (Exception e114) {
+			processBA.setLastException(e114); //BA.debugLineNum = 144;BA.debugLine="proces_error(LastException.Message & \"send_comm\"";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage()+"send_comm");
  };
- //BA.debugLineNum = 145;BA.debugLine="End Sub";
+ //BA.debugLineNum = 146;BA.debugLine="End Sub";
 return "";
 }
 public static String  _send_state_timer_tick() throws Exception{
- //BA.debugLineNum = 149;BA.debugLine="Sub send_state_timer_Tick() ' таймер перевірки звя";
- //BA.debugLineNum = 150;BA.debugLine="Try";
-try { //BA.debugLineNum = 151;BA.debugLine="If prs_but>0 Then send_comm(prs_but,True,False)";
+ //BA.debugLineNum = 150;BA.debugLine="Sub send_state_timer_Tick() ' таймер перевірки звя";
+ //BA.debugLineNum = 151;BA.debugLine="Try";
+try { //BA.debugLineNum = 152;BA.debugLine="If prs_but>0 Then send_comm(prs_but,True,False)";
 if (_prs_but>0) { 
 _send_comm(_prs_but,anywheresoftware.b4a.keywords.Common.True,anywheresoftware.b4a.keywords.Common.False);};
- //BA.debugLineNum = 152;BA.debugLine="get_rssi";
+ //BA.debugLineNum = 153;BA.debugLine="get_rssi";
 _get_rssi();
- //BA.debugLineNum = 153;BA.debugLine="If conect_tmout>0 Then";
+ //BA.debugLineNum = 154;BA.debugLine="If conect_tmout>0 Then";
 if (_conect_tmout>0) { 
- //BA.debugLineNum = 154;BA.debugLine="conect_tmout=conect_tmout-1";
+ //BA.debugLineNum = 155;BA.debugLine="conect_tmout=conect_tmout-1";
 _conect_tmout = (int) (_conect_tmout-1);
- //BA.debugLineNum = 155;BA.debugLine="If conect_tmout=0 Then";
+ //BA.debugLineNum = 156;BA.debugLine="If conect_tmout=0 Then";
 if (_conect_tmout==0) { 
- //BA.debugLineNum = 156;BA.debugLine="status_lab.TextColor=Colors.Red";
+ //BA.debugLineNum = 157;BA.debugLine="status_lab.TextColor=Colors.Red";
 mostCurrent._status_lab.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Red);
- //BA.debugLineNum = 157;BA.debugLine="status_lab.Text = \"No connected\"";
+ //BA.debugLineNum = 158;BA.debugLine="status_lab.Text = \"No connected\"";
 mostCurrent._status_lab.setText((Object)("No connected"));
  };
  };
  } 
-       catch (Exception e128) {
-			processBA.setLastException(e128); //BA.debugLineNum = 161;BA.debugLine="proces_error(LastException.Message & \"send_state";
+       catch (Exception e129) {
+			processBA.setLastException(e129); //BA.debugLineNum = 162;BA.debugLine="proces_error(LastException.Message & \"send_state";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage()+"send_state_timer_tick");
  };
- //BA.debugLineNum = 163;BA.debugLine="End Sub";
+ //BA.debugLineNum = 164;BA.debugLine="End Sub";
 return "";
 }
 public static String  _set_mqtt_state(boolean _state) throws Exception{
- //BA.debugLineNum = 256;BA.debugLine="Sub set_mqtt_state(state As Boolean)";
- //BA.debugLineNum = 257;BA.debugLine="CM.connect_type=state";
+ //BA.debugLineNum = 257;BA.debugLine="Sub set_mqtt_state(state As Boolean)";
+ //BA.debugLineNum = 258;BA.debugLine="CM.connect_type=state";
 mostCurrent._cm._connect_type = _state;
- //BA.debugLineNum = 258;BA.debugLine="If state=True Then";
+ //BA.debugLineNum = 259;BA.debugLine="If state=True Then";
 if (_state==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 259;BA.debugLine="mqtt_but.textColor=Colors.Green";
+ //BA.debugLineNum = 260;BA.debugLine="mqtt_but.textColor=Colors.Green";
 mostCurrent._mqtt_but.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Green);
  }else {
- //BA.debugLineNum = 261;BA.debugLine="mqtt_but.textColor=Colors.Gray";
+ //BA.debugLineNum = 262;BA.debugLine="mqtt_but.textColor=Colors.Gray";
 mostCurrent._mqtt_but.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Gray);
  };
- //BA.debugLineNum = 263;BA.debugLine="End Sub";
+ //BA.debugLineNum = 264;BA.debugLine="End Sub";
 return "";
 }
 public static String  _set_ris(anywheresoftware.b4a.objects.collections.Map _rstate) throws Exception{
 long _tmplong = 0L;
 int _a = 0;
- //BA.debugLineNum = 186;BA.debugLine="Sub set_ris(rstate As Map)";
- //BA.debugLineNum = 187;BA.debugLine="Try";
-try { //BA.debugLineNum = 188;BA.debugLine="Dim tmplong As Long";
+ //BA.debugLineNum = 187;BA.debugLine="Sub set_ris(rstate As Map)";
+ //BA.debugLineNum = 188;BA.debugLine="Try";
+try { //BA.debugLineNum = 189;BA.debugLine="Dim tmplong As Long";
 _tmplong = 0L;
- //BA.debugLineNum = 189;BA.debugLine="tmplong =CM.tolong(rstate.Get(\"st\"))";
+ //BA.debugLineNum = 190;BA.debugLine="tmplong =CM.tolong(rstate.Get(\"st\"))";
 _tmplong = (long) (mostCurrent._cm._tolong(mostCurrent.activityBA,BA.ObjectToString(_rstate.Get((Object)("st")))));
- //BA.debugLineNum = 190;BA.debugLine="For a=1 To 30";
+ //BA.debugLineNum = 191;BA.debugLine="For a=1 To 30";
 {
 final int step4 = 1;
 final int limit4 = (int) (30);
 for (_a = (int) (1) ; (step4 > 0 && _a <= limit4) || (step4 < 0 && _a >= limit4); _a = ((int)(0 + _a + step4)) ) {
- //BA.debugLineNum = 191;BA.debugLine="butstate(a)=CM.obj2Bool(Bit.And(tmplong , 1))";
+ //BA.debugLineNum = 192;BA.debugLine="butstate(a)=CM.obj2Bool(Bit.And(tmplong , 1))";
 _butstate[_a] = mostCurrent._cm._obj2bool(mostCurrent.activityBA,(Object)(anywheresoftware.b4a.keywords.Common.Bit.And((int) (_tmplong),(int) (1))));
- //BA.debugLineNum = 192;BA.debugLine="tmplong=Bit.ShiftRight(tmplong,1)";
+ //BA.debugLineNum = 193;BA.debugLine="tmplong=Bit.ShiftRight(tmplong,1)";
 _tmplong = (long) (anywheresoftware.b4a.keywords.Common.Bit.ShiftRight((int) (_tmplong),(int) (1)));
- //BA.debugLineNum = 193;BA.debugLine="If butstate(a)=True Then";
+ //BA.debugLineNum = 194;BA.debugLine="If butstate(a)=True Then";
 if (_butstate[_a]==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 194;BA.debugLine="butt(a).Background =sld_on";
+ //BA.debugLineNum = 195;BA.debugLine="butt(a).Background =sld_on";
 mostCurrent._butt[_a].setBackground((android.graphics.drawable.Drawable)(mostCurrent._sld_on.getObject()));
  }else {
- //BA.debugLineNum = 196;BA.debugLine="butt(a).Background =sld_norm";
+ //BA.debugLineNum = 197;BA.debugLine="butt(a).Background =sld_norm";
 mostCurrent._butt[_a].setBackground((android.graphics.drawable.Drawable)(mostCurrent._sld_norm.getObject()));
  };
  }
 };
- //BA.debugLineNum = 200;BA.debugLine="status_lab.TextColor=Colors.Green";
+ //BA.debugLineNum = 201;BA.debugLine="status_lab.TextColor=Colors.Green";
 mostCurrent._status_lab.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Green);
- //BA.debugLineNum = 201;BA.debugLine="If CM.toint (rstate.Get(\"rssi\"))<0 Then";
+ //BA.debugLineNum = 202;BA.debugLine="If CM.toint (rstate.Get(\"rssi\"))<0 Then";
 if (mostCurrent._cm._toint(mostCurrent.activityBA,BA.ObjectToString(_rstate.Get((Object)("rssi"))))<0) { 
- //BA.debugLineNum = 202;BA.debugLine="status_lab.Text = \" RSSI: \" & rstate.Get(\"rssi\"";
+ //BA.debugLineNum = 203;BA.debugLine="status_lab.Text = \" RSSI: \" & rstate.Get(\"rssi\"";
 mostCurrent._status_lab.setText((Object)(" RSSI: "+BA.ObjectToString(_rstate.Get((Object)("rssi")))+"dbm   Connected"));
  }else {
- //BA.debugLineNum = 204;BA.debugLine="wifi.StartWifi";
+ //BA.debugLineNum = 205;BA.debugLine="wifi.StartWifi";
 mostCurrent._wifi.StartWifi();
- //BA.debugLineNum = 205;BA.debugLine="wifi.GetNewReadingWifi";
+ //BA.debugLineNum = 206;BA.debugLine="wifi.GetNewReadingWifi";
 mostCurrent._wifi.GetNewReadingWifi();
- //BA.debugLineNum = 206;BA.debugLine="status_lab.Text = \" myRSSI: \" & wifisignal & \"";
+ //BA.debugLineNum = 207;BA.debugLine="status_lab.Text = \" myRSSI: \" & wifisignal & \"";
 mostCurrent._status_lab.setText((Object)(" myRSSI: "+BA.NumberToString(_wifisignal)+"dbm   Connected"));
  };
- //BA.debugLineNum = 208;BA.debugLine="conect_tmout=3";
+ //BA.debugLineNum = 209;BA.debugLine="conect_tmout=3";
 _conect_tmout = (int) (3);
  } 
-       catch (Exception e173) {
-			processBA.setLastException(e173); //BA.debugLineNum = 211;BA.debugLine="proces_error(LastException.Message & \"set_ris\")";
+       catch (Exception e174) {
+			processBA.setLastException(e174); //BA.debugLineNum = 212;BA.debugLine="proces_error(LastException.Message & \"set_ris\")";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage()+"set_ris");
  };
- //BA.debugLineNum = 213;BA.debugLine="End Sub";
+ //BA.debugLineNum = 214;BA.debugLine="End Sub";
 return "";
 }
 public static String  _status_lab_longclick() throws Exception{
@@ -922,101 +936,98 @@ return "";
 public static String  _tbuts_click() throws Exception{
 anywheresoftware.b4a.objects.ButtonWrapper _p = null;
 int _tmind = 0;
- //BA.debugLineNum = 296;BA.debugLine="Sub tbuts_click()";
- //BA.debugLineNum = 297;BA.debugLine="Try";
-try { //BA.debugLineNum = 298;BA.debugLine="antidouble=False";
+ //BA.debugLineNum = 297;BA.debugLine="Sub tbuts_click()";
+ //BA.debugLineNum = 298;BA.debugLine="Try";
+try { //BA.debugLineNum = 299;BA.debugLine="antidouble=False";
 _antidouble = anywheresoftware.b4a.keywords.Common.False;
- //BA.debugLineNum = 299;BA.debugLine="Dim p As Button";
+ //BA.debugLineNum = 300;BA.debugLine="Dim p As Button";
 _p = new anywheresoftware.b4a.objects.ButtonWrapper();
- //BA.debugLineNum = 300;BA.debugLine="Dim tmind As Int";
+ //BA.debugLineNum = 301;BA.debugLine="Dim tmind As Int";
 _tmind = 0;
- //BA.debugLineNum = 301;BA.debugLine="p = Sender";
+ //BA.debugLineNum = 302;BA.debugLine="p = Sender";
 _p.setObject((android.widget.Button)(anywheresoftware.b4a.keywords.Common.Sender(mostCurrent.activityBA)));
- //BA.debugLineNum = 302;BA.debugLine="tmind=CM.toint(p.Tag)";
+ //BA.debugLineNum = 303;BA.debugLine="tmind=CM.toint(p.Tag)";
 _tmind = mostCurrent._cm._toint(mostCurrent.activityBA,BA.ObjectToString(_p.getTag()));
- //BA.debugLineNum = 303;BA.debugLine="If tmind<1 Then Return";
+ //BA.debugLineNum = 304;BA.debugLine="If tmind<1 Then Return";
 if (_tmind<1) { 
 if (true) return "";};
- //BA.debugLineNum = 304;BA.debugLine="If butlock(tmind) =False Then";
+ //BA.debugLineNum = 305;BA.debugLine="If butlock(tmind) =False Then";
 if (_butlock[_tmind]==anywheresoftware.b4a.keywords.Common.False) { 
- //BA.debugLineNum = 305;BA.debugLine="prs_but=0";
+ //BA.debugLineNum = 306;BA.debugLine="prs_but=0";
 _prs_but = (int) (0);
- //BA.debugLineNum = 306;BA.debugLine="send_comm(tmind,False,False)";
+ //BA.debugLineNum = 307;BA.debugLine="send_comm(tmind,False,False)";
 _send_comm(_tmind,anywheresoftware.b4a.keywords.Common.False,anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 307;BA.debugLine="butstate(tmind)=False";
+ //BA.debugLineNum = 308;BA.debugLine="butstate(tmind)=False";
 _butstate[_tmind] = anywheresoftware.b4a.keywords.Common.False;
  };
  } 
-       catch (Exception e259) {
-			processBA.setLastException(e259); //BA.debugLineNum = 310;BA.debugLine="proces_error(LastException.Message & \"tbuts_clic";
+       catch (Exception e260) {
+			processBA.setLastException(e260); //BA.debugLineNum = 311;BA.debugLine="proces_error(LastException.Message & \"tbuts_clic";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage()+"tbuts_click");
  };
- //BA.debugLineNum = 312;BA.debugLine="End Sub";
+ //BA.debugLineNum = 313;BA.debugLine="End Sub";
 return "";
 }
 public static String  _tbuts_down() throws Exception{
 anywheresoftware.b4a.objects.ButtonWrapper _p = null;
 int _tmind = 0;
- //BA.debugLineNum = 268;BA.debugLine="Sub tbuts_down()";
- //BA.debugLineNum = 269;BA.debugLine="Try";
-try { //BA.debugLineNum = 270;BA.debugLine="If antidouble=True Then Return";
+ //BA.debugLineNum = 269;BA.debugLine="Sub tbuts_down()";
+ //BA.debugLineNum = 270;BA.debugLine="Try";
+try { //BA.debugLineNum = 271;BA.debugLine="If antidouble=True Then Return";
 if (_antidouble==anywheresoftware.b4a.keywords.Common.True) { 
 if (true) return "";};
- //BA.debugLineNum = 271;BA.debugLine="antidouble=True";
+ //BA.debugLineNum = 272;BA.debugLine="antidouble=True";
 _antidouble = anywheresoftware.b4a.keywords.Common.True;
- //BA.debugLineNum = 272;BA.debugLine="Dim p As Button";
+ //BA.debugLineNum = 273;BA.debugLine="Dim p As Button";
 _p = new anywheresoftware.b4a.objects.ButtonWrapper();
- //BA.debugLineNum = 273;BA.debugLine="Dim tmind As Int";
+ //BA.debugLineNum = 274;BA.debugLine="Dim tmind As Int";
 _tmind = 0;
- //BA.debugLineNum = 274;BA.debugLine="p = Sender";
+ //BA.debugLineNum = 275;BA.debugLine="p = Sender";
 _p.setObject((android.widget.Button)(anywheresoftware.b4a.keywords.Common.Sender(mostCurrent.activityBA)));
- //BA.debugLineNum = 275;BA.debugLine="p.Background =sld_down";
+ //BA.debugLineNum = 276;BA.debugLine="p.Background =sld_down";
 _p.setBackground((android.graphics.drawable.Drawable)(mostCurrent._sld_down.getObject()));
- //BA.debugLineNum = 276;BA.debugLine="tmind=CM.toint(p.Tag)";
+ //BA.debugLineNum = 277;BA.debugLine="tmind=CM.toint(p.Tag)";
 _tmind = mostCurrent._cm._toint(mostCurrent.activityBA,BA.ObjectToString(_p.getTag()));
- //BA.debugLineNum = 277;BA.debugLine="If tmind<1 Then Return";
+ //BA.debugLineNum = 278;BA.debugLine="If tmind<1 Then Return";
 if (_tmind<1) { 
 if (true) return "";};
- //BA.debugLineNum = 278;BA.debugLine="If butlock(tmind) =True Then";
+ //BA.debugLineNum = 279;BA.debugLine="If butlock(tmind) =True Then";
 if (_butlock[_tmind]==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 279;BA.debugLine="If butstate(tmind)=True Then";
+ //BA.debugLineNum = 280;BA.debugLine="If butstate(tmind)=True Then";
 if (_butstate[_tmind]==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 280;BA.debugLine="send_comm(tmind,False,False)";
+ //BA.debugLineNum = 281;BA.debugLine="send_comm(tmind,False,False)";
 _send_comm(_tmind,anywheresoftware.b4a.keywords.Common.False,anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 281;BA.debugLine="butstate(tmind)=False";
+ //BA.debugLineNum = 282;BA.debugLine="butstate(tmind)=False";
 _butstate[_tmind] = anywheresoftware.b4a.keywords.Common.False;
  }else {
- //BA.debugLineNum = 283;BA.debugLine="send_comm(tmind,True,True)";
+ //BA.debugLineNum = 284;BA.debugLine="send_comm(tmind,True,True)";
 _send_comm(_tmind,anywheresoftware.b4a.keywords.Common.True,anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 284;BA.debugLine="butstate(tmind)=True";
+ //BA.debugLineNum = 285;BA.debugLine="butstate(tmind)=True";
 _butstate[_tmind] = anywheresoftware.b4a.keywords.Common.True;
  };
  }else {
- //BA.debugLineNum = 287;BA.debugLine="butstate(tmind)=True";
+ //BA.debugLineNum = 288;BA.debugLine="butstate(tmind)=True";
 _butstate[_tmind] = anywheresoftware.b4a.keywords.Common.True;
- //BA.debugLineNum = 288;BA.debugLine="send_comm(tmind,True,False)";
+ //BA.debugLineNum = 289;BA.debugLine="send_comm(tmind,True,False)";
 _send_comm(_tmind,anywheresoftware.b4a.keywords.Common.True,anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 289;BA.debugLine="prs_but=tmind";
+ //BA.debugLineNum = 290;BA.debugLine="prs_but=tmind";
 _prs_but = _tmind;
  };
  } 
-       catch (Exception e242) {
-			processBA.setLastException(e242); //BA.debugLineNum = 292;BA.debugLine="proces_error(LastException.Message & \"tbuts_cdow";
+       catch (Exception e243) {
+			processBA.setLastException(e243); //BA.debugLineNum = 293;BA.debugLine="proces_error(LastException.Message & \"tbuts_cdow";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage()+"tbuts_cdown");
  };
- //BA.debugLineNum = 294;BA.debugLine="End Sub";
+ //BA.debugLineNum = 295;BA.debugLine="End Sub";
 return "";
 }
 public static boolean  _valid_menu_pass() throws Exception{
-String _mpas = "";
- //BA.debugLineNum = 349;BA.debugLine="Sub valid_menu_pass() As Boolean";
- //BA.debugLineNum = 350;BA.debugLine="Dim mpas As String=StateManager.getSetting2(\"menu";
-_mpas = mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"menu_pass","");
- //BA.debugLineNum = 351;BA.debugLine="If mpas.Length =0 Then Return True";
-if (_mpas.length()==0) { 
+ //BA.debugLineNum = 350;BA.debugLine="Sub valid_menu_pass() As Boolean";
+ //BA.debugLineNum = 351;BA.debugLine="If StateManager.getSetting2(\"menu_pass\",\"\").Lengt";
+if (mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"menu_pass","").length()==0) { 
 if (true) return anywheresoftware.b4a.keywords.Common.True;};
- //BA.debugLineNum = 352;BA.debugLine="If enter_menu_pass.EqualsIgnoreCase(mpas)=True  T";
-if (mostCurrent._enter_menu_pass.equalsIgnoreCase(_mpas)==anywheresoftware.b4a.keywords.Common.True) { 
+ //BA.debugLineNum = 352;BA.debugLine="If allow_menu=True Then Return True";
+if (_allow_menu==anywheresoftware.b4a.keywords.Common.True) { 
 if (true) return anywheresoftware.b4a.keywords.Common.True;};
  //BA.debugLineNum = 353;BA.debugLine="menu_pass_txt.Text =\"\"";
 mostCurrent._menu_pass_txt.setText((Object)(""));
@@ -1028,42 +1039,42 @@ if (true) return anywheresoftware.b4a.keywords.Common.False;
 return false;
 }
 public static String  _wf_ap_set_click() throws Exception{
- //BA.debugLineNum = 318;BA.debugLine="Sub wf_ap_set_Click()";
- //BA.debugLineNum = 319;BA.debugLine="If  valid_menu_pass=False Then Return";
+ //BA.debugLineNum = 319;BA.debugLine="Sub wf_ap_set_Click()";
+ //BA.debugLineNum = 320;BA.debugLine="If  valid_menu_pass=False Then Return";
 if (_valid_menu_pass()==anywheresoftware.b4a.keywords.Common.False) { 
 if (true) return "";};
- //BA.debugLineNum = 320;BA.debugLine="StartActivity(AP_SET)";
+ //BA.debugLineNum = 321;BA.debugLine="StartActivity(AP_SET)";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._ap_set.getObject()));
- //BA.debugLineNum = 321;BA.debugLine="End Sub";
+ //BA.debugLineNum = 322;BA.debugLine="End Sub";
 return "";
 }
 public static String  _wf_sta_set_click() throws Exception{
- //BA.debugLineNum = 322;BA.debugLine="Sub wf_sta_set_Click()";
- //BA.debugLineNum = 323;BA.debugLine="If  valid_menu_pass=False Then Return";
+ //BA.debugLineNum = 323;BA.debugLine="Sub wf_sta_set_Click()";
+ //BA.debugLineNum = 324;BA.debugLine="If  valid_menu_pass=False Then Return";
 if (_valid_menu_pass()==anywheresoftware.b4a.keywords.Common.False) { 
 if (true) return "";};
- //BA.debugLineNum = 324;BA.debugLine="StartActivity(STA_SET)";
+ //BA.debugLineNum = 325;BA.debugLine="StartActivity(STA_SET)";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._sta_set.getObject()));
- //BA.debugLineNum = 325;BA.debugLine="End Sub";
+ //BA.debugLineNum = 326;BA.debugLine="End Sub";
 return "";
 }
 public static String  _wifi_foundreadings(anywheresoftware.b4a.objects.collections.List _readings) throws Exception{
 com.AB.ABWifi.ABWifi.ABWifiReading _reading = null;
- //BA.debugLineNum = 165;BA.debugLine="Sub wifi_FoundReadings(readings As List)";
- //BA.debugLineNum = 166;BA.debugLine="Try";
-try { //BA.debugLineNum = 167;BA.debugLine="If readings.Size<1 Then Return";
+ //BA.debugLineNum = 166;BA.debugLine="Sub wifi_FoundReadings(readings As List)";
+ //BA.debugLineNum = 167;BA.debugLine="Try";
+try { //BA.debugLineNum = 168;BA.debugLine="If readings.Size<1 Then Return";
 if (_readings.getSize()<1) { 
 if (true) return "";};
- //BA.debugLineNum = 168;BA.debugLine="Dim reading As ABWifiReading = readings.Get(0)";
+ //BA.debugLineNum = 169;BA.debugLine="Dim reading As ABWifiReading = readings.Get(0)";
 _reading = (com.AB.ABWifi.ABWifi.ABWifiReading)(_readings.Get((int) (0)));
- //BA.debugLineNum = 169;BA.debugLine="wifisignal=reading.Level";
+ //BA.debugLineNum = 170;BA.debugLine="wifisignal=reading.Level";
 _wifisignal = _reading.Level;
  } 
-       catch (Exception e137) {
-			processBA.setLastException(e137); //BA.debugLineNum = 171;BA.debugLine="proces_error(LastException.Message & \"wi_fi_foun";
+       catch (Exception e138) {
+			processBA.setLastException(e138); //BA.debugLineNum = 172;BA.debugLine="proces_error(LastException.Message & \"wi_fi_foun";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage()+"wi_fi_foundread");
  };
- //BA.debugLineNum = 173;BA.debugLine="End Sub";
+ //BA.debugLineNum = 174;BA.debugLine="End Sub";
 return "";
 }
 }

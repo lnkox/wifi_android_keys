@@ -61,6 +61,7 @@ Sub Globals
 	Dim cur_but_state As Int
 	Dim prs_but As Int
 	Dim enter_menu_pass As String
+	Dim allow_menu As Boolean
 
 End Sub
 
@@ -379,9 +380,8 @@ End Try
 	
 End Sub
 Sub valid_menu_pass() As Boolean
-	Dim mpas As String=StateManager.getSetting2("menu_pass","")	
-	If mpas.Length =0 Then Return True
-	If enter_menu_pass.EqualsIgnoreCase(mpas)=True  Then Return True
+	If StateManager.getSetting2("menu_pass","").Length	 =0 Then Return True
+	If allow_menu=True Then Return True
 	menu_pass_txt.Text =""
 	menu_pass_txt.Visible =True
 	Return False 
@@ -403,13 +403,19 @@ Sub proces_error(msg As String)
 End Sub
 
 Sub menu_pass_txt_EnterPressed
-	 enter_menu_pass=menu_pass_txt.Text
+	Dim ppas As String =StateManager.getSetting2("menu_pass","")
+	Dim ptxt As String =menu_pass_txt.Text
+	If ppas.EqualsIgnoreCase(ptxt)=True Then 
+		ToastMessageShow("Corect",False)
+		allow_menu=True
+	Else
+		ToastMessageShow("Invalid pass",False)	
+		allow_menu=False	
+	End If
 	 menu_pass_txt.Visible =False
 End Sub
 
-Sub menu_pass_txt_FocusChanged (HasFocus As Boolean)
-	If HasFocus=False Then 
-		enter_menu_pass=menu_pass_txt.Text	
-	 	menu_pass_txt.Visible =False
-	End If
+
+Sub menu_pass_txt_TextChanged(Old As String, New As String)
+	enter_menu_pass=New
 End Sub
