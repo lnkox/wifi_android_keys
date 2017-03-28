@@ -248,10 +248,12 @@ End Sub
 Sub add_key_to_panel() 'розміщення кнопок керування на екрані 
 Try
 	Activity.Title ="Wi-Fi keys - " & StateManager.GetSetting2("cur_dev_name","none")
+	
 	clear_keys
-	Dim vert_size As Int=StateManager.GetSetting2("v_size","")
-	Dim horiz_size As Int=StateManager.GetSetting2("h_size","")
-	Dim font_size As Int=StateManager.GetSetting2("font_size","")
+	Dim vert_size As Int=CM.toint(StateManager.GetSetting2("v_size",""))
+	Dim horiz_size As Int=CM.toint(StateManager.GetSetting2("h_size",""))
+	Dim font_size As Int=CM.toint(StateManager.GetSetting2("font_size",""))
+	If vert_size <1 Then Return
 	Dim b_width,b_height,posx,posy,max_but As Int
 	b_width=Activity.Width/horiz_size
 	b_height=(Activity.height-20dip)/vert_size
