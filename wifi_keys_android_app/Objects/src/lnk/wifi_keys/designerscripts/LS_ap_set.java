@@ -14,6 +14,8 @@ anywheresoftware.b4a.keywords.LayoutBuilder.scaleAll(views);
 views.get("ap_ssid_txt").vw.setWidth((int)((100d / 100 * width)-(views.get("ap_ssid_txt").vw.getLeft())));
 //BA.debugLineNum = 4;BA.debugLine="ap_pass_txt.Width =100%x-ap_pass_txt.Left"[ap_set/General script]
 views.get("ap_pass_txt").vw.setWidth((int)((100d / 100 * width)-(views.get("ap_pass_txt").vw.getLeft())));
+//BA.debugLineNum = 5;BA.debugLine="menu_pass_txt.Width =100%x-menu_pass_txt.Left"[ap_set/General script]
+views.get("menu_pass_txt").vw.setWidth((int)((100d / 100 * width)-(views.get("menu_pass_txt").vw.getLeft())));
 
 }
 }

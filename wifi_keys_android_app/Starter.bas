@@ -40,16 +40,20 @@ End Sub
 'MQTT
 '/////////////////////////////////////////////////////////////////////////////////////////////////////
 Sub mqtt_init()
+Try
 	objMqtt.JavaDebug = True
 	objMqtt.CleanSession = True
 	objMqtt.Initialize("oMqtt")
 	objMqtt.KeepAliveInterval =3
+Catch
+	proces_error(LastException.Message & "mqtt_init")
+End Try	
 End Sub
 Sub mqtt_disconnect()
 Try
 	objMqtt.Disconnect
 Catch
-	proces_error(LastException.Message)
+	proces_error(LastException.Message & "mqtt_disconnect")
 End Try	
 End Sub
 
@@ -66,7 +70,7 @@ Try
 		 CallSubDelayed2(Main,"set_mqtt_state",False)
 	End If
 Catch
-	proces_error(LastException.Message)
+	proces_error(LastException.Message & "mqtt_connect")
 End Try	
 End Sub
 
@@ -105,7 +109,7 @@ Sub udp_init()
 Try
 	UDPSocket.Initialize("UDP", 1407,255)
 Catch
-	proces_error(LastException.Message)
+	proces_error(LastException.Message & "udp_init")
 End Try	
 End Sub
 
@@ -114,10 +118,11 @@ Try
     Dim result As String = BytesToString(Packet.Data, Packet.Offset, Packet.Length, "UTF8")
 	proces_json(result,Packet.HostAddress)
 Catch
-	proces_error(LastException.Message)
+	proces_error(LastException.Message & "udp_pack.arrived")
 End Try	
 End Sub
 Sub proces_json(result As String,host As String)
+Try	
 	result=result.Replace(Chr(0),"")
 	result=result.Replace("}{",",")
 	Dim JSON As JSONParser
@@ -152,6 +157,9 @@ Sub proces_json(result As String,host As String)
 		  CallSubDelayed(INET_SET,"finish_him") 
 		 End If
 	End If	
+Catch
+	proces_error(LastException.Message & "process_json")
+End Try	
 End Sub
 Sub set_key_set (mapar As Map)
 Try
@@ -169,7 +177,7 @@ Try
 		StateManager.SetSetting("keylock" & mapar.Get ("key_id"), CM.obj2Bool(mapar.Get ("lock")))
 		StateManager.SaveSettings
 Catch
-  proces_error(LastException.Message)
+  proces_error(LastException.Message & "set_key_set")
 End Try		
 End Sub
 Sub set_keyinfo_set (mapar As Map)
@@ -179,10 +187,11 @@ Try
 		StateManager.SetSetting("v_size", CM.toint(mapar.Get ("v_size")) )
 		StateManager.SaveSettings
 Catch
-  proces_error(LastException.Message)
+  proces_error(LastException.Message & "set_key_info_set")
 End Try
 End Sub
 Sub send_to_dev(data As Map) As Boolean ' Відправка асоційованого масиву (data) в пристрій у вигляді JSON
+Try
 	Dim msg As String 
 	Dim JSONGenerator As JSONGenerator
 	data.Put ("dev_name",StateManager.GetSetting2("cur_dev_name","none"))
@@ -194,6 +203,9 @@ Sub send_to_dev(data As Map) As Boolean ' Відправка асоційова�
 	Else
 		Return send_to_dev_udp(msg)	
 	End If
+Catch
+  proces_error(LastException.Message & "send_to_dev")
+End Try
 End Sub
 
 Sub send_to_dev_mqtt(msg As String) As Boolean ' Відправка в пристрій через MQTT
@@ -202,7 +214,7 @@ Try
 	objMqtt.Publish("wfkeyin",msg,  objMqtt.QoS_ExactlyOnce,True) 
 	Return True
 Catch
-	proces_error(LastException.Message)
+	proces_error(LastException.Message & "send_to_dev_mqtt")
 	 Return False
 End Try	
 End Sub
@@ -217,7 +229,7 @@ Try
 	UDPSocket.Send(Packet)
 	Return True
 Catch
-	proces_error(LastException.Message)
+	proces_error(LastException.Message & "send_to_dev_udp")
 	 Return False
 End Try	
 End Sub

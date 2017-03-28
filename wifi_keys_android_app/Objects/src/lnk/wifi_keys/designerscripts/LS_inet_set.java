@@ -10,7 +10,6 @@ public static void LS_general(java.util.LinkedHashMap<String, anywheresoftware.b
 anywheresoftware.b4a.keywords.LayoutBuilder.setScaleRate(0.3);
 anywheresoftware.b4a.keywords.LayoutBuilder.scaleAll(views);
 views.get("inet_devname_txt").vw.setWidth((int)((100d / 100 * width)-(views.get("inet_devname_txt").vw.getLeft())));
-//BA.debugLineNum = 4;BA.debugLine="inet_login_txt.Width =100%x-inet_login_txt.Left"[inet_set/General script]
 views.get("inet_login_txt").vw.setWidth((int)((100d / 100 * width)-(views.get("inet_login_txt").vw.getLeft())));
 //BA.debugLineNum = 5;BA.debugLine="inet_pass_txt.Width =100%x-inet_pass_txt.Left"[inet_set/General script]
 views.get("inet_pass_txt").vw.setWidth((int)((100d / 100 * width)-(views.get("inet_pass_txt").vw.getLeft())));

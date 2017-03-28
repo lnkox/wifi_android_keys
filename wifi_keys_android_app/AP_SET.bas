@@ -22,6 +22,7 @@ Sub Globals
 	Private Label2 As Label
 	Private save_ap_set_btn As Button
 	Private ap_mode_chk As CheckBox
+	Private menu_pass_txt As EditText
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -29,6 +30,7 @@ Try
 	Activity.LoadLayout("ap_set")
 	 clear_field
 	 Activity.Title ="AP setup - " & StateManager.GetSetting2("cur_dev_name","none")
+	 menu_pass_txt.Text =StateManager.getSetting2("menu_pass","")
 	 get_apset
 Catch
   proces_error(LastException.Message)
@@ -98,4 +100,8 @@ End Sub
 
 Sub proces_error(msg As String)
 	Msgbox(msg,"error")
+End Sub
+
+Sub menu_pass_txt_TextChanged (Old As String, New As String)
+	StateManager.SetSetting("menu_pass",New)
 End Sub

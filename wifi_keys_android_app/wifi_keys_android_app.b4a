@@ -50,23 +50,23 @@ Sub Globals
 	Dim antidouble As Boolean
 	Dim wifi As ABWifi
 	Dim wifisignal As Int
-	Dim butt(33) As Button
+	Dim butt(35) As Button
 	Dim mqtt_but As Label
 	Dim status_lab As Label
-	Dim butlock(33) As Boolean
-	Dim butstate(33) As Boolean
+	Dim butlock(35) As Boolean
+	Dim butstate(35) As Boolean
 	Dim sld_norm,sld_on,sld_down As StateListDrawable
 	Dim prs, ups,grn As ColorDrawable
-
+	Dim menu_pass_txt As EditText
 	Dim cur_but_state As Int
 	Dim prs_but As Int
-	
-   
+	Dim enter_menu_pass As String
+
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 Try	
-	Activity.Title ="Wi-Fi keys - " & StateManager.GetSetting2("cur_dev_name","none")
+	
 	Activity.AddMenuItem("Keys set","keys_set")
     Activity.AddMenuItem("Wi-Fi AP set","wf_ap_set")
     Activity.AddMenuItem("Wi-Fi client set","wf_STA_set")
@@ -113,11 +113,17 @@ Try
 		butt(i)=tbuts
 	Next
 		add_key_to_panel
+	menu_pass_txt.Initialize("menu_pass_txt")
+	menu_pass_txt.Visible =False	
+	menu_pass_txt.TextSize=6
+	menu_pass_txt.PasswordMode=True
+	Activity.AddView(menu_pass_txt,Activity.Width/2.5, Activity.Height-30dip, Activity.Width/5,30dip) 
  	send_state_timer.Initialize("send_state_timer", 1000)
 	send_state_timer.Enabled =True
-	
+
+
 Catch
-  proces_error(LastException.Message)
+  proces_error(LastException.Message & "activ. creat")
 End Try
 End Sub
 
@@ -126,7 +132,7 @@ Try
 	add_key_to_panel
 
 Catch
-  proces_error(LastException.Message)
+  proces_error(LastException.Message & "active. resume")
 End Try
 End Sub
 
@@ -135,7 +141,7 @@ Try
 		wifi.StopWifi
 	StateManager.SaveSettings
 Catch
-  proces_error(LastException.Message)
+  proces_error(LastException.Message & "active.pause")
 End Try
 End Sub
 
@@ -148,7 +154,7 @@ Try
 		
 	Next
 Catch
-  proces_error(LastException.Message)
+  proces_error(LastException.Message & "clear.keys")
 End Try
 End Sub
 
@@ -166,7 +172,7 @@ Try
 	Data.Put ("lock",lock)
 	CallSubDelayed2(Starter,"send_to_dev",Data)
 Catch
-  proces_error(LastException.Message)
+  proces_error(LastException.Message & "send_comm")
 End Try
 End Sub
 
@@ -184,16 +190,17 @@ Try
 		End If
 	End If
 Catch
-  proces_error(LastException.Message)
+  proces_error(LastException.Message & "send_state_timer_tick")
 End Try
 End Sub
 
 Sub wifi_FoundReadings(readings As List)
 Try
+		If readings.Size<1 Then Return
 		Dim reading As ABWifiReading = readings.Get(0)
 		wifisignal=reading.Level
 Catch
-  proces_error(LastException.Message)
+  proces_error(LastException.Message & "wi_fi_foundread"  )
 End Try
 End Sub
 
@@ -204,7 +211,7 @@ End Sub
 	Data.Put ("rssi",1)
 	CallSubDelayed2(Starter,"send_to_dev",Data)
 Catch
-  proces_error(LastException.Message)
+  proces_error(LastException.Message & "get_rssi")
 End Try
 End Sub
 
@@ -240,6 +247,7 @@ End Sub
 
 Sub add_key_to_panel() 'розміщення кнопок керування на екрані 
 Try
+	Activity.Title ="Wi-Fi keys - " & StateManager.GetSetting2("cur_dev_name","none")
 	clear_keys
 	Dim vert_size As Int=StateManager.GetSetting2("v_size","")
 	Dim horiz_size As Int=StateManager.GetSetting2("h_size","")
@@ -267,7 +275,7 @@ Try
 		End If	
 	Next
 Catch
-  proces_error(LastException.Message)
+  proces_error(LastException.Message & "add_key_to_panel")
 End Try
 End Sub
 
@@ -334,18 +342,23 @@ End Try
 End Sub
 
 Sub sel_dev_Click()
+	If  valid_menu_pass=False Then Return
     StartActivity(sel_dev)
 End Sub
 Sub wf_ap_set_Click()
+	If  valid_menu_pass=False Then Return
     StartActivity(AP_SET)
 End Sub
 Sub wf_sta_set_Click()
+	If  valid_menu_pass=False Then Return
     StartActivity(STA_SET)
 End Sub
 Sub keys_set_Click()
+	If  valid_menu_pass=False Then Return
     StartActivity(KEY_SET)
 End Sub
 Sub inet_setm_Click()
+	If  valid_menu_pass=False Then Return
     StartActivity(INET_SET)
 End Sub
 Sub exit_prg_click()
@@ -358,10 +371,18 @@ Try
 	Data.Put ("rst",1)
 	CallSubDelayed2(Starter,"send_to_dev",Data)
 Catch
-  proces_error(LastException.Message)
+  proces_error(LastException.Message & "reset_dev")
 End Try
 
 	
+End Sub
+Sub valid_menu_pass() As Boolean
+	Dim mpas As String=StateManager.getSetting2("menu_pass","")	
+	If mpas.Length =0 Then Return True
+	If enter_menu_pass.EqualsIgnoreCase(mpas)=True  Then Return True
+	menu_pass_txt.Text =""
+	menu_pass_txt.Visible =True
+	Return False 
 End Sub
 Sub status_lab_LongClick
 
@@ -377,4 +398,16 @@ Sub mqtt_but_LongClick
 End Sub
 Sub proces_error(msg As String)
 	Msgbox(msg,"error")
+End Sub
+
+Sub menu_pass_txt_EnterPressed
+	 enter_menu_pass=menu_pass_txt.Text
+	 menu_pass_txt.Visible =False
+End Sub
+
+Sub menu_pass_txt_FocusChanged (HasFocus As Boolean)
+	If HasFocus=False Then 
+		enter_menu_pass=menu_pass_txt.Text	
+	 	menu_pass_txt.Visible =False
+	End If
 End Sub
