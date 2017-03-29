@@ -274,6 +274,11 @@ Try
 			butt(a).width =b_width-2dip
 			butt(a).height =b_height-2dip
 			butt(a).TextSize =font_size
+			If butlock(a)=True Then
+				butt(a).TextColor =Colors.RGB(128,255,255)
+			Else
+				butt(a).TextColor =Colors.RGB(255,255,255)	
+			End If
 			cur_but_state=cur_but_state+1			
 		End If	
 	Next

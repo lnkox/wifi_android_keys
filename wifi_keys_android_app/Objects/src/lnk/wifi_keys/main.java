@@ -567,17 +567,25 @@ mostCurrent._butt[_a].setWidth((int) (_b_width-anywheresoftware.b4a.keywords.Com
 mostCurrent._butt[_a].setHeight((int) (_b_height-anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (2))));
  //BA.debugLineNum = 244;BA.debugLine="butt(a).TextSize =font_size";
 mostCurrent._butt[_a].setTextSize((float) (_font_size));
- //BA.debugLineNum = 245;BA.debugLine="cur_but_state=cur_but_state+1";
+ //BA.debugLineNum = 245;BA.debugLine="If butlock(a)=True Then";
+if (_butlock[_a]==anywheresoftware.b4a.keywords.Common.True) { 
+ //BA.debugLineNum = 246;BA.debugLine="butt(a).TextColor =Colors.RGB(128,255,255)";
+mostCurrent._butt[_a].setTextColor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (128),(int) (255),(int) (255)));
+ }else {
+ //BA.debugLineNum = 248;BA.debugLine="butt(a).TextColor =Colors.RGB(255,255,255)";
+mostCurrent._butt[_a].setTextColor(anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (255),(int) (255),(int) (255)));
+ };
+ //BA.debugLineNum = 250;BA.debugLine="cur_but_state=cur_but_state+1";
 _cur_but_state = (int) (_cur_but_state+1);
  };
  }
 };
  } 
-       catch (Exception e208) {
-			processBA.setLastException(e208); //BA.debugLineNum = 249;BA.debugLine="proces_error(LastException.Message & \"add_key_to";
+       catch (Exception e213) {
+			processBA.setLastException(e213); //BA.debugLineNum = 254;BA.debugLine="proces_error(LastException.Message & \"add_key_to";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage()+"add_key_to_panel");
  };
- //BA.debugLineNum = 251;BA.debugLine="End Sub";
+ //BA.debugLineNum = 256;BA.debugLine="End Sub";
 return "";
 }
 public static String  _clear_keys() throws Exception{
@@ -604,10 +612,10 @@ _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.act
 return "";
 }
 public static String  _exit_prg_click() throws Exception{
- //BA.debugLineNum = 335;BA.debugLine="Sub exit_prg_click()";
- //BA.debugLineNum = 336;BA.debugLine="ExitApplication";
+ //BA.debugLineNum = 340;BA.debugLine="Sub exit_prg_click()";
+ //BA.debugLineNum = 341;BA.debugLine="ExitApplication";
 anywheresoftware.b4a.keywords.Common.ExitApplication();
- //BA.debugLineNum = 337;BA.debugLine="End Sub";
+ //BA.debugLineNum = 342;BA.debugLine="End Sub";
 return "";
 }
 public static String  _get_rssi() throws Exception{
@@ -679,75 +687,75 @@ _allow_menu = false;
 return "";
 }
 public static String  _inet_setm_click() throws Exception{
- //BA.debugLineNum = 331;BA.debugLine="Sub inet_setm_Click()";
- //BA.debugLineNum = 332;BA.debugLine="If  valid_menu_pass=False Then Return";
+ //BA.debugLineNum = 336;BA.debugLine="Sub inet_setm_Click()";
+ //BA.debugLineNum = 337;BA.debugLine="If  valid_menu_pass=False Then Return";
 if (_valid_menu_pass()==anywheresoftware.b4a.keywords.Common.False) { 
 if (true) return "";};
- //BA.debugLineNum = 333;BA.debugLine="StartActivity(INET_SET)";
+ //BA.debugLineNum = 338;BA.debugLine="StartActivity(INET_SET)";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._inet_set.getObject()));
- //BA.debugLineNum = 334;BA.debugLine="End Sub";
+ //BA.debugLineNum = 339;BA.debugLine="End Sub";
 return "";
 }
 public static String  _keys_set_click() throws Exception{
- //BA.debugLineNum = 327;BA.debugLine="Sub keys_set_Click()";
- //BA.debugLineNum = 328;BA.debugLine="If  valid_menu_pass=False Then Return";
+ //BA.debugLineNum = 332;BA.debugLine="Sub keys_set_Click()";
+ //BA.debugLineNum = 333;BA.debugLine="If  valid_menu_pass=False Then Return";
 if (_valid_menu_pass()==anywheresoftware.b4a.keywords.Common.False) { 
 if (true) return "";};
- //BA.debugLineNum = 329;BA.debugLine="StartActivity(KEY_SET)";
+ //BA.debugLineNum = 334;BA.debugLine="StartActivity(KEY_SET)";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._key_set.getObject()));
- //BA.debugLineNum = 330;BA.debugLine="End Sub";
+ //BA.debugLineNum = 335;BA.debugLine="End Sub";
 return "";
 }
 public static String  _menu_pass_txt_enterpressed() throws Exception{
 String _ppas = "";
 String _ptxt = "";
- //BA.debugLineNum = 373;BA.debugLine="Sub menu_pass_txt_EnterPressed";
- //BA.debugLineNum = 374;BA.debugLine="Dim ppas As String =StateManager.getSetting2(\"men";
+ //BA.debugLineNum = 378;BA.debugLine="Sub menu_pass_txt_EnterPressed";
+ //BA.debugLineNum = 379;BA.debugLine="Dim ppas As String =StateManager.getSetting2(\"men";
 _ppas = mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"menu_pass","");
- //BA.debugLineNum = 375;BA.debugLine="Dim ptxt As String =menu_pass_txt.Text";
+ //BA.debugLineNum = 380;BA.debugLine="Dim ptxt As String =menu_pass_txt.Text";
 _ptxt = mostCurrent._menu_pass_txt.getText();
- //BA.debugLineNum = 376;BA.debugLine="If ppas.EqualsIgnoreCase(ptxt)=True Then";
+ //BA.debugLineNum = 381;BA.debugLine="If ppas.EqualsIgnoreCase(ptxt)=True Then";
 if (_ppas.equalsIgnoreCase(_ptxt)==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 377;BA.debugLine="ToastMessageShow(\"Corect\",False)";
+ //BA.debugLineNum = 382;BA.debugLine="ToastMessageShow(\"Corect\",False)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow("Corect",anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 378;BA.debugLine="allow_menu=True";
+ //BA.debugLineNum = 383;BA.debugLine="allow_menu=True";
 _allow_menu = anywheresoftware.b4a.keywords.Common.True;
  }else {
- //BA.debugLineNum = 380;BA.debugLine="ToastMessageShow(\"Invalid pass\",False)";
+ //BA.debugLineNum = 385;BA.debugLine="ToastMessageShow(\"Invalid pass\",False)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow("Invalid pass",anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 381;BA.debugLine="allow_menu=False";
+ //BA.debugLineNum = 386;BA.debugLine="allow_menu=False";
 _allow_menu = anywheresoftware.b4a.keywords.Common.False;
  };
- //BA.debugLineNum = 383;BA.debugLine="menu_pass_txt.Visible =False";
+ //BA.debugLineNum = 388;BA.debugLine="menu_pass_txt.Visible =False";
 mostCurrent._menu_pass_txt.setVisible(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 384;BA.debugLine="End Sub";
-return "";
-}
-public static String  _menu_pass_txt_textchanged(String _old,String _new) throws Exception{
- //BA.debugLineNum = 387;BA.debugLine="Sub menu_pass_txt_TextChanged(Old As String, New A";
- //BA.debugLineNum = 388;BA.debugLine="enter_menu_pass=New";
-mostCurrent._enter_menu_pass = _new;
  //BA.debugLineNum = 389;BA.debugLine="End Sub";
 return "";
 }
+public static String  _menu_pass_txt_textchanged(String _old,String _new) throws Exception{
+ //BA.debugLineNum = 392;BA.debugLine="Sub menu_pass_txt_TextChanged(Old As String, New A";
+ //BA.debugLineNum = 393;BA.debugLine="enter_menu_pass=New";
+mostCurrent._enter_menu_pass = _new;
+ //BA.debugLineNum = 394;BA.debugLine="End Sub";
+return "";
+}
 public static String  _mqtt_but_longclick() throws Exception{
- //BA.debugLineNum = 360;BA.debugLine="Sub mqtt_but_LongClick";
- //BA.debugLineNum = 361;BA.debugLine="If CM.connect_type=True Then";
+ //BA.debugLineNum = 365;BA.debugLine="Sub mqtt_but_LongClick";
+ //BA.debugLineNum = 366;BA.debugLine="If CM.connect_type=True Then";
 if (mostCurrent._cm._connect_type==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 362;BA.debugLine="CallSubDelayed(Starter,\"mqtt_disconnect\")";
+ //BA.debugLineNum = 367;BA.debugLine="CallSubDelayed(Starter,\"mqtt_disconnect\")";
 anywheresoftware.b4a.keywords.Common.CallSubDelayed(mostCurrent.activityBA,(Object)(mostCurrent._starter.getObject()),"mqtt_disconnect");
  }else {
- //BA.debugLineNum = 364;BA.debugLine="CallSubDelayed(Starter,\"mqtt_connect\")";
+ //BA.debugLineNum = 369;BA.debugLine="CallSubDelayed(Starter,\"mqtt_connect\")";
 anywheresoftware.b4a.keywords.Common.CallSubDelayed(mostCurrent.activityBA,(Object)(mostCurrent._starter.getObject()),"mqtt_connect");
  };
- //BA.debugLineNum = 368;BA.debugLine="End Sub";
+ //BA.debugLineNum = 373;BA.debugLine="End Sub";
 return "";
 }
 public static String  _proces_error(String _msg) throws Exception{
- //BA.debugLineNum = 369;BA.debugLine="Sub proces_error(msg As String)";
- //BA.debugLineNum = 370;BA.debugLine="Msgbox(msg,\"error\")";
+ //BA.debugLineNum = 374;BA.debugLine="Sub proces_error(msg As String)";
+ //BA.debugLineNum = 375;BA.debugLine="Msgbox(msg,\"error\")";
 anywheresoftware.b4a.keywords.Common.Msgbox(_msg,"error",mostCurrent.activityBA);
- //BA.debugLineNum = 371;BA.debugLine="End Sub";
+ //BA.debugLineNum = 376;BA.debugLine="End Sub";
 return "";
 }
 
@@ -781,32 +789,32 @@ return "";
 }
 public static String  _reset_dev_click() throws Exception{
 anywheresoftware.b4a.objects.collections.Map _data = null;
- //BA.debugLineNum = 338;BA.debugLine="Sub reset_dev_Click()";
- //BA.debugLineNum = 339;BA.debugLine="Try";
-try { //BA.debugLineNum = 340;BA.debugLine="Dim Data As Map";
+ //BA.debugLineNum = 343;BA.debugLine="Sub reset_dev_Click()";
+ //BA.debugLineNum = 344;BA.debugLine="Try";
+try { //BA.debugLineNum = 345;BA.debugLine="Dim Data As Map";
 _data = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 341;BA.debugLine="Data.Initialize";
+ //BA.debugLineNum = 346;BA.debugLine="Data.Initialize";
 _data.Initialize();
- //BA.debugLineNum = 342;BA.debugLine="Data.Put (\"rst\",1)";
+ //BA.debugLineNum = 347;BA.debugLine="Data.Put (\"rst\",1)";
 _data.Put((Object)("rst"),(Object)(1));
- //BA.debugLineNum = 343;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
+ //BA.debugLineNum = 348;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
 anywheresoftware.b4a.keywords.Common.CallSubDelayed2(mostCurrent.activityBA,(Object)(mostCurrent._starter.getObject()),"send_to_dev",(Object)(_data));
  } 
-       catch (Exception e293) {
-			processBA.setLastException(e293); //BA.debugLineNum = 345;BA.debugLine="proces_error(LastException.Message & \"reset_dev\"";
+       catch (Exception e298) {
+			processBA.setLastException(e298); //BA.debugLineNum = 350;BA.debugLine="proces_error(LastException.Message & \"reset_dev\"";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage()+"reset_dev");
  };
- //BA.debugLineNum = 349;BA.debugLine="End Sub";
+ //BA.debugLineNum = 354;BA.debugLine="End Sub";
 return "";
 }
 public static String  _sel_dev_click() throws Exception{
- //BA.debugLineNum = 315;BA.debugLine="Sub sel_dev_Click()";
- //BA.debugLineNum = 316;BA.debugLine="If  valid_menu_pass=False Then Return";
+ //BA.debugLineNum = 320;BA.debugLine="Sub sel_dev_Click()";
+ //BA.debugLineNum = 321;BA.debugLine="If  valid_menu_pass=False Then Return";
 if (_valid_menu_pass()==anywheresoftware.b4a.keywords.Common.False) { 
 if (true) return "";};
- //BA.debugLineNum = 317;BA.debugLine="StartActivity(sel_dev)";
+ //BA.debugLineNum = 322;BA.debugLine="StartActivity(sel_dev)";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._sel_dev.getObject()));
- //BA.debugLineNum = 318;BA.debugLine="End Sub";
+ //BA.debugLineNum = 323;BA.debugLine="End Sub";
 return "";
 }
 public static String  _send_comm(int _ind,boolean _com,boolean _lock) throws Exception{
@@ -862,18 +870,18 @@ _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.act
 return "";
 }
 public static String  _set_mqtt_state(boolean _state) throws Exception{
- //BA.debugLineNum = 257;BA.debugLine="Sub set_mqtt_state(state As Boolean)";
- //BA.debugLineNum = 258;BA.debugLine="CM.connect_type=state";
+ //BA.debugLineNum = 262;BA.debugLine="Sub set_mqtt_state(state As Boolean)";
+ //BA.debugLineNum = 263;BA.debugLine="CM.connect_type=state";
 mostCurrent._cm._connect_type = _state;
- //BA.debugLineNum = 259;BA.debugLine="If state=True Then";
+ //BA.debugLineNum = 264;BA.debugLine="If state=True Then";
 if (_state==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 260;BA.debugLine="mqtt_but.textColor=Colors.Green";
+ //BA.debugLineNum = 265;BA.debugLine="mqtt_but.textColor=Colors.Green";
 mostCurrent._mqtt_but.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Green);
  }else {
- //BA.debugLineNum = 262;BA.debugLine="mqtt_but.textColor=Colors.Gray";
+ //BA.debugLineNum = 267;BA.debugLine="mqtt_but.textColor=Colors.Gray";
 mostCurrent._mqtt_but.setTextColor(anywheresoftware.b4a.keywords.Common.Colors.Gray);
  };
- //BA.debugLineNum = 264;BA.debugLine="End Sub";
+ //BA.debugLineNum = 269;BA.debugLine="End Sub";
 return "";
 }
 public static String  _set_ris(anywheresoftware.b4a.objects.collections.Map _rstate) throws Exception{
@@ -929,133 +937,133 @@ _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.act
 return "";
 }
 public static String  _status_lab_longclick() throws Exception{
- //BA.debugLineNum = 357;BA.debugLine="Sub status_lab_LongClick";
- //BA.debugLineNum = 359;BA.debugLine="End Sub";
+ //BA.debugLineNum = 362;BA.debugLine="Sub status_lab_LongClick";
+ //BA.debugLineNum = 364;BA.debugLine="End Sub";
 return "";
 }
 public static String  _tbuts_click() throws Exception{
 anywheresoftware.b4a.objects.ButtonWrapper _p = null;
 int _tmind = 0;
- //BA.debugLineNum = 297;BA.debugLine="Sub tbuts_click()";
- //BA.debugLineNum = 298;BA.debugLine="Try";
-try { //BA.debugLineNum = 299;BA.debugLine="antidouble=False";
+ //BA.debugLineNum = 302;BA.debugLine="Sub tbuts_click()";
+ //BA.debugLineNum = 303;BA.debugLine="Try";
+try { //BA.debugLineNum = 304;BA.debugLine="antidouble=False";
 _antidouble = anywheresoftware.b4a.keywords.Common.False;
- //BA.debugLineNum = 300;BA.debugLine="Dim p As Button";
+ //BA.debugLineNum = 305;BA.debugLine="Dim p As Button";
 _p = new anywheresoftware.b4a.objects.ButtonWrapper();
- //BA.debugLineNum = 301;BA.debugLine="Dim tmind As Int";
+ //BA.debugLineNum = 306;BA.debugLine="Dim tmind As Int";
 _tmind = 0;
- //BA.debugLineNum = 302;BA.debugLine="p = Sender";
+ //BA.debugLineNum = 307;BA.debugLine="p = Sender";
 _p.setObject((android.widget.Button)(anywheresoftware.b4a.keywords.Common.Sender(mostCurrent.activityBA)));
- //BA.debugLineNum = 303;BA.debugLine="tmind=CM.toint(p.Tag)";
+ //BA.debugLineNum = 308;BA.debugLine="tmind=CM.toint(p.Tag)";
 _tmind = mostCurrent._cm._toint(mostCurrent.activityBA,BA.ObjectToString(_p.getTag()));
- //BA.debugLineNum = 304;BA.debugLine="If tmind<1 Then Return";
+ //BA.debugLineNum = 309;BA.debugLine="If tmind<1 Then Return";
 if (_tmind<1) { 
 if (true) return "";};
- //BA.debugLineNum = 305;BA.debugLine="If butlock(tmind) =False Then";
+ //BA.debugLineNum = 310;BA.debugLine="If butlock(tmind) =False Then";
 if (_butlock[_tmind]==anywheresoftware.b4a.keywords.Common.False) { 
- //BA.debugLineNum = 306;BA.debugLine="prs_but=0";
+ //BA.debugLineNum = 311;BA.debugLine="prs_but=0";
 _prs_but = (int) (0);
- //BA.debugLineNum = 307;BA.debugLine="send_comm(tmind,False,False)";
+ //BA.debugLineNum = 312;BA.debugLine="send_comm(tmind,False,False)";
 _send_comm(_tmind,anywheresoftware.b4a.keywords.Common.False,anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 308;BA.debugLine="butstate(tmind)=False";
+ //BA.debugLineNum = 313;BA.debugLine="butstate(tmind)=False";
 _butstate[_tmind] = anywheresoftware.b4a.keywords.Common.False;
  };
  } 
-       catch (Exception e260) {
-			processBA.setLastException(e260); //BA.debugLineNum = 311;BA.debugLine="proces_error(LastException.Message & \"tbuts_clic";
+       catch (Exception e265) {
+			processBA.setLastException(e265); //BA.debugLineNum = 316;BA.debugLine="proces_error(LastException.Message & \"tbuts_clic";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage()+"tbuts_click");
  };
- //BA.debugLineNum = 313;BA.debugLine="End Sub";
+ //BA.debugLineNum = 318;BA.debugLine="End Sub";
 return "";
 }
 public static String  _tbuts_down() throws Exception{
 anywheresoftware.b4a.objects.ButtonWrapper _p = null;
 int _tmind = 0;
- //BA.debugLineNum = 269;BA.debugLine="Sub tbuts_down()";
- //BA.debugLineNum = 270;BA.debugLine="Try";
-try { //BA.debugLineNum = 271;BA.debugLine="If antidouble=True Then Return";
+ //BA.debugLineNum = 274;BA.debugLine="Sub tbuts_down()";
+ //BA.debugLineNum = 275;BA.debugLine="Try";
+try { //BA.debugLineNum = 276;BA.debugLine="If antidouble=True Then Return";
 if (_antidouble==anywheresoftware.b4a.keywords.Common.True) { 
 if (true) return "";};
- //BA.debugLineNum = 272;BA.debugLine="antidouble=True";
+ //BA.debugLineNum = 277;BA.debugLine="antidouble=True";
 _antidouble = anywheresoftware.b4a.keywords.Common.True;
- //BA.debugLineNum = 273;BA.debugLine="Dim p As Button";
+ //BA.debugLineNum = 278;BA.debugLine="Dim p As Button";
 _p = new anywheresoftware.b4a.objects.ButtonWrapper();
- //BA.debugLineNum = 274;BA.debugLine="Dim tmind As Int";
+ //BA.debugLineNum = 279;BA.debugLine="Dim tmind As Int";
 _tmind = 0;
- //BA.debugLineNum = 275;BA.debugLine="p = Sender";
+ //BA.debugLineNum = 280;BA.debugLine="p = Sender";
 _p.setObject((android.widget.Button)(anywheresoftware.b4a.keywords.Common.Sender(mostCurrent.activityBA)));
- //BA.debugLineNum = 276;BA.debugLine="p.Background =sld_down";
+ //BA.debugLineNum = 281;BA.debugLine="p.Background =sld_down";
 _p.setBackground((android.graphics.drawable.Drawable)(mostCurrent._sld_down.getObject()));
- //BA.debugLineNum = 277;BA.debugLine="tmind=CM.toint(p.Tag)";
+ //BA.debugLineNum = 282;BA.debugLine="tmind=CM.toint(p.Tag)";
 _tmind = mostCurrent._cm._toint(mostCurrent.activityBA,BA.ObjectToString(_p.getTag()));
- //BA.debugLineNum = 278;BA.debugLine="If tmind<1 Then Return";
+ //BA.debugLineNum = 283;BA.debugLine="If tmind<1 Then Return";
 if (_tmind<1) { 
 if (true) return "";};
- //BA.debugLineNum = 279;BA.debugLine="If butlock(tmind) =True Then";
+ //BA.debugLineNum = 284;BA.debugLine="If butlock(tmind) =True Then";
 if (_butlock[_tmind]==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 280;BA.debugLine="If butstate(tmind)=True Then";
+ //BA.debugLineNum = 285;BA.debugLine="If butstate(tmind)=True Then";
 if (_butstate[_tmind]==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 281;BA.debugLine="send_comm(tmind,False,False)";
+ //BA.debugLineNum = 286;BA.debugLine="send_comm(tmind,False,False)";
 _send_comm(_tmind,anywheresoftware.b4a.keywords.Common.False,anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 282;BA.debugLine="butstate(tmind)=False";
+ //BA.debugLineNum = 287;BA.debugLine="butstate(tmind)=False";
 _butstate[_tmind] = anywheresoftware.b4a.keywords.Common.False;
  }else {
- //BA.debugLineNum = 284;BA.debugLine="send_comm(tmind,True,True)";
+ //BA.debugLineNum = 289;BA.debugLine="send_comm(tmind,True,True)";
 _send_comm(_tmind,anywheresoftware.b4a.keywords.Common.True,anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 285;BA.debugLine="butstate(tmind)=True";
+ //BA.debugLineNum = 290;BA.debugLine="butstate(tmind)=True";
 _butstate[_tmind] = anywheresoftware.b4a.keywords.Common.True;
  };
  }else {
- //BA.debugLineNum = 288;BA.debugLine="butstate(tmind)=True";
+ //BA.debugLineNum = 293;BA.debugLine="butstate(tmind)=True";
 _butstate[_tmind] = anywheresoftware.b4a.keywords.Common.True;
- //BA.debugLineNum = 289;BA.debugLine="send_comm(tmind,True,False)";
+ //BA.debugLineNum = 294;BA.debugLine="send_comm(tmind,True,False)";
 _send_comm(_tmind,anywheresoftware.b4a.keywords.Common.True,anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 290;BA.debugLine="prs_but=tmind";
+ //BA.debugLineNum = 295;BA.debugLine="prs_but=tmind";
 _prs_but = _tmind;
  };
  } 
-       catch (Exception e243) {
-			processBA.setLastException(e243); //BA.debugLineNum = 293;BA.debugLine="proces_error(LastException.Message & \"tbuts_cdow";
+       catch (Exception e248) {
+			processBA.setLastException(e248); //BA.debugLineNum = 298;BA.debugLine="proces_error(LastException.Message & \"tbuts_cdow";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage()+"tbuts_cdown");
  };
- //BA.debugLineNum = 295;BA.debugLine="End Sub";
+ //BA.debugLineNum = 300;BA.debugLine="End Sub";
 return "";
 }
 public static boolean  _valid_menu_pass() throws Exception{
- //BA.debugLineNum = 350;BA.debugLine="Sub valid_menu_pass() As Boolean";
- //BA.debugLineNum = 351;BA.debugLine="If StateManager.getSetting2(\"menu_pass\",\"\").Lengt";
+ //BA.debugLineNum = 355;BA.debugLine="Sub valid_menu_pass() As Boolean";
+ //BA.debugLineNum = 356;BA.debugLine="If StateManager.getSetting2(\"menu_pass\",\"\").Lengt";
 if (mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"menu_pass","").length()==0) { 
 if (true) return anywheresoftware.b4a.keywords.Common.True;};
- //BA.debugLineNum = 352;BA.debugLine="If allow_menu=True Then Return True";
+ //BA.debugLineNum = 357;BA.debugLine="If allow_menu=True Then Return True";
 if (_allow_menu==anywheresoftware.b4a.keywords.Common.True) { 
 if (true) return anywheresoftware.b4a.keywords.Common.True;};
- //BA.debugLineNum = 353;BA.debugLine="menu_pass_txt.Text =\"\"";
+ //BA.debugLineNum = 358;BA.debugLine="menu_pass_txt.Text =\"\"";
 mostCurrent._menu_pass_txt.setText((Object)(""));
- //BA.debugLineNum = 354;BA.debugLine="menu_pass_txt.Visible =True";
+ //BA.debugLineNum = 359;BA.debugLine="menu_pass_txt.Visible =True";
 mostCurrent._menu_pass_txt.setVisible(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 355;BA.debugLine="Return False";
+ //BA.debugLineNum = 360;BA.debugLine="Return False";
 if (true) return anywheresoftware.b4a.keywords.Common.False;
- //BA.debugLineNum = 356;BA.debugLine="End Sub";
+ //BA.debugLineNum = 361;BA.debugLine="End Sub";
 return false;
 }
 public static String  _wf_ap_set_click() throws Exception{
- //BA.debugLineNum = 319;BA.debugLine="Sub wf_ap_set_Click()";
- //BA.debugLineNum = 320;BA.debugLine="If  valid_menu_pass=False Then Return";
+ //BA.debugLineNum = 324;BA.debugLine="Sub wf_ap_set_Click()";
+ //BA.debugLineNum = 325;BA.debugLine="If  valid_menu_pass=False Then Return";
 if (_valid_menu_pass()==anywheresoftware.b4a.keywords.Common.False) { 
 if (true) return "";};
- //BA.debugLineNum = 321;BA.debugLine="StartActivity(AP_SET)";
+ //BA.debugLineNum = 326;BA.debugLine="StartActivity(AP_SET)";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._ap_set.getObject()));
- //BA.debugLineNum = 322;BA.debugLine="End Sub";
+ //BA.debugLineNum = 327;BA.debugLine="End Sub";
 return "";
 }
 public static String  _wf_sta_set_click() throws Exception{
- //BA.debugLineNum = 323;BA.debugLine="Sub wf_sta_set_Click()";
- //BA.debugLineNum = 324;BA.debugLine="If  valid_menu_pass=False Then Return";
+ //BA.debugLineNum = 328;BA.debugLine="Sub wf_sta_set_Click()";
+ //BA.debugLineNum = 329;BA.debugLine="If  valid_menu_pass=False Then Return";
 if (_valid_menu_pass()==anywheresoftware.b4a.keywords.Common.False) { 
 if (true) return "";};
- //BA.debugLineNum = 325;BA.debugLine="StartActivity(STA_SET)";
+ //BA.debugLineNum = 330;BA.debugLine="StartActivity(STA_SET)";
 anywheresoftware.b4a.keywords.Common.StartActivity(mostCurrent.activityBA,(Object)(mostCurrent._sta_set.getObject()));
- //BA.debugLineNum = 326;BA.debugLine="End Sub";
+ //BA.debugLineNum = 331;BA.debugLine="End Sub";
 return "";
 }
 public static String  _wifi_foundreadings(anywheresoftware.b4a.objects.collections.List _readings) throws Exception{
