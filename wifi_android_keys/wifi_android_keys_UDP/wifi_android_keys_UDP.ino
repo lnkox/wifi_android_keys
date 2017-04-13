@@ -14,8 +14,8 @@ WiFiClient wclient;
 
 
 
-const byte button_pin = D2; // пін для апаратної кнопки зміни режиму
-const byte clk_pin = D1;
+const byte button_pin = D0; // пін для апаратної кнопки зміни режиму
+const byte clk_pin = D7;
 const byte data_pin = D5;
 const byte sb_pin = D6;
 unsigned int localUdpPort = 2201; // Порт для прослуховання
@@ -292,7 +292,7 @@ void reset_to_ap(void)
 void time_tick(void)
 {
   char i;
-  if (digitalRead(button_pin) == 1)
+  if (digitalRead(button_pin) == 0)
   {
     ap_but++;
     Serial.println(int(ap_but));
@@ -464,7 +464,7 @@ void setup_to_sta() // Налаштування пристрою в режим "
   while (WiFi.status() != WL_CONNECTED && i++ < 20)
   {
     delay(500);
-    if (digitalRead(button_pin) == 1)
+    if (digitalRead(button_pin) == 0)
     {
       reset_to_ap();
     }
