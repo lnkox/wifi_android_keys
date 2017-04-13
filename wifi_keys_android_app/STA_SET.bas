@@ -19,6 +19,8 @@ Sub Globals
 	Private Label2 As Label
 	Private save_sta_set_btn As Button
 	Private sta_mode_chk As CheckBox
+	Private batt_dev_txt As EditText
+	Private Label3 As Label
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -47,9 +49,11 @@ Try
 	Data.Initialize
 	Data.Put ("ssid_sta",sta_ssid_txt.Text)
 	Data.Put ("pass_sta",sta_pass_txt.Text)
+	Data.Put ("batt_dev",batt_dev_txt.Text)
 	Data.Put ("mode_sta",sta_mode_chk.Checked)
 	Data.Put ("save_info",2)
 	CallSubDelayed2(Starter,"send_to_dev",Data)
+	StateManager.SetSetting("batt_dev", CM.toint(batt_dev_txt.Text) )
 Catch
   proces_error(LastException.Message)
 End Try
@@ -79,7 +83,8 @@ End Sub
 Sub set_sta_set (mapar As Map)
 Try
 	If mapar.ContainsKey("ssid_sta")=True Then  sta_ssid_txt.Text=mapar.Get ("ssid_sta") 
-	If mapar.ContainsKey("pass_sta")=True Then  sta_pass_txt.Text=mapar.Get ("pass_sta") 
+	If mapar.ContainsKey("pass_sta")=True Then  sta_pass_txt.Text=mapar.Get ("pass_sta")
+	If mapar.ContainsKey("batt_dev")=True Then  batt_dev_txt.Text=mapar.Get ("batt_dev")  
 	If mapar.ContainsKey("mode_sta")=True Then  sta_mode_chk.Checked=CM.obj2Bool(mapar.Get("mode_sta") )
 Catch
   proces_error(LastException.Message)

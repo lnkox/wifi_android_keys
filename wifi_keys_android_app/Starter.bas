@@ -185,6 +185,7 @@ Try
 		StateManager.SetSetting("font_size", CM.toint(mapar.Get ("font_size")))
 		StateManager.SetSetting("h_size", CM.toint(mapar.Get ("h_size")))
 		StateManager.SetSetting("v_size", CM.toint(mapar.Get ("v_size")) )
+		StateManager.SetSetting("batt_dev", CM.toint(mapar.Get ("batt_dev")) )
 		StateManager.SaveSettings
 Catch
   proces_error(LastException.Message & "set_key_info_set")

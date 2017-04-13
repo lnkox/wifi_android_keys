@@ -51,6 +51,7 @@ struct eeprom_dinfo {
   char font_size;
   char v_size;
   char h_size;
+  int  batt_dev;
 };
 
 eeprom_dinfo dinfo;
@@ -125,6 +126,8 @@ void proces_json(char *json_data)
   if (root.containsKey("inet_pass") == true)  strcpy(dinfo.mqttpass, root["inet_pass"]);
   if (root.containsKey("inet_server") == true)  strcpy(dinfo.mqttserver, root["inet_server"]);
   if (root.containsKey("inet_port") == true)  dinfo.mqttport = int(root["inet_port"]);
+  if (root.containsKey("batt_dev") == true)  dinfo.batt_dev = int(root["batt_dev"]);
+  
 
 
   if (root.containsKey("save_info") == true)
@@ -157,6 +160,7 @@ void send_rssi()
   StaticJsonBuffer<256> jsonBuffer;
   JsonObject& root = jsonBuffer.createObject();
   root["rssi"] = rsi;
+  root["analog"] =analogRead(A0);
   root["yourid"] = yourid;
   for (char i = 30; i >0; i--)
   {
@@ -212,6 +216,7 @@ void getkey_info()
   root["font_size"] = dinfo.font_size;
   root["h_size"] = dinfo.h_size;
   root["v_size"] = dinfo.v_size;
+  root["batt_dev"] = dinfo.batt_dev;
   root["yourid"] = yourid;
   size_t len = root.measureLength() + 1;
   char bufferr[len];
@@ -268,6 +273,7 @@ void  get_staset(void)
   root["ssid_sta"] = dinfo.ssid_sta;
   root["pass_sta"] = dinfo.pass_sta;
   root["mode_sta"] = dinfo.stmode;
+  root["batt_dev"] = dinfo.batt_dev;
   root["yourid"] = yourid;
   size_t len = root.measureLength() + 1;
   char bufferr[len];
@@ -507,6 +513,7 @@ void readdinfo() //Читання інформaції з енергонезал�
     dinfo.mqttport = 13098;
     strcpy(dinfo.mqttlogin, "ofcegqld");
     strcpy(dinfo.mqttpass, "p420I22n4UNE");
+    dinfo.batt_dev=5000;
     writedinfo();
     Serial.println("buts first run");
     for (i = 1; i < 32; i++)

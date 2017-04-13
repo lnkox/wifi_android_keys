@@ -32,7 +32,7 @@ public class sta_set extends Activity implements B4AActivity{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		if (isFirst) {
-			processBA = new BA(this.getApplicationContext(), null, null, "lnk.wifi_keys", "lnk.wifi_keys.sta_set");
+			processBA = new anywheresoftware.b4a.ShellBA(this.getApplicationContext(), null, null, "lnk.wifi_keys", "lnk.wifi_keys.sta_set");
 			processBA.loadHtSubs(this.getClass());
 	        float deviceScale = getApplicationContext().getResources().getDisplayMetrics().density;
 	        BALayout.setDeviceScale(deviceScale);
@@ -308,21 +308,7 @@ public class sta_set extends Activity implements B4AActivity{
 		processBA.raiseEvent2(null, true, "globals", false, (Object[])null);
 	}
 
-public anywheresoftware.b4a.keywords.Common __c = null;
-public anywheresoftware.b4a.objects.EditTextWrapper _sta_pass_txt = null;
-public anywheresoftware.b4a.objects.EditTextWrapper _sta_ssid_txt = null;
-public anywheresoftware.b4a.objects.LabelWrapper _label1 = null;
-public anywheresoftware.b4a.objects.LabelWrapper _label2 = null;
-public anywheresoftware.b4a.objects.ButtonWrapper _save_sta_set_btn = null;
-public anywheresoftware.b4a.objects.CompoundButtonWrapper.CheckBoxWrapper _sta_mode_chk = null;
-public lnk.wifi_keys.main _main = null;
-public lnk.wifi_keys.starter _starter = null;
-public lnk.wifi_keys.statemanager _statemanager = null;
-public lnk.wifi_keys.sel_dev _sel_dev = null;
-public lnk.wifi_keys.ap_set _ap_set = null;
-public lnk.wifi_keys.key_set _key_set = null;
-public lnk.wifi_keys.cm _cm = null;
-public lnk.wifi_keys.inet_set _inet_set = null;
+
 
 public static void initializeProcessGlobals() {
              try {
@@ -331,152 +317,235 @@ public static void initializeProcessGlobals() {
                 throw new RuntimeException(e);
             }
 }
+public anywheresoftware.b4a.keywords.Common __c = null;
+public anywheresoftware.b4a.objects.EditTextWrapper _sta_pass_txt = null;
+public anywheresoftware.b4a.objects.EditTextWrapper _sta_ssid_txt = null;
+public anywheresoftware.b4a.objects.LabelWrapper _label1 = null;
+public anywheresoftware.b4a.objects.LabelWrapper _label2 = null;
+public anywheresoftware.b4a.objects.ButtonWrapper _save_sta_set_btn = null;
+public anywheresoftware.b4a.objects.CompoundButtonWrapper.CheckBoxWrapper _sta_mode_chk = null;
+public anywheresoftware.b4a.objects.EditTextWrapper _batt_dev_txt = null;
+public anywheresoftware.b4a.objects.LabelWrapper _label3 = null;
+public lnk.wifi_keys.main _main = null;
+public lnk.wifi_keys.starter _starter = null;
+public lnk.wifi_keys.statemanager _statemanager = null;
+public lnk.wifi_keys.sel_dev _sel_dev = null;
+public lnk.wifi_keys.ap_set _ap_set = null;
+public lnk.wifi_keys.key_set _key_set = null;
+public lnk.wifi_keys.cm _cm = null;
+public lnk.wifi_keys.inet_set _inet_set = null;
 public static String  _activity_create(boolean _firsttime) throws Exception{
- //BA.debugLineNum = 19;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 20;BA.debugLine="Try";
-try { //BA.debugLineNum = 21;BA.debugLine="Activity.LoadLayout(\"sta_set\")";
+RDebugUtils.currentModule="sta_set";
+if (Debug.shouldDelegate("activity_create"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "activity_create", new Object[] {_firsttime});
+RDebugUtils.currentLine=7929856;
+ //BA.debugLineNum = 7929856;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+RDebugUtils.currentLine=7929857;
+ //BA.debugLineNum = 7929857;BA.debugLine="Try";
+try {RDebugUtils.currentLine=7929858;
+ //BA.debugLineNum = 7929858;BA.debugLine="Activity.LoadLayout(\"sta_set\")";
 mostCurrent._activity.LoadLayout("sta_set",mostCurrent.activityBA);
- //BA.debugLineNum = 22;BA.debugLine="clear_field";
+RDebugUtils.currentLine=7929859;
+ //BA.debugLineNum = 7929859;BA.debugLine="clear_field";
 _clear_field();
- //BA.debugLineNum = 23;BA.debugLine="Activity.Title =\"WFclient setup - \" & StateManage";
+RDebugUtils.currentLine=7929860;
+ //BA.debugLineNum = 7929860;BA.debugLine="Activity.Title =\"WFclient setup - \" & StateManage";
 mostCurrent._activity.setTitle((Object)("WFclient setup - "+mostCurrent._statemanager._getsetting2(mostCurrent.activityBA,"cur_dev_name","none")));
- //BA.debugLineNum = 24;BA.debugLine="get_staset";
+RDebugUtils.currentLine=7929861;
+ //BA.debugLineNum = 7929861;BA.debugLine="get_staset";
 _get_staset();
  } 
-       catch (Exception e17) {
-			processBA.setLastException(e17); //BA.debugLineNum = 26;BA.debugLine="proces_error(LastException.Message)";
+       catch (Exception e19) {
+			processBA.setLastException(e19);RDebugUtils.currentLine=7929863;
+ //BA.debugLineNum = 7929863;BA.debugLine="proces_error(LastException.Message)";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
  };
- //BA.debugLineNum = 28;BA.debugLine="End Sub";
-return "";
-}
-public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 34;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 36;BA.debugLine="End Sub";
-return "";
-}
-public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 30;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 32;BA.debugLine="End Sub";
+RDebugUtils.currentLine=7929865;
+ //BA.debugLineNum = 7929865;BA.debugLine="End Sub";
 return "";
 }
 public static String  _clear_field() throws Exception{
- //BA.debugLineNum = 53;BA.debugLine="Sub clear_field()";
- //BA.debugLineNum = 54;BA.debugLine="Try";
-try { //BA.debugLineNum = 55;BA.debugLine="sta_ssid_txt.Text=\"no connect\"";
+RDebugUtils.currentModule="sta_set";
+if (Debug.shouldDelegate("clear_field"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "clear_field", null);
+RDebugUtils.currentLine=8192000;
+ //BA.debugLineNum = 8192000;BA.debugLine="Sub clear_field()";
+RDebugUtils.currentLine=8192001;
+ //BA.debugLineNum = 8192001;BA.debugLine="Try";
+try {RDebugUtils.currentLine=8192002;
+ //BA.debugLineNum = 8192002;BA.debugLine="sta_ssid_txt.Text=\"no connect\"";
 mostCurrent._sta_ssid_txt.setText((Object)("no connect"));
- //BA.debugLineNum = 56;BA.debugLine="sta_pass_txt.Text=\"no connect\"";
+RDebugUtils.currentLine=8192003;
+ //BA.debugLineNum = 8192003;BA.debugLine="sta_pass_txt.Text=\"no connect\"";
 mostCurrent._sta_pass_txt.setText((Object)("no connect"));
- //BA.debugLineNum = 57;BA.debugLine="sta_mode_chk.Checked=False";
+RDebugUtils.currentLine=8192004;
+ //BA.debugLineNum = 8192004;BA.debugLine="sta_mode_chk.Checked=False";
 mostCurrent._sta_mode_chk.setChecked(anywheresoftware.b4a.keywords.Common.False);
  } 
-       catch (Exception e43) {
-			processBA.setLastException(e43); //BA.debugLineNum = 59;BA.debugLine="proces_error(LastException.Message)";
+       catch (Exception e47) {
+			processBA.setLastException(e47);RDebugUtils.currentLine=8192006;
+ //BA.debugLineNum = 8192006;BA.debugLine="proces_error(LastException.Message)";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
  };
- //BA.debugLineNum = 61;BA.debugLine="End Sub";
-return "";
-}
-public static String  _finish_him() throws Exception{
- //BA.debugLineNum = 84;BA.debugLine="Sub finish_him()";
- //BA.debugLineNum = 85;BA.debugLine="Activity.Finish";
-mostCurrent._activity.Finish();
- //BA.debugLineNum = 86;BA.debugLine="End Sub";
+RDebugUtils.currentLine=8192008;
+ //BA.debugLineNum = 8192008;BA.debugLine="End Sub";
 return "";
 }
 public static String  _get_staset() throws Exception{
+RDebugUtils.currentModule="sta_set";
+if (Debug.shouldDelegate("get_staset"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "get_staset", null);
 anywheresoftware.b4a.objects.collections.Map _data = null;
- //BA.debugLineNum = 63;BA.debugLine="Sub get_staset()";
- //BA.debugLineNum = 64;BA.debugLine="Try";
-try { //BA.debugLineNum = 65;BA.debugLine="Dim Data As Map";
+RDebugUtils.currentLine=8257536;
+ //BA.debugLineNum = 8257536;BA.debugLine="Sub get_staset()";
+RDebugUtils.currentLine=8257537;
+ //BA.debugLineNum = 8257537;BA.debugLine="Try";
+try {RDebugUtils.currentLine=8257538;
+ //BA.debugLineNum = 8257538;BA.debugLine="Dim Data As Map";
 _data = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 66;BA.debugLine="Data.Initialize";
+RDebugUtils.currentLine=8257539;
+ //BA.debugLineNum = 8257539;BA.debugLine="Data.Initialize";
 _data.Initialize();
- //BA.debugLineNum = 67;BA.debugLine="Data.Put (\"getstaset\",1)";
+RDebugUtils.currentLine=8257540;
+ //BA.debugLineNum = 8257540;BA.debugLine="Data.Put (\"getstaset\",1)";
 _data.Put((Object)("getstaset"),(Object)(1));
- //BA.debugLineNum = 68;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
+RDebugUtils.currentLine=8257541;
+ //BA.debugLineNum = 8257541;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
 anywheresoftware.b4a.keywords.Common.CallSubDelayed2(mostCurrent.activityBA,(Object)(mostCurrent._starter.getObject()),"send_to_dev",(Object)(_data));
  } 
-       catch (Exception e53) {
-			processBA.setLastException(e53); //BA.debugLineNum = 70;BA.debugLine="proces_error(LastException.Message)";
+       catch (Exception e57) {
+			processBA.setLastException(e57);RDebugUtils.currentLine=8257543;
+ //BA.debugLineNum = 8257543;BA.debugLine="proces_error(LastException.Message)";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
  };
- //BA.debugLineNum = 72;BA.debugLine="End Sub";
-return "";
-}
-public static String  _globals() throws Exception{
- //BA.debugLineNum = 9;BA.debugLine="Sub Globals";
- //BA.debugLineNum = 11;BA.debugLine="Private sta_pass_txt As EditText";
-mostCurrent._sta_pass_txt = new anywheresoftware.b4a.objects.EditTextWrapper();
- //BA.debugLineNum = 12;BA.debugLine="Private sta_ssid_txt As EditText";
-mostCurrent._sta_ssid_txt = new anywheresoftware.b4a.objects.EditTextWrapper();
- //BA.debugLineNum = 13;BA.debugLine="Private Label1 As Label";
-mostCurrent._label1 = new anywheresoftware.b4a.objects.LabelWrapper();
- //BA.debugLineNum = 14;BA.debugLine="Private Label2 As Label";
-mostCurrent._label2 = new anywheresoftware.b4a.objects.LabelWrapper();
- //BA.debugLineNum = 15;BA.debugLine="Private save_sta_set_btn As Button";
-mostCurrent._save_sta_set_btn = new anywheresoftware.b4a.objects.ButtonWrapper();
- //BA.debugLineNum = 16;BA.debugLine="Private sta_mode_chk As CheckBox";
-mostCurrent._sta_mode_chk = new anywheresoftware.b4a.objects.CompoundButtonWrapper.CheckBoxWrapper();
- //BA.debugLineNum = 17;BA.debugLine="End Sub";
+RDebugUtils.currentLine=8257545;
+ //BA.debugLineNum = 8257545;BA.debugLine="End Sub";
 return "";
 }
 public static String  _proces_error(String _msg) throws Exception{
- //BA.debugLineNum = 88;BA.debugLine="Sub proces_error(msg As String)";
- //BA.debugLineNum = 89;BA.debugLine="Msgbox(msg,\"error\")";
+RDebugUtils.currentModule="sta_set";
+if (Debug.shouldDelegate("proces_error"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "proces_error", new Object[] {_msg});
+RDebugUtils.currentLine=8454144;
+ //BA.debugLineNum = 8454144;BA.debugLine="Sub proces_error(msg As String)";
+RDebugUtils.currentLine=8454145;
+ //BA.debugLineNum = 8454145;BA.debugLine="Msgbox(msg,\"error\")";
 anywheresoftware.b4a.keywords.Common.Msgbox(_msg,"error",mostCurrent.activityBA);
- //BA.debugLineNum = 90;BA.debugLine="End Sub";
+RDebugUtils.currentLine=8454146;
+ //BA.debugLineNum = 8454146;BA.debugLine="End Sub";
 return "";
 }
-public static String  _process_globals() throws Exception{
- //BA.debugLineNum = 6;BA.debugLine="Sub Process_Globals";
- //BA.debugLineNum = 7;BA.debugLine="End Sub";
+public static String  _activity_pause(boolean _userclosed) throws Exception{
+RDebugUtils.currentModule="sta_set";
+if (Debug.shouldDelegate("activity_pause"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "activity_pause", new Object[] {_userclosed});
+RDebugUtils.currentLine=8060928;
+ //BA.debugLineNum = 8060928;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+RDebugUtils.currentLine=8060930;
+ //BA.debugLineNum = 8060930;BA.debugLine="End Sub";
+return "";
+}
+public static String  _activity_resume() throws Exception{
+RDebugUtils.currentModule="sta_set";
+if (Debug.shouldDelegate("activity_resume"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "activity_resume", null);
+RDebugUtils.currentLine=7995392;
+ //BA.debugLineNum = 7995392;BA.debugLine="Sub Activity_Resume";
+RDebugUtils.currentLine=7995394;
+ //BA.debugLineNum = 7995394;BA.debugLine="End Sub";
+return "";
+}
+public static String  _finish_him() throws Exception{
+RDebugUtils.currentModule="sta_set";
+if (Debug.shouldDelegate("finish_him"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "finish_him", null);
+RDebugUtils.currentLine=8388608;
+ //BA.debugLineNum = 8388608;BA.debugLine="Sub finish_him()";
+RDebugUtils.currentLine=8388609;
+ //BA.debugLineNum = 8388609;BA.debugLine="Activity.Finish";
+mostCurrent._activity.Finish();
+RDebugUtils.currentLine=8388610;
+ //BA.debugLineNum = 8388610;BA.debugLine="End Sub";
 return "";
 }
 public static String  _save_sta_set_btn_click() throws Exception{
+RDebugUtils.currentModule="sta_set";
+if (Debug.shouldDelegate("save_sta_set_btn_click"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "save_sta_set_btn_click", null);
 anywheresoftware.b4a.objects.collections.Map _data = null;
- //BA.debugLineNum = 39;BA.debugLine="Sub save_sta_set_btn_Click";
- //BA.debugLineNum = 40;BA.debugLine="Try";
-try { //BA.debugLineNum = 41;BA.debugLine="Dim Data As Map";
+RDebugUtils.currentLine=8126464;
+ //BA.debugLineNum = 8126464;BA.debugLine="Sub save_sta_set_btn_Click";
+RDebugUtils.currentLine=8126465;
+ //BA.debugLineNum = 8126465;BA.debugLine="Try";
+try {RDebugUtils.currentLine=8126466;
+ //BA.debugLineNum = 8126466;BA.debugLine="Dim Data As Map";
 _data = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 42;BA.debugLine="Data.Initialize";
+RDebugUtils.currentLine=8126467;
+ //BA.debugLineNum = 8126467;BA.debugLine="Data.Initialize";
 _data.Initialize();
- //BA.debugLineNum = 43;BA.debugLine="Data.Put (\"ssid_sta\",sta_ssid_txt.Text)";
+RDebugUtils.currentLine=8126468;
+ //BA.debugLineNum = 8126468;BA.debugLine="Data.Put (\"ssid_sta\",sta_ssid_txt.Text)";
 _data.Put((Object)("ssid_sta"),(Object)(mostCurrent._sta_ssid_txt.getText()));
- //BA.debugLineNum = 44;BA.debugLine="Data.Put (\"pass_sta\",sta_pass_txt.Text)";
+RDebugUtils.currentLine=8126469;
+ //BA.debugLineNum = 8126469;BA.debugLine="Data.Put (\"pass_sta\",sta_pass_txt.Text)";
 _data.Put((Object)("pass_sta"),(Object)(mostCurrent._sta_pass_txt.getText()));
- //BA.debugLineNum = 45;BA.debugLine="Data.Put (\"mode_sta\",sta_mode_chk.Checked)";
+RDebugUtils.currentLine=8126470;
+ //BA.debugLineNum = 8126470;BA.debugLine="Data.Put (\"batt_dev\",batt_dev_txt.Text)";
+_data.Put((Object)("batt_dev"),(Object)(mostCurrent._batt_dev_txt.getText()));
+RDebugUtils.currentLine=8126471;
+ //BA.debugLineNum = 8126471;BA.debugLine="Data.Put (\"mode_sta\",sta_mode_chk.Checked)";
 _data.Put((Object)("mode_sta"),(Object)(mostCurrent._sta_mode_chk.getChecked()));
- //BA.debugLineNum = 46;BA.debugLine="Data.Put (\"save_info\",2)";
+RDebugUtils.currentLine=8126472;
+ //BA.debugLineNum = 8126472;BA.debugLine="Data.Put (\"save_info\",2)";
 _data.Put((Object)("save_info"),(Object)(2));
- //BA.debugLineNum = 47;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
+RDebugUtils.currentLine=8126473;
+ //BA.debugLineNum = 8126473;BA.debugLine="CallSubDelayed2(Starter,\"send_to_dev\",Data)";
 anywheresoftware.b4a.keywords.Common.CallSubDelayed2(mostCurrent.activityBA,(Object)(mostCurrent._starter.getObject()),"send_to_dev",(Object)(_data));
+RDebugUtils.currentLine=8126474;
+ //BA.debugLineNum = 8126474;BA.debugLine="StateManager.SetSetting(\"batt_dev\", CM.toint(batt";
+mostCurrent._statemanager._setsetting(mostCurrent.activityBA,"batt_dev",BA.NumberToString(mostCurrent._cm._toint(mostCurrent.activityBA,mostCurrent._batt_dev_txt.getText())));
  } 
-       catch (Exception e34) {
-			processBA.setLastException(e34); //BA.debugLineNum = 49;BA.debugLine="proces_error(LastException.Message)";
+       catch (Exception e38) {
+			processBA.setLastException(e38);RDebugUtils.currentLine=8126476;
+ //BA.debugLineNum = 8126476;BA.debugLine="proces_error(LastException.Message)";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
  };
- //BA.debugLineNum = 51;BA.debugLine="End Sub";
+RDebugUtils.currentLine=8126478;
+ //BA.debugLineNum = 8126478;BA.debugLine="End Sub";
 return "";
 }
 public static String  _set_sta_set(anywheresoftware.b4a.objects.collections.Map _mapar) throws Exception{
- //BA.debugLineNum = 74;BA.debugLine="Sub set_sta_set (mapar As Map)";
- //BA.debugLineNum = 75;BA.debugLine="Try";
-try { //BA.debugLineNum = 76;BA.debugLine="If mapar.ContainsKey(\"ssid_sta\")=True Then  sta_s";
+RDebugUtils.currentModule="sta_set";
+if (Debug.shouldDelegate("set_sta_set"))
+	return (String) Debug.delegate(mostCurrent.activityBA, "set_sta_set", new Object[] {_mapar});
+RDebugUtils.currentLine=8323072;
+ //BA.debugLineNum = 8323072;BA.debugLine="Sub set_sta_set (mapar As Map)";
+RDebugUtils.currentLine=8323073;
+ //BA.debugLineNum = 8323073;BA.debugLine="Try";
+try {RDebugUtils.currentLine=8323074;
+ //BA.debugLineNum = 8323074;BA.debugLine="If mapar.ContainsKey(\"ssid_sta\")=True Then  sta_s";
 if (_mapar.ContainsKey((Object)("ssid_sta"))==anywheresoftware.b4a.keywords.Common.True) { 
 mostCurrent._sta_ssid_txt.setText(_mapar.Get((Object)("ssid_sta")));};
- //BA.debugLineNum = 77;BA.debugLine="If mapar.ContainsKey(\"pass_sta\")=True Then  sta_p";
+RDebugUtils.currentLine=8323075;
+ //BA.debugLineNum = 8323075;BA.debugLine="If mapar.ContainsKey(\"pass_sta\")=True Then  sta_p";
 if (_mapar.ContainsKey((Object)("pass_sta"))==anywheresoftware.b4a.keywords.Common.True) { 
 mostCurrent._sta_pass_txt.setText(_mapar.Get((Object)("pass_sta")));};
- //BA.debugLineNum = 78;BA.debugLine="If mapar.ContainsKey(\"mode_sta\")=True Then  sta_m";
+RDebugUtils.currentLine=8323076;
+ //BA.debugLineNum = 8323076;BA.debugLine="If mapar.ContainsKey(\"batt_dev\")=True Then  batt_";
+if (_mapar.ContainsKey((Object)("batt_dev"))==anywheresoftware.b4a.keywords.Common.True) { 
+mostCurrent._batt_dev_txt.setText(_mapar.Get((Object)("batt_dev")));};
+RDebugUtils.currentLine=8323077;
+ //BA.debugLineNum = 8323077;BA.debugLine="If mapar.ContainsKey(\"mode_sta\")=True Then  sta_m";
 if (_mapar.ContainsKey((Object)("mode_sta"))==anywheresoftware.b4a.keywords.Common.True) { 
 mostCurrent._sta_mode_chk.setChecked(mostCurrent._cm._obj2bool(mostCurrent.activityBA,_mapar.Get((Object)("mode_sta"))));};
  } 
-       catch (Exception e62) {
-			processBA.setLastException(e62); //BA.debugLineNum = 80;BA.debugLine="proces_error(LastException.Message)";
+       catch (Exception e67) {
+			processBA.setLastException(e67);RDebugUtils.currentLine=8323079;
+ //BA.debugLineNum = 8323079;BA.debugLine="proces_error(LastException.Message)";
 _proces_error(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA).getMessage());
  };
- //BA.debugLineNum = 82;BA.debugLine="End Sub";
+RDebugUtils.currentLine=8323081;
+ //BA.debugLineNum = 8323081;BA.debugLine="End Sub";
 return "";
 }
 }

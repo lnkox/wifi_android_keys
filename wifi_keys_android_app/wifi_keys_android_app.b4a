@@ -229,14 +229,15 @@ Try
 				butt(a).Background =sld_norm
 		End If
 	Next
-	
+	Dim btd As Double =rstate.Get("analog")/(StateManager.GetSetting2("batt_dev",20000)/100)
+	btd=CM.toint (btd*100)/100
 	status_lab.TextColor=Colors.Green
 	If CM.toint (rstate.Get("rssi"))<0 Then
-		 status_lab.Text = " RSSI: " & rstate.Get("rssi") & "dbm   Connected" 
+		 status_lab.Text = btd & "V RSSI: " & rstate.Get("rssi") & "dbm   Connected" 
 		 Else
 		 	wifi.StartWifi
 		 	wifi.GetNewReadingWifi
-		 	status_lab.Text = " myRSSI: " & wifisignal & "dbm   Connected" 	
+		 	status_lab.Text = btd & "V myRSSI: " & wifisignal & "dbm   Connected" 	
 	End If
 	conect_tmout=3
 	
